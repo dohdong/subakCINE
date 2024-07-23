@@ -16,6 +16,6 @@ public class MovieDetailPageAction implements SubakcineAction {
         MovieDAO movieDao = new MovieDAO();
         Map<String, Object> movieDetails = movieDao.getMovieDetails(movieId);
         request.setAttribute("movie", movieDetails);
-        return "/WEB-INF/views/movieDetailPage.jsp";
+        return "/views/movieDetailPage.jsp";
     }
 }
