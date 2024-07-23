@@ -25,6 +25,6 @@ public class TVShowsAction implements SubakcineAction {
         request.setAttribute("onTheAirTVShows", onTheAirTVShows);
         request.setAttribute("topRatedTVShows", topRatedTVShows);
 
-        return "/WEB-INF/views/tvShows.jsp";
+        return "/views/tvShows.jsp";
     }
 }

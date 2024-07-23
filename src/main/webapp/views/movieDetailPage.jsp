@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TV Show Details</title>
+    <title>Movie Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,12 @@
             justify-content: space-between;
             padding: 10px 20px;
             background-color: white;
-            color: black;
+            color:black;
+            position: fixed;
+            width: 80%;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
         }
         .header img {
             width: 50px;
@@ -33,7 +38,19 @@
         .nav a:hover {
             text-decoration: underline;
         }
-        .tvshow-details {
+        .search-container {
+            display: flex;
+            gap: 10px;
+        }
+        .search-container input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .movie-details {
             max-width: 800px;
             margin: auto;
             padding: 20px;
@@ -41,18 +58,18 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .tvshow-details img {
+        .movie-details img {
             width: 300px;
             height: 450px;
         }
-        .tvshow-info {
+        .movie-info {
             margin-top: 20px;
         }
-        .tvshow-info h2 {
+        .movie-info h2 {
             margin: 0;
             font-size: 24px;
         }
-        .tvshow-info p {
+        .movie-info p {
             margin: 5px 0;
         }
     </style>
@@ -65,22 +82,29 @@
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="peoplePage.do">인물</a>
     </div>
+    <div class="search-container">
+        <form action="searchPage.do" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 </div>
-<div class="tvshow-details">
-    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
-    <div class="tvshow-info">
-        <h2>${tvShow.name}</h2>
-        <p><strong>Original Name:</strong> ${tvShow.original_name}</p>
-        <p><strong>First Air Date:</strong> ${tvShow.first_air_date}</p>
+<div class="movie-details">
+    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+    <div class="movie-info">
+        <h2>${movie.title}</h2>
+        <p><strong>Original Title:</strong> ${movie.original_title}</p>
+        <p><strong>Release Year:</strong> ${movie.release_date}</p>
         <p><strong>Genres:</strong>
-            <c:forEach var="genre" items="${tvShow.genres}">
+            <c:forEach var="genre" items="${movie.genres}">
                 ${genre.name}
                 <c:if test="${!genre.last}">, </c:if>
             </c:forEach>
         </p>
-        <p><strong>Rating:</strong> ${tvShow.vote_average}</p>
-        <p><strong>Overview:</strong> ${tvShow.overview}</p>
-        <p><strong>Popularity:</strong> ${tvShow.popularity}</p>
+        <p><strong>Rating:</strong> ${movie.vote_average}</p>
+        <p><strong>Runtime:</strong> ${movie.runtime} minutes</p>
+        <p><strong>Summary:</strong> ${movie.overview}</p>
+        <p><strong>Viewers:</strong> ${movie.popularity}</p>
     </div>
 </div>
 </body>

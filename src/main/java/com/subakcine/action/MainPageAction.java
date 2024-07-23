@@ -28,6 +28,6 @@ public class MainPageAction implements SubakcineAction {
         request.setAttribute("popularTVShows", popularTVShows);
         request.setAttribute("popularPeople", popularPeople);
 
-        return "/WEB-INF/views/mainPage.jsp";
+        return "/views/mainPage.jsp";
     }
 }

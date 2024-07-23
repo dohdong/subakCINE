@@ -35,6 +35,17 @@ public class TmdbApiClient {
 
     private final OkHttpClient client = new OkHttpClient();
 
+    
+    // 검색
+    public String search(String query) throws IOException {
+        Request request = new Request.Builder()
+                .url(API_BASE_URL + "/search/multi?api_key=" + API_KEY + "&query=" + query)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
 
 
     // 영화
