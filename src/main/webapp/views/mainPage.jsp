@@ -18,6 +18,9 @@
             color:black;
             position: fixed;
             width: 80%;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
         }
         .header img {
             width: 50px;
@@ -49,6 +52,7 @@
         }
         .container {
             padding: 20px;
+            margin-top: 50px;
         }
         .movie-container, .tvshow-container, .person-container {
             display: flex;

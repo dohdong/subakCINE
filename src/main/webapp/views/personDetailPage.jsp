@@ -14,9 +14,12 @@
             justify-content: space-between;
             padding: 10px 20px;
             background-color: white;
-            color: black;
+            color:black;
             position: fixed;
             width: 80%;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
         }
         .header img {
             width: 50px;
