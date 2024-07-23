@@ -17,6 +17,7 @@
             background-color: white;
             color: black;
             position: fixed;
+            width: 80%;
         }
         .header img {
             width: 50px;
@@ -33,6 +34,18 @@
         }
         .nav a:hover {
             text-decoration: underline;
+        }
+        .search-container {
+            display: flex;
+            gap: 10px;
+        }
+        .search-container input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            font-size: 16px;
         }
         .container {
             padding: 20px;
@@ -64,6 +77,12 @@
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="peoplePage.do">인물</a>
+    </div>
+    <div class="search-container">
+        <form action="searchPage.do" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
 </div>
 <div class="container">

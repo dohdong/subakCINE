@@ -16,6 +16,6 @@ public class TVShowDetailPageAction implements SubakcineAction {
         TVShowDAO tvShowDao = new TVShowDAO();
         Map<String, Object> tvShowDetails = tvShowDao.getTVShowDetails(tvShowId);
         request.setAttribute("tvShow", tvShowDetails);
-        return "/WEB-INF/views/tvShowDetailPage.jsp";
+        return "/views/tvShowDetailPage.jsp";
     }
 }
