@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Popular Movies</title>
+    <title>subakCINE</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,9 @@
             justify-content: space-between;
             padding: 10px 20px;
             background-color: white;
-            color: black;
+            color:black;
+            position: fixed;
+            width: 80%;
         }
         .header img {
             width: 50px;
@@ -33,24 +35,34 @@
         .nav a:hover {
             text-decoration: underline;
         }
+        .search-container {
+            display: flex;
+            gap: 10px;
+        }
+        .search-container input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
         .container {
             padding: 20px;
         }
-        .movie-container {
+        .movie-container, .tvshow-container, .person-container {
             display: flex;
             overflow-x: scroll;
         }
-        .movie {
-            margin: 10px;
-            flex: 1 0 21%; /* Adjust the width of the items */
-            box-sizing: border-box;
+        .movie, .tvshow, .person {
+            margin-right: 20px;
         }
-        .movie img {
-            width: 100%;
-            height: auto;
+        .movie img, .tvshow img, .person img {
+            width: 150px;
+            height: 225px;
             cursor: pointer;
         }
-        .movie-title {
+        .movie-title, .tvshow-title, .person-name {
             text-align: center;
             font-size: 14px;
         }
@@ -64,35 +76,16 @@
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="peoplePage.do">인물</a>
     </div>
+    <div class="search-container">
+        <form action="searchPage.do" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 </div>
 <div class="container">
-
-
-    <h1>Now Playing Movies</h1>
-    <div class="movie-container">
-        <c:forEach var="movie" items="${nowPlayingMovies}">
-            <div class="movie">
-                <a href="movieDetailPage.do?id=${movie.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                </a>
-                <div class="movie-title">${movie.title}</div>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h1>Top Rated Movies</h1>
-    <div class="movie-container">
-        <c:forEach var="movie" items="${topRatedMovies}">
-            <div class="movie">
-                <a href="movieDetailPage.do?id=${movie.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                </a>
-                <div class="movie-title">${movie.title}</div>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h1>Popular Movies</h1>
+    <h1>subakCINE</h1>
+    <h2>Popular Movies</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${popularMovies}">
             <div class="movie">
@@ -104,20 +97,29 @@
         </c:forEach>
     </div>
 
-    <h1>Upcoming Movies</h1>
-    <div class="movie-container">
-        <c:forEach var="movie" items="${upcomingMovies}">
-            <div class="movie">
-                <a href="movieDetailPage.do?id=${movie.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+    <h2>Popular TV Shows</h2>
+    <div class="tvshow-container">
+        <c:forEach var="tvShow" items="${popularTVShows}">
+            <div class="tvshow">
+                <a href="tvShowDetailPage.do?id=${tvShow.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
                 </a>
-                <div class="movie-title">${movie.title}</div>
+                <div class="tvshow-title">${tvShow.name}</div>
             </div>
         </c:forEach>
     </div>
 
-
-
+    <h2>Popular People</h2>
+    <div class="person-container">
+        <c:forEach var="person" items="${popularPeople}">
+            <div class="person">
+                <a href="personDetailPage.do?id=${person.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${person.profile_path}" alt="${person.name}">
+                </a>
+                <div class="person-name">${person.name}</div>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 </body>
 </html>

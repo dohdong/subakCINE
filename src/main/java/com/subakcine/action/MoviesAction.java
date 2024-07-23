@@ -23,6 +23,6 @@ public class MoviesAction implements SubakcineAction {
         request.setAttribute("nowPlayingMovies", nowPlayingMovies);
         request.setAttribute("upcomingMovies", upcomingMovies);
         request.setAttribute("topRatedMovies", topRatedMovies);
-        return "/WEB-INF/views/movies.jsp";
+        return "/views/movies.jsp";
     }
 }

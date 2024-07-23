@@ -16,6 +16,6 @@ public class PeopleAction implements SubakcineAction {
         PersonDAO personDao = new PersonDAO();
         List<Map<String, Object>> popularPeople = personDao.getPopularPeople();
         request.setAttribute("popularPeople", popularPeople);
-        return "/WEB-INF/views/people.jsp";
+        return "/views/people.jsp";
     }
 }

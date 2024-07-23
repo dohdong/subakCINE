@@ -16,7 +16,7 @@ public class PersonDetailPageAction implements SubakcineAction {
         PersonDAO personDao = new PersonDAO();
         Map<String, Object> personDetails = personDao.getPopularPeopleDetails(personId);
         request.setAttribute("personDetails", personDetails);
-        return "/WEB-INF/views/personDetailPage.jsp";
+        return "/views/personDetailPage.jsp";
     }
 
 
