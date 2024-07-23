@@ -16,6 +16,7 @@
             padding: 10px 20px;
             background-color: white;
             color:black;
+            position: fixed;
         }
         .header img {
             width: 50px;
