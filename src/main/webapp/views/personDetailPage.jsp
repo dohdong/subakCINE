@@ -14,11 +14,28 @@
             justify-content: space-between;
             padding: 10px 20px;
             background-color: white;
-            color: black;
+            color:black;
+            position: fixed;
+            width: 80%;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
         }
         .header img {
             width: 50px;
             cursor: pointer;
+        }
+        .search-container {
+            display: flex;
+            gap: 10px;
+        }
+        .search-container input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            font-size: 16px;
         }
         .nav {
             display: flex;
@@ -42,6 +59,12 @@
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="peoplePage.do">인물</a>
+    </div>
+    <div class="search-container">
+        <form action="searchPage.do" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
 </div>
 <h1>${personDetails.name}</h1>

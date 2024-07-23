@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>subakCINE</title>
+    <title>Search Results</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,6 +40,12 @@
         }
         .container {
             padding: 20px;
+            margin-top: 50px;
+        }
+        .search-results {
+            display: flex;
+            flex-wrap: wrap;
+        }
         .search-container {
             display: flex;
             gap: 10px;
@@ -52,24 +58,17 @@
             padding: 5px 10px;
             font-size: 16px;
         }
-        .container {
-            padding: 20px;
-            margin-top: 50px;
+        .result-item {
+            margin: 10px;
+            width: 150px;
+            text-align: center;
         }
-        .movie-container, .tvshow-container, .person-container {
-            display: flex;
-            overflow-x: scroll;
-        }
-        .movie, .tvshow, .person {
-            margin-right: 20px;
-        }
-        .movie img, .tvshow img, .person img {
+        .result-item img {
             width: 150px;
             height: 225px;
             cursor: pointer;
         }
-        .movie-title, .tvshow-title, .person-name {
-            text-align: center;
+        .result-title {
             font-size: 14px;
         }
     </style>
@@ -90,39 +89,40 @@
     </div>
 </div>
 <div class="container">
-    <h1>subakCINE</h1>
-    <h2>Popular Movies</h2>
-    <div class="movie-container">
-        <c:forEach var="movie" items="${popularMovies}">
-            <div class="movie">
-                <a href="movieDetailPage.do?id=${movie.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+    <h1>Search Results</h1>
+
+    <h2>Movies</h2>
+    <div class="search-results">
+        <c:forEach var="result" items="${movies}">
+            <div class="result-item">
+                <a href="movieDetailPage.do?id=${result.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="${result.title}">
+                    <div class="result-title">${result.title}</div>
                 </a>
-                <div class="movie-title">${movie.title}</div>
             </div>
         </c:forEach>
     </div>
 
-    <h2>Popular TV Shows</h2>
-    <div class="tvshow-container">
-        <c:forEach var="tvShow" items="${popularTVShows}">
-            <div class="tvshow">
-                <a href="tvShowDetailPage.do?id=${tvShow.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
+    <h2>TV Shows</h2>
+    <div class="search-results">
+        <c:forEach var="result" items="${tvShows}">
+            <div class="result-item">
+                <a href="tvShowDetailPage.do?id=${result.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" alt="${result.name}">
+                    <div class="result-title">${result.name}</div>
                 </a>
-                <div class="tvshow-title">${tvShow.name}</div>
             </div>
         </c:forEach>
     </div>
 
-    <h2>Popular People</h2>
-    <div class="person-container">
-        <c:forEach var="person" items="${popularPeople}">
-            <div class="person">
-                <a href="personDetailPage.do?id=${person.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${person.profile_path}" alt="${person.name}">
+    <h2>People</h2>
+    <div class="search-results">
+        <c:forEach var="result" items="${people}">
+            <div class="result-item">
+                <a href="personDetailPage.do?id=${result.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${result.profile_path}" alt="${result.name}">
+                    <div class="result-title">${result.name}</div>
                 </a>
-                <div class="person-name">${person.name}</div>
             </div>
         </c:forEach>
     </div>
