@@ -38,6 +38,8 @@
         .nav a:hover {
             text-decoration: underline;
         }
+        .container {
+            padding: 20px;
         .search-container {
             display: flex;
             gap: 10px;
