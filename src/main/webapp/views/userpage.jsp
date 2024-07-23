@@ -58,13 +58,13 @@
         $(function(){
 
             $("#myMovie").click(function (){
-                $("#contents").empty()
-                <c:forEach var="movie" items="${popularMovies}">
-                    let tr=$("<tr></tr>")
-                    let td = $('<td><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"/></td>')
-                    tr.append(td)
-                    $("#contents").append(tr)
-                </c:forEach>
+                <%--$("#contents").empty()--%>
+                <%--<c:forEach var="movie" items="${popularMovies}">--%>
+                <%--    let tr=$("<tr></tr>")--%>
+                <%--    let td = $('<td><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"/></td>')--%>
+                <%--    tr.append(td)--%>
+                <%--    $("#contents").append(tr)--%>
+                <%--</c:forEach>--%>
             })
             $("#myTV").click(function () {
                 $("#contents").empty()
@@ -155,7 +155,7 @@
         <p>컬렉션</p>
     </div>
 </div>
-<div style="background: red;">
+<div>
     <table id="contents" border="1" width="100%" style="text-align: center;">
     </table>
 </div>

@@ -17,6 +17,6 @@ public class UserPageAction implements SubakcineAction{
         List<Map<String, Object>> popularMovies = movieDao.getPopularMovies();
         request.setAttribute("popularMovies", popularMovies);
 
-        return "/WEB-INF/views/userpage.jsp";
+        return "/views/userpage.jsp";
     }
 }
