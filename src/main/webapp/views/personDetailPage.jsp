@@ -49,6 +49,19 @@
         .nav a:hover {
             text-decoration: underline;
         }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons form {
+            display: inline-block;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
 
     </style>
 </head>

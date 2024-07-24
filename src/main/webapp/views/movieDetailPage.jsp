@@ -22,6 +22,7 @@
             top: 0;
             z-index: 1000;
             height: 70px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .header img {
             width: 50px;
@@ -53,11 +54,13 @@
         }
         .movie-details {
             max-width: 800px;
-            margin: auto;
+            margin: 100px auto 20px;
             padding: 20px;
             background: white;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
         }
         .movie-details img {
             width: 300px;
@@ -72,6 +75,18 @@
         }
         .movie-info p {
             margin: 5px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons form {
+            display: inline-block;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -106,6 +121,24 @@
         <p><strong>Runtime:</strong> ${movie.runtime} minutes</p>
         <p><strong>Summary:</strong> ${movie.overview}</p>
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
+
+        <div class="buttons">
+            <form action="movieDetailPage.do" method="post">
+                <input type="hidden" name="id" value="${movie.id}">
+                <input type="hidden" name="action" value="addToCollection">
+                <button type="submit">Add to Collection</button>
+            </form>
+            <form action="movieDetailPage.do" method="post">
+                <input type="hidden" name="id" value="${movie.id}">
+                <input type="hidden" name="action" value="likeMovie">
+                <button type="submit">Like</button>
+            </form>
+        </div>
+
+        <c:if test="${not empty message}">
+            <p>${message}</p>
+        </c:if>
+
     </div>
 </div>
 </body>

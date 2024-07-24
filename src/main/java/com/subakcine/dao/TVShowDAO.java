@@ -1,9 +1,12 @@
 package com.subakcine.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.subakcine.db.ConnectionProvider;
 import com.subakcine.db.TmdbApiClient;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +38,48 @@ public class TVShowDAO {
         return (List<Map<String, Object>>) result.get("results");
     }
 
-
     public Map<String, Object> getTVShowDetails(String tvShowId) throws IOException {
         String jsonResponse = apiClient.getTVShowDetails(tvShowId);
         return objectMapper.readValue(jsonResponse, Map.class);
+    }
+
+    public boolean addToCollection(int tvShowId, String tvShowTitle, String posterPath) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql = "INSERT INTO tvShow (TVShow_no, TVShow_id, TVShow_title, poster_path) VALUES (seq_tvShow.nextval, ?, ?, ?)";
+        try {
+            conn = ConnectionProvider.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, tvShowId);
+            pstmt.setString(2, tvShowTitle);
+            pstmt.setString(3, posterPath);
+            int result = pstmt.executeUpdate();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            ConnectionProvider.close(pstmt, conn);
+        }
+    }
+
+    public boolean likeTVShow(int tvShowId, String tvShowTitle, String posterPath) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql = "INSERT INTO tvLIKEs (like_no, TVShow_id, TVShow_title, poster_path) VALUES (seq_tvlike.nextval, ?, ?, ?)";
+        try {
+            conn = ConnectionProvider.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, tvShowId);
+            pstmt.setString(2, tvShowTitle);
+            pstmt.setString(3, posterPath);
+            int result = pstmt.executeUpdate();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            ConnectionProvider.close(pstmt, conn);
+        }
     }
 }
