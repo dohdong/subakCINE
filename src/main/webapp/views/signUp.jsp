@@ -17,9 +17,12 @@
         // JSP 태그를 사용하여 조건부로 JavaScript 실행
         window.onload = function() {
             <% if (request.getAttribute("re") != null) { %>
+            var re = '<%= request.getAttribute("re")%>';
             var msg = '<%= request.getAttribute("msg") %>';
             showAlert(msg);
+            console.log(re);
             <% } %>
+
         };
     </script>
 </head>
