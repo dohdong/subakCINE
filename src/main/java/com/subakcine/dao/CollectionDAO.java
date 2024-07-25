@@ -2,7 +2,6 @@ package com.subakcine.dao;
 
 import com.subakcine.db.ConnectionProvider;
 import com.subakcine.vo.CollectionVO;
-import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class CollectionDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 vo=new CollectionVO();
-                vo.setColectionId(rs.getString(1));
+                vo.setCollectionId(rs.getString(1));
                 vo.setCollectionName(rs.getString(2));
                 list.add(vo);
             }
@@ -60,7 +59,7 @@ public class CollectionDAO {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 CollectionVO vo=new CollectionVO();
-                vo.setColectionId(rs.getString(1));
+                vo.setCollectionId(rs.getString(1));
                 vo.setCollectionName(rs.getString(2));
                 list.add(vo);
             }

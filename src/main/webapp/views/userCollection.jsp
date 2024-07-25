@@ -100,6 +100,16 @@
             font-size: 14px;
             color: #999;
         }
+        .collection-add-card {
+            background-color: grey;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+        }
     </style>
     <script>
         $(function(){
@@ -146,12 +156,15 @@
                     <span>이동진</span>
                 </div>
 
-                <a href="/collectionDetail.do?collectionId=${collectionList[count.index-1].colectionId}"><div class="title">${collectionList[count.index-1].collectionName}</div></a>
+                <a href="collectionDetail.do?collectionId=${collectionList[count.index-1].collectionId}"><div class="title">${collectionList[count.index-1].collectionName}</div></a>
                 <div class="description">설명</div>
                 <div class="interaction">좋아요 0 댓글 0</div>
             </div>
         </c:forEach>
     </div>
+    <a href="createCollection.do"><div class="collection-add-card">
+            <h4>컬렉션 추가하기</h4>
+    </div></a>
 </div>
 </body>
 </html>

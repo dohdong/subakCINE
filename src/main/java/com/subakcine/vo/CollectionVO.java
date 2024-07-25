@@ -3,7 +3,7 @@ package com.subakcine.vo;
 import java.util.Date;
 
 public class CollectionVO {
-    private String colectionId;
+    private String collectionId;
     private String collectionName;
     private Date collectionCreateDate;
     private Date collectionUpdateDate;
@@ -12,12 +12,12 @@ public class CollectionVO {
     private String collectionItemId;
     private String movieImageUrl;
 
-    public String getColectionId() {
-        return colectionId;
+    public String getCollectionId() {
+        return collectionId;
     }
 
-    public void setColectionId(String colectionId) {
-        this.colectionId = colectionId;
+    public void setCollectionId(String collectionId) {
+        this.collectionId = collectionId;
     }
 
     public String getCollectionName() {
@@ -76,8 +76,8 @@ public class CollectionVO {
         this.movieImageUrl = movieImageUrl;
     }
 
-    public CollectionVO(String colectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID, int collectionItemOrder, String collectionItemId, String movieImageUrl) {
-        this.colectionId = colectionId;
+    public CollectionVO(String collectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID, int collectionItemOrder, String collectionItemId, String movieImageUrl) {
+        this.collectionId = collectionId;
         this.collectionName = collectionName;
         this.collectionCreateDate = collectionCreateDate;
         this.collectionUpdateDate = collectionUpdateDate;
