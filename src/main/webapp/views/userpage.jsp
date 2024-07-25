@@ -53,17 +53,25 @@
             padding: 20px;
             border-top: 1px solid #ccc;
         }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        th, td {
+            background-color: lightgray;
+        }
     </style>
     <script>
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
-            var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>
-            var personData=<%= new Gson().toJson(request.getAttribute("popularPeople"))%>
+            var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>;
+            var personData=<%= new Gson().toJson(request.getAttribute("popularPeople"))%>;
 
             $("#myMovie").click(function () {
                 $("#contents").empty();
                 var tr;
                 $.each(movieData,function (i,data){
+                    console.log(data);
                     if (i%4==0){
                         tr=$("<tr></tr>");
                         $("#contents").append(tr);
@@ -102,16 +110,16 @@
                     tr.append(td);
                 })
             })
-            $("#myCollection").click(function () {
-                $("#contents").empty()
-                let tr = $("<tr></tr>")
-                let td1 = $("<td></td>").html("col1")
-                let td2 = $("<td></td>").html("col2")
-                let td3 = $("<td></td>").html("col3")
-                let add = $("<a href='createCollection.do'><div>추가</div></a>")
-                $(tr).append(td1, td2, td3);
-                $("#contents").append(tr, add);
-            })
+            // $("#myCollection").click(function () {
+            //     $("#contents").empty()
+            //     let tr = $("<tr></tr>")
+            //     let td1 = $("<td></td>").html("col1")
+            //     let td2 = $("<td></td>").html("col2")
+            //     let td3 = $("<td></td>").html("col3")
+            //     let add = $("<div>추가</div></a>")
+            //     $(tr).append(td1, td2, td3);
+            //     $("#contents").append(tr, add);
+            // })
         })
     </script>
 </head>
@@ -169,10 +177,11 @@
         <p>인물</p>
     </div>
     <div>
-        <img src="./img/collection-icon.png" id="myCollection" width="50">
+        <a href='userCollection.do'><img src="./img/collection-icon.png" id="myCollection" width="50"></a>
         <p>컬렉션</p>
     </div>
 </div>
+<hr>
 <div>
     <table id="contents" width='100%' style="text-align: center;">
     </table>
