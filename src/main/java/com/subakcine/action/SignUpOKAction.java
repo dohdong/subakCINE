@@ -17,12 +17,14 @@ public class SignUpOKAction implements SubakcineAction{
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         UserVO vo = new UserVO(email,password);
+        String msg = "";
         int re = dao.insert(vo);
         if(re>0){
-            request.setAttribute("msg","회원가입이 완료되었습니다.\n로그인 해주세요.");
+            msg = "회원가입이 완료되었습니다.\n로그인 해주세요.";
         }else {
-            request.setAttribute("msg", "회원가입에 실패하였습니다.");
+            msg = "회원가입에 실패하였습니다.";
         }
+        request.setAttribute("msg", msg);
         request.setAttribute("re", re);
         return "views/signUp.jsp";
     }

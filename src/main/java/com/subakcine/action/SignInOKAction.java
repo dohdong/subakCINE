@@ -14,6 +14,8 @@ public class SignInOKAction implements SubakcineAction{
         request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String pattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+        String msg = "";
         UserDAO dao = new UserDAO();
         int re = dao.isUserExist(email,password);
         if(re==1){ //회원 맞음
@@ -21,8 +23,16 @@ public class SignInOKAction implements SubakcineAction{
             // 이것을 위하여 session을 이용하여 상태유지 합니다.
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
+            return "mainPage.do";
+        }else if(re==0){ //이메일 맞고 비번틀림
+            msg = "비밀번호가 틀렸습니다.\n다시 확인해주세요.";
+        }else if(re==-1){
+            msg = "존재하지 않는 이메일입니다.";
+        }else {
+            msg = "예외(확인필요)"; //나중에 삭제 예정
         }
+        request.setAttribute("msg", msg);
         request.setAttribute("re",re);
-        return "views/signInOK.jsp";
+        return "views/signIn.jsp";
     }
 }

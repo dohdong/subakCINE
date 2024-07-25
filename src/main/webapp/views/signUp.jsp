@@ -16,10 +16,10 @@
 
         // JSP 태그를 사용하여 조건부로 JavaScript 실행
         window.onload = function() {
-            <c:if test="${re!=null}">
-            var msg = '<c:out value="${msg}" />';
+            <% if (request.getAttribute("re") != null) { %>
+            var msg = '<%= request.getAttribute("msg") %>';
             showAlert(msg);
-            </c:if>
+            <% } %>
         };
     </script>
 </head>

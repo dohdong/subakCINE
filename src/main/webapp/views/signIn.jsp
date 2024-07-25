@@ -6,6 +6,20 @@
     <meta charset="UTF-8">
     <title>수박씨네 로그인</title>
     <link rel="stylesheet" href="css/signUpIn.css" type="text/css">
+    <script>
+        // JavaScript에서 msg를 alert로 표시하는 함수
+        function showAlert(message) {
+            alert(message);
+        }
+
+        // JSP 태그를 사용하여 조건부로 JavaScript 실행
+        window.onload = function() {
+            <% if (request.getAttribute("re") != null) { %>
+            var msg = '<%= request.getAttribute("msg") %>';
+            showAlert(msg);
+            <% } %>
+        };
+    </script>
 </head>
 <body>
 <div class="container">
