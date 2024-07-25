@@ -4,6 +4,15 @@ public class MovieVO {
     private int id;
     private String title;
     private String movieImgUrl;
+    private int order;
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
 
     public int getId() {
         return id;
@@ -29,10 +38,11 @@ public class MovieVO {
         this.movieImgUrl = movieImgUrl;
     }
 
-    public MovieVO(int id, String title, String movieImgUrl) {
+    public MovieVO(int id, String title, String movieImgUrl, int order) {
         this.id = id;
         this.title = title;
         this.movieImgUrl = movieImgUrl;
+        this.order = order;
     }
     public MovieVO() {}
 }

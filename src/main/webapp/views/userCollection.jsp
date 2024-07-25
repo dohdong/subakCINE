@@ -11,25 +11,13 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="./css/header.css">
     <style>
+        header{
+            width: 100%;
+        }
         body {
             font-family: Arial, sans-serif;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        nav {
-            flex: 1;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
         }
         .profile {
             text-align: center;
@@ -102,6 +90,7 @@
         }
         .collection-add-card {
             background-color: grey;
+            text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             overflow: hidden;
@@ -111,41 +100,26 @@
             height: 100px;
         }
     </style>
-    <script>
-        $(function(){
-            <%--var collectionList=<%= new Gson().toJson(request.getAttribute("collectionList"))%>;--%>
-            <%--var imageList=<%= new Gson().toJson(request.getAttribute("imageList"))%>;--%>
-            // console.log(collectionList);
-            // console.log(imageList);
-        });
-    </script>
 </head>
 <body>
-<header>
-    <div>
-        <img src="./img/logo.png" width="120px">
-    </div>
-    <nav>
-        <a href="mainPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
-        <a href="#">컬렉션</a>
-    </nav>
-    <div>
-        <input type="text" placeholder="검색">
-        <img src="./img/user-icon.png" alt="사용자 아이콘" width="30px">
-        <img src="./img/settings-icon.png" alt="설정 아이콘" width="30px">
-    </div>
-</header>
+<jsp:include page="header.html"/>
 <h3>나의 컬렉션</h3>
-<hr>
 <div class="container">
     <div class="collection-card">
         <c:forEach var="i" begin="1" end="${count }" varStatus="count">
             <table>
                 <tr>
-                    <c:forEach var="image" items="${imageList[count.index-1]}">
-                        <td><img src="https://image.tmdb.org/t/p/w500${image}" width="30px"></td>
+                    <c:forEach var="image" items="${imageList[count.index-1]}" varStatus="imgCnt">
+                        <c:choose>
+                            <c:when test="${image!=null}">
+                                <c:if test="${imgCnt.index<6}">
+                                    <td><img src="https://image.tmdb.org/t/p/w500${image}" width="30px"></td>
+                                </c:if>
+                            </c:when>
+                            <c:otherwise>
+                                <td><div style="background: grey; width: 30px"></div></td>
+                            </c:otherwise>
+                        </c:choose>
                     </c:forEach>
                 </tr>
             </table>
