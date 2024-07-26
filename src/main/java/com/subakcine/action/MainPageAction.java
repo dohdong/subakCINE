@@ -22,11 +22,11 @@ public class MainPageAction implements SubakcineAction {
         List<Map<String, Object>> popularTVShows = tvShowDao.getPopularTVShows();
 
         PersonDAO personDao = new PersonDAO();
-        List<Map<String, Object>> popularPeople = personDao.getPopularPeople();
+        List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
 
         request.setAttribute("popularMovies", popularMovies);
         request.setAttribute("popularTVShows", popularTVShows);
-        request.setAttribute("popularPeople", popularPeople);
+        request.setAttribute("popularPerson", popularPerson);
 
         return "/views/mainPage.jsp";
     }

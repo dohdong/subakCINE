@@ -79,7 +79,7 @@
     <div class="nav">
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">
@@ -91,7 +91,7 @@
 <div class="container">
     <h1>Search Results</h1>
 
-    <h2>Movies</h2>
+    <h2>영화</h2>
     <div class="search-results">
         <c:forEach var="result" items="${movies}">
             <div class="result-item">
@@ -103,7 +103,7 @@
         </c:forEach>
     </div>
 
-    <h2>TV Shows</h2>
+    <h2>TV 프로그램</h2>
     <div class="search-results">
         <c:forEach var="result" items="${tvShows}">
             <div class="result-item">
@@ -115,9 +115,9 @@
         </c:forEach>
     </div>
 
-    <h2>People</h2>
+    <h2>인물</h2>
     <div class="search-results">
-        <c:forEach var="result" items="${people}">
+        <c:forEach var="result" items="${person}">
             <div class="result-item">
                 <a href="personDetailPage.do?id=${result.id}">
                     <img src="https://image.tmdb.org/t/p/w500${result.profile_path}" alt="${result.name}">
