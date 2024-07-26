@@ -26,8 +26,8 @@ public class MovieDetailPageAction implements SubakcineAction {
         // 영화 세부 정보를 가져옵니다.
         Map<String, Object> movieDetails = movieDao.getMovieDetails(movieId);
 
-        // 디버깅을 위해 영화 세부 정보를 출력합니다.
-        System.out.println("movieDetails: " + movieDetails);
+//        // 디버깅을 위해 영화 세부 정보를 출력합니다.
+//        System.out.println("movieDetails: " + movieDetails);
 
         // 영화 세부 정보를 요청 객체에 설정합니다.
         request.setAttribute("movie", movieDetails);
