@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -9,22 +8,18 @@
     <title>수박씨네 회원가입</title>
     <link rel="stylesheet" href="css/signUpIn.css" type="text/css">
     <script>
-        // JavaScript에서 msg를 alert로 표시하는 함수
-        function showAlert(message) {
-            alert(message);
-        }
-
-        // JSP 태그를 사용하여 조건부로 JavaScript 실행
         window.onload = function() {
-            <c:if test="${re!=null}">
-            var msg = '<c:out value="${msg}" />';
-            showAlert(msg);
-            </c:if>
-        };
+            let urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('msg')) {
+                let msg = urlParams.get('msg');
+                if (msg === 'failure') {
+                    alert('회원가입에 실패하였습니다.');
+                }
+            }
+        }
     </script>
 </head>
 <body>
-
 <div class="container">
     <img src="img/logo.png" alt="수박씨네 로고">
     <h1>회원가입</h1>
