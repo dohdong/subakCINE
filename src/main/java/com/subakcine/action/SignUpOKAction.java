@@ -24,8 +24,9 @@ public class SignUpOKAction implements SubakcineAction {
         if(result==1){
             if(re>0){
                 msg = "회원가입을 완료하였습니다.로그인을 해주세요.";
+                request.setAttribute("re", re);
                 request.setAttribute("msg", msg);
-                return "signIn.do";
+                return "views/signIn.jsp";
             }else {
                 msg = "회원가입에 실패하였습니다.";
             }
