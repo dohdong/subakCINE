@@ -12,55 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <title>수박씨네</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        nav {
-            flex: 1;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
-        }
-        .profile {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .profile img {
-            border-radius: 50%;
-        }
-        .stats, .library {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .stats div, .library div {
-            margin: 0 20px;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #ccc;
-        }
-        table, th, td {
-            border: 1px solid white;
-            border-collapse: collapse;
-        }
-        th, td {
-            background-color: lightgray;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/userPage.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <jsp:include page="header.html"/>
     <script>
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
@@ -124,7 +78,6 @@
     </script>
 </head>
 <body>
-
 <header>
     <div>
         <img src="./img/logo.png" width="120px">
