@@ -18,19 +18,13 @@ public class SignUpOKAction implements SubakcineAction{
         String password = request.getParameter("password");
         String pattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
         String msg = "";
-        if (!email.matches(pattern)) {
-            msg = "이메일 형식에 맞지 않습니다.";
-            request.setAttribute("msg", msg);
-            request.setAttribute("re", -1); // 오류 상태를 나타내기 위해 re 값 설정
-            return "views/signUp.jsp";
-        }
         UserVO vo = new UserVO(email,password);
-
         int result = dao.emailExist(email);
         int re = dao.insert(vo);
         if(result==1){
             if(re>0){
                 msg = "회원가입이 완료되었습니다.로그인 해주세요.";
+                return "view/signIn.jsp";
             }else {
                 msg = "회원가입에 실패하였습니다.";
             }
@@ -38,6 +32,7 @@ public class SignUpOKAction implements SubakcineAction{
             re = -1;
             msg = "이미 존재하는 이메일입니다.";
         }
+        System.out.println(result);
         request.setAttribute("msg", msg);
         request.setAttribute("re", re);
         return "views/signUp.jsp";

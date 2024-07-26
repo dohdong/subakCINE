@@ -22,7 +22,7 @@
             showAlert(msg);
             console.log(re);
             <% } %>
-
+        };
     </script>
 </head>
 <body>

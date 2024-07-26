@@ -73,7 +73,7 @@ public class UserDAO {
     //email을 사용할 수 있는지 판별하는 메소드
     //사용가능:1, 이미 존재하는 이메일:0
     public int emailExist(String email){
-        int re=-1;
+        int re=1;
         try{
             String sql = "SELECT * FROM USERS WHERE USERS_EMAIL=?";
             Connection conn = ConnectionProvider.getConnection();
