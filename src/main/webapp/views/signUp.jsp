@@ -16,15 +16,17 @@
 
         // JSP 태그를 사용하여 조건부로 JavaScript 실행
         window.onload = function() {
-            <c:if test="${re!=null}">
-            var msg = '<c:out value="${msg}" />';
-            showAlert(msg);
-            </c:if>
-        };
+            var msg = document.getElementById("msg");
+            var re = document.getElementById("re");
+            if (re!=null){
+                console.log(msg);
+            }
+        }
+
     </script>
 </head>
 <body>
-
+{$msg}
 <div class="container">
     <img src="img/logo.png" alt="수박씨네 로고">
     <h1>회원가입</h1>
