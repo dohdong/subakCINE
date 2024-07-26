@@ -1,0 +1,101 @@
+/* =======================
+   General Body Styles
+   ======================= */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0; /* Remove default margin */
+    padding-top: 70px; /* Adjust based on header height */
+    padding-bottom: 50px; /* Adjust based on footer height */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* =======================
+   Header Styles
+   ======================= */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    position: fixed;
+    width: 100%; /* Adjusted to cover full width */
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+.header img {
+    width: 200px;
+    cursor: pointer;
+}
+.nav {
+    display: flex;
+    gap: 20px;
+}
+.nav a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+.search-container {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1; /* Allow search container to grow and take available space */
+    justify-content: flex-end; /* Align search container to the right */
+}
+.search-container input {
+    padding: 5px;
+    font-size: 16px;
+    width: 200px; /* Set a fixed width for the input field */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+.search-container button {
+    padding: 5px 10px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* =======================
+   Footer Styles
+   ======================= */
+.footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%; /* Adjusted to cover full width */
+    bottom: 0;
+    z-index: 1000;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* =======================
+   Main Content Styles
+   ======================= */
+.container {
+    padding: 20px;
+    margin-top: 20px; /* Additional margin to ensure separation */
+}
+.movie-container, .tvshow-container, .person-container {
+    display: flex;
+    overflow-x: scroll;
+}
+.movie, .tvshow, .person {
+    margin-right: 20px;
+}
+.movie img, .tvshow img, .person img {
+    width: 150px;
+    height: 225px;
+    cursor: pointer;
+}
+.movie-title, .tvshow-title, .person-name {
+    text-align: center;
+    font-size: 14px;
+}

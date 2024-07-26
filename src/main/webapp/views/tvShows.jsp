@@ -80,7 +80,7 @@
     <div class="nav">
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">

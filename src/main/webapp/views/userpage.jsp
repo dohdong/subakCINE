@@ -65,7 +65,7 @@
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
             var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>;
-            var personData=<%= new Gson().toJson(request.getAttribute("popularPeople"))%>;
+            var personData=<%= new Gson().toJson(request.getAttribute("popularPerson"))%>;
 
             $("#myMovie").click(function () {
                 $("#contents").empty();
@@ -132,7 +132,7 @@
     <nav>
         <a href="mainPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
         <a href="#">컬렉션</a>
     </nav>
     <div>
