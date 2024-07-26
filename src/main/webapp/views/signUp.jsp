@@ -16,17 +16,17 @@
 
         // JSP 태그를 사용하여 조건부로 JavaScript 실행
         window.onload = function() {
-            var msg = document.getElementById("msg");
-            var re = document.getElementById("re");
-            if (re!=null){
-                console.log(msg);
-            }
-        }
+            <% if (request.getAttribute("re") != null) { %>
+            var re = '<%= request.getAttribute("re")%>';
+            var msg = '<%= request.getAttribute("msg") %>';
+            showAlert(msg);
+            console.log(re);
+            <% } %>
 
     </script>
 </head>
 <body>
-{$msg}
+
 <div class="container">
     <img src="img/logo.png" alt="수박씨네 로고">
     <h1>회원가입</h1>
