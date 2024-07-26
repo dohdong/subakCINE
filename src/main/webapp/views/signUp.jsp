@@ -8,12 +8,15 @@
     <title>수박씨네 회원가입</title>
     <link rel="stylesheet" href="css/signUpIn.css" type="text/css">
     <script>
+        // JavaScript에서 msg를 alert로 표시하는 함수
+        function showAlert(message) {
+            alert(message);
+        }
+
         window.onload = function() {
             <% if (request.getAttribute("re") != null) { %>
-            var re = '<%= request.getAttribute("re")%>';
             var msg = '<%= request.getAttribute("msg") %>';
             showAlert(msg);
-            console.log(re);
             <% } %>
         };
     </script>
