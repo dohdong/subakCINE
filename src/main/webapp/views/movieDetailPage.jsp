@@ -114,7 +114,7 @@
         <p><strong>Genres:</strong>
             <c:forEach var="genre" items="${movie.genres}">
                 ${genre.name}
-                <c:if test="${!genre.last}">, </c:if>
+                <c:if test="${!genre.last}"> </c:if>
             </c:forEach>
         </p>
         <p><strong>Rating:</strong> ${movie.vote_average}</p>

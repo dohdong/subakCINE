@@ -4,13 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>subakCINE</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <%@ include file="header.jsp" %>
 <div class="container">
-    <h1>subakCINE</h1>
     <h2>Popular Movies</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${popularMovies}">
@@ -47,6 +45,6 @@
         </c:forEach>
     </div>
 </div>
-<%@ include file="footer.jsp" %>
+<%--<%@ include file="footer.jsp" %>--%>
 </body>
 </html>
