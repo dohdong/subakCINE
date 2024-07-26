@@ -21,12 +21,9 @@ public class CreateCollectionAction implements SubakcineAction{
         List<Map<String,Object>> popularMovies = movieDao.getPopularMovies();
         TVShowDAO tvShowDao = new TVShowDAO();
         List<Map<String, Object>> popularTVShows = tvShowDao.getPopularTVShows();
-        PersonDAO personDao = new PersonDAO();
-        List<Map<String, Object>> popularPeople = personDao.getPopularPeople();
 
         request.setAttribute("popularMovies", popularMovies);
         request.setAttribute("popularTVShows", popularTVShows);
-        request.setAttribute("popularPeople", popularPeople);
 
         return "/views/createCollection.jsp";
     }
