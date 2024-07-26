@@ -1,10 +1,19 @@
 package com.subakcine.vo;
 
-public class MovieVO {
-    private int id;
+public class CollectionItemVO {
+    private String id;
     private String title;
     private String movieImgUrl;
     private int order;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getOrder() {
         return order;
@@ -14,11 +23,11 @@ public class MovieVO {
         this.order = order;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,11 +47,12 @@ public class MovieVO {
         this.movieImgUrl = movieImgUrl;
     }
 
-    public MovieVO(int id, String title, String movieImgUrl, int order) {
+    public CollectionItemVO(String id, String title, String movieImgUrl, int order, String type) {
         this.id = id;
         this.title = title;
         this.movieImgUrl = movieImgUrl;
         this.order = order;
+        this.type = type;
     }
-    public MovieVO() {}
+    public CollectionItemVO() {}
 }

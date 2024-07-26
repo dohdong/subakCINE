@@ -1,4 +1,4 @@
-<%@ page import="com.subakcine.vo.MovieVO" %>
+<%@ page import="com.subakcine.vo.CollectionItemVO" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: WD
@@ -48,11 +48,11 @@
         </section>
 
         <section class="works">
-            <h2>작품들 <%=request.getAttribute("countMovies")%></h2>
-            <c:forEach items="${movieList}" var="movie">
-                <a href="movieDetailPage.do?id=${movie.id}"><div class="movie" width="100%">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.movieImgUrl}" alt="movieImage">
-                    <p>${movie.title}</p>
+            <h2>작품들</h2>
+            <c:forEach items="${collection.items}" var="item">
+                <a href="movieDetailPage.do?id=${item.id}"><div class="movie" width="100%">
+                    <img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" alt="movieImage">
+                    <p>${item.title}</p>
                     <p>평점</p>
                 </div></a>
             </c:forEach>

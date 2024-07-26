@@ -106,19 +106,21 @@
 <h3>나의 컬렉션</h3>
 <div class="container">
     <div class="collection-card">
-        <c:forEach var="i" begin="1" end="${count }" varStatus="count">
+        <c:forEach var="collection" items="${collectionList }" varStatus="collections">
             <table>
                 <tr>
-                    <c:forEach var="image" items="${imageList[count.index-1]}" varStatus="imgCnt">
+                    <c:forEach var="item" items="${collection.items}" varStatus="itemCnt">
                         <c:choose>
-                            <c:when test="${image!=null}">
-                                <c:if test="${imgCnt.index<6}">
-                                    <td><img src="https://image.tmdb.org/t/p/w500${image}" width="30px"></td>
+                            <c:when test="${item.movieImgUrl!=null}">
+                                <c:if test="${itemCnt.index<6}">
+                                    <td><img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" width="30px"></td>
                                 </c:if>
+<%--                                <c:otherwise>--%>
+<%--                                    <c:forEach begin="${5-itemCnt}" end="5">--%>
+<%--                                        <td><div style="background: grey; width: 30px">blank</div></td>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </c:otherwise>--%>
                             </c:when>
-                            <c:otherwise>
-                                <td><div style="background: grey; width: 30px"></div></td>
-                            </c:otherwise>
                         </c:choose>
                     </c:forEach>
                 </tr>
@@ -130,7 +132,7 @@
                     <span>이동진</span>
                 </div>
 
-                <a href="collectionDetail.do?collectionId=${collectionList[count.index-1].collectionId}"><div class="title">${collectionList[count.index-1].collectionName}</div></a>
+                <a href="collectionDetail.do?collectionId=${collection.collectionId}"><div class="title">${collection.collectionName}</div></a>
                 <div class="description">설명</div>
                 <div class="interaction">좋아요 0 댓글 0</div>
             </div>

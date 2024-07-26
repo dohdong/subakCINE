@@ -1,5 +1,6 @@
 package com.subakcine.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CollectionVO {
@@ -8,9 +9,15 @@ public class CollectionVO {
     private Date collectionCreateDate;
     private Date collectionUpdateDate;
     private String userID;
-    private int collectionItemOrder;
-    private String collectionItemId;
-    private String movieImageUrl;
+    private ArrayList<CollectionItemVO> items;
+
+    public ArrayList<CollectionItemVO> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<CollectionItemVO> items) {
+        this.items = items;
+    }
 
     public String getCollectionId() {
         return collectionId;
@@ -52,39 +59,14 @@ public class CollectionVO {
         this.userID = userID;
     }
 
-    public int getCollectionItemOrder() {
-        return collectionItemOrder;
-    }
 
-    public void setCollectionItemOrder(int collectionItemOrder) {
-        this.collectionItemOrder = collectionItemOrder;
-    }
-
-    public String getCollectionItemId() {
-        return collectionItemId;
-    }
-
-    public void setCollectionItemId(String collectionItemId) {
-        this.collectionItemId = collectionItemId;
-    }
-
-    public String getMovieImageUrl() {
-        return movieImageUrl;
-    }
-
-    public void setMovieImageUrl(String movieImageUrl) {
-        this.movieImageUrl = movieImageUrl;
-    }
-
-    public CollectionVO(String collectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID, int collectionItemOrder, String collectionItemId, String movieImageUrl) {
+    public CollectionVO(String collectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID ,ArrayList<CollectionItemVO> items) {
         this.collectionId = collectionId;
         this.collectionName = collectionName;
         this.collectionCreateDate = collectionCreateDate;
         this.collectionUpdateDate = collectionUpdateDate;
         this.userID = userID;
-        this.collectionItemOrder = collectionItemOrder;
-        this.collectionItemId = collectionItemId;
-        this.movieImageUrl = movieImageUrl;
+        this.items = items;
     }
     public CollectionVO() {}
 }
