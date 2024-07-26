@@ -32,6 +32,7 @@ public class TVShowDetailPageAction implements SubakcineAction {
         // 요청에 액션이 포함된 경우 추가 작업을 수행합니다.
         if (action != null) {
             String userId = (String) request.getSession().getAttribute("userId"); // 세션에서 사용자 ID를 가져옵니다.
+            String userEmail = (String) request.getSession().getAttribute("userEmail"); // 세션에서 사용자 이메일을 가져옵니다.
             String itemType = "tvshow"; // 아이템 타입을 "tvshow"로 설정합니다.
 
             // 액션에 따라 적절한 메서드를 호출합니다.
@@ -39,6 +40,9 @@ public class TVShowDetailPageAction implements SubakcineAction {
                 boolean success = tvShowDao.addToCollection(request.getParameter("collectionId"), tvShowId, itemType);
                 request.setAttribute("message", success ? "Added to collection successfully!" : "Failed to add to collection.");
             } else if (action.equals("likeTVShow")) {
+                System.out.println("***** 세션에 사용자 아이디와 이메일이 들어있는지 확인 *****");
+                System.out.println("movieDAO 사용자 아이디를 확인: " + userId);
+                System.out.println("movieDAO 사용자 이메일을 확인: " + userEmail);
                 boolean success = tvShowDao.likeTVShow(tvShowId, userId, itemType);
                 request.setAttribute("message", success ? "Liked the TV show successfully!" : "Failed to like the TV show.");
             }
