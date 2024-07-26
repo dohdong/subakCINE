@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <title>수박씨네</title>
     <link rel="stylesheet" href="./css/userPage.css">
+    <link rel="stylesheet" href="./css/header.css">
     <script>
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
@@ -76,24 +77,6 @@
     </script>
 </head>
 <body>
-
-<header>
-    <div>
-        <img src="./img/logo.png" width="120px">
-    </div>
-    <nav>
-        <a href="mainPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
-        <a href="#">컬렉션</a>
-    </nav>
-    <div>
-        <input type="text" placeholder="검색">
-        <img src="./img/user-icon.png" alt="사용자 아이콘" width="30px">
-        <img src="./img/settings-icon.png" alt="설정 아이콘" width="30px">
-    </div>
-</header>
-
 <div class="profile">
     <img src="./img/dj.jpg" alt="프로필 사진" width="100">
     <h2>이동진</h2>
