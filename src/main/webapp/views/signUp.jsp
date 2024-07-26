@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="css/signUpIn.css" type="text/css">
     <script>
         window.onload = function() {
-            let urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('msg')) {
-                let msg = urlParams.get('msg');
-                if (msg === 'failure') {
-                    alert('회원가입에 실패하였습니다.');
-                }
-            }
-        }
+            <% if (request.getAttribute("re") != null) { %>
+            var re = '<%= request.getAttribute("re")%>';
+            var msg = '<%= request.getAttribute("msg") %>';
+            showAlert(msg);
+            console.log(re);
+            <% } %>
+        };
     </script>
 </head>
 <body>

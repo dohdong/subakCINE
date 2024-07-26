@@ -6,21 +6,18 @@
     <title>수박씨네 로그인</title>
     <link rel="stylesheet" href="css/signUpIn.css" type="text/css">
     <script>
-        window.onload = function() {
-            var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('msg')) {
-                var msg = urlParams.get('msg');
-                if (msg === 'success') {
-                    alert('회원가입이 완료되었습니다. 로그인해 주세요.');
-                }
-            }
-
-            // 로그인 실패 메시지 표시
-            var loginMsg = '<%= request.getAttribute("msg") != null ? request.getAttribute("msg") : "" %>';
-            if (loginMsg) {
-                alert(loginMsg);
-            }
+        // JavaScript에서 msg를 alert로 표시하는 함수
+        function showAlert(message) {
+            alert(message);
         }
+
+        // JSP 태그를 사용하여 조건부로 JavaScript 실행
+        window.onload = function() {
+            <% if (request.getAttribute("re") != null) { %>
+            var msg = '<%= request.getAttribute("msg") %>';
+            showAlert(msg);
+            <% } %>
+        };
     </script>
 </head>
 <body>
