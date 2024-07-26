@@ -18,19 +18,19 @@ public class SignUpOKAction implements SubakcineAction {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String msg = "";
-        UserVO vo = new UserVO(email, password);
+        UserVO vo = new UserVO(email,password);
         int result = dao.emailExist(email);
         int re = dao.insert(vo);
-        if (result == 1) {
-            if (re > 0) {
+        if(result==1){
+            if(re>0){
                 msg = "회원가입을 완료하였습니다.로그인을 해주세요.";
                 request.setAttribute("re", re);
                 request.setAttribute("msg", msg);
-                return "signIn.do";
-            } else {
+                return "views/signIn.jsp";
+            }else {
                 msg = "회원가입에 실패하였습니다.";
             }
-        } else {
+        }else{
             re = -1;
             msg = "이미 존재하는 이메일입니다.";
         }
