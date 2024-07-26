@@ -4,93 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>subakCINE</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: white;
-            color:black;
-            position: fixed;
-            width: 80%;
-            top: 0;
-            z-index: 1000;
-            height: 70px;
-        }
-        .header img {
-            width: 50px;
-            cursor: pointer;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-        .nav a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            padding: 20px;
-        .search-container {
-            display: flex;
-            gap: 10px;
-        }
-        .search-container input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        .search-container button {
-            padding: 5px 10px;
-            font-size: 16px;
-        }
-        .container {
-            padding: 20px;
-            margin-top: 50px;
-        }
-        .movie-container, .tvshow-container, .person-container {
-            display: flex;
-            overflow-x: scroll;
-        }
-        .movie, .tvshow, .person {
-            margin-right: 20px;
-        }
-        .movie img, .tvshow img, .person img {
-            width: 150px;
-            height: 225px;
-            cursor: pointer;
-        }
-        .movie-title, .tvshow-title, .person-name {
-            text-align: center;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div class="header">
-    <img src="img/logo.png" alt="Logo" onclick="window.location.href='mainPage.do'">
-    <div class="nav">
-        <a href="moviesPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
-    </div>
-    <div class="search-container">
-        <form action="searchPage.do" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
+<%@ include file="header.jsp" %>
 <div class="container">
-    <h1>subakCINE</h1>
     <h2>Popular Movies</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${popularMovies}">
@@ -115,9 +33,9 @@
         </c:forEach>
     </div>
 
-    <h2>Popular People</h2>
+    <h2>인기 인물</h2>
     <div class="person-container">
-        <c:forEach var="person" items="${popularPeople}">
+        <c:forEach var="person" items="${popularPerson}">
             <div class="person">
                 <a href="personDetailPage.do?id=${person.id}">
                     <img src="https://image.tmdb.org/t/p/w500${person.profile_path}" alt="${person.name}">
@@ -127,5 +45,6 @@
         </c:forEach>
     </div>
 </div>
+<%--<%@ include file="footer.jsp" %>--%>
 </body>
 </html>

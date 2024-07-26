@@ -49,6 +49,19 @@
         .nav a:hover {
             text-decoration: underline;
         }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons form {
+            display: inline-block;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
 
     </style>
 </head>
@@ -58,7 +71,7 @@
     <div class="nav">
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">

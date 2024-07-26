@@ -19,7 +19,7 @@
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
             var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>;
-            var personData=<%= new Gson().toJson(request.getAttribute("popularPeople"))%>;
+            var personData=<%= new Gson().toJson(request.getAttribute("popularPerson"))%>;
 
             $("#myMovie").click(function () {
                 $("#contents").empty();
@@ -78,6 +78,23 @@
     </script>
 </head>
 <body>
+<header>
+    <div>
+        <img src="./img/logo.png" width="120px">
+    </div>
+    <nav>
+        <a href="mainPage.do">영화</a>
+        <a href="tvShowsPage.do">TV 프로그램</a>
+        <a href="personPage.do">인물</a>
+        <a href="#">컬렉션</a>
+    </nav>
+    <div>
+        <input type="text" placeholder="검색">
+        <img src="./img/user-icon.png" alt="사용자 아이콘" width="30px">
+        <img src="./img/settings-icon.png" alt="설정 아이콘" width="30px">
+    </div>
+</header>
+
 <div class="profile">
     <img src="./img/dj.jpg" alt="프로필 사진" width="100">
     <h2>이동진</h2>
