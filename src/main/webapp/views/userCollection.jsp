@@ -12,117 +12,37 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="./css/header.css">
-    <style>
-        header{
-            width: 100%;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .profile {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .profile img {
-            border-radius: 50%;
-        }
-        .stats, .library {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .stats div, .library div {
-            margin: 0 20px;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #ccc;
-        }
-        .container {
-            padding: 20px;
-        }
-        .collection-header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .collection-card {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        .collection-card img {
-            width: 100%;
-            height: auto;
-        }
-        .collection-details {
-            padding: 15px;
-        }
-        .collection-details .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .collection-details .user-info img {
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-        .collection-details .title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .collection-details .description {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .collection-details .interaction {
-            font-size: 14px;
-            color: #999;
-        }
-        .collection-add-card {
-            background-color: grey;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            height: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/userCollection.css">
+    <jsp:include page="header.html"/>
 </head>
 <body>
-<jsp:include page="header.html"/>
-<h3>나의 컬렉션</h3>
+<h1>나의 컬렉션</h1>
 <div class="container">
-    <div class="collection-card">
-        <c:forEach var="collection" items="${collectionList }" varStatus="collections">
+    <c:forEach var="collection" items="${collectionList }" varStatus="collections">
+        <div class="collection-card">
             <table>
                 <tr>
                     <c:forEach var="item" items="${collection.items}" varStatus="itemCnt">
-                        <c:choose>
-                            <c:when test="${item.movieImgUrl!=null}">
-                                <c:if test="${itemCnt.index<6}">
-                                    <td><img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" width="30px"></td>
-                                </c:if>
-<%--                                <c:otherwise>--%>
-<%--                                    <c:forEach begin="${5-itemCnt}" end="5">--%>
-<%--                                        <td><div style="background: grey; width: 30px">blank</div></td>--%>
-<%--                                    </c:forEach>--%>
-<%--                                </c:otherwise>--%>
-                            </c:when>
-                        </c:choose>
+                        <c:if test="${itemCnt.index < 5}">
+                            <td class="fixed-width">
+                                <c:choose>
+                                    <c:when test="${item.movieImgUrl != null}">
+                                        <img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="background: grey;"></div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                        </c:if>
                     </c:forEach>
+                    <c:if test="${collection.items.size() < 5}">
+                        <c:forEach begin="${collection.items.size()}" end="4">
+                            <td class="fixed-width">
+                                <div style="width: 30px; height: 50px;"></div>
+                            </td>
+                        </c:forEach>
+                    </c:if>
                 </tr>
             </table>
 
@@ -132,12 +52,13 @@
                     <span>이동진</span>
                 </div>
 
-                <a href="collectionDetail.do?collectionId=${collection.collectionId}"><div class="title">${collection.collectionName}</div></a>
-                <div class="description">설명</div>
-                <div class="interaction">좋아요 0 댓글 0</div>
+                <a href="collectionDetail.do?collectionId=${collection.collectionId}">
+                    <div class="title">${collection.collectionName}</div>
+                </a>
+                <div class="interaction">좋아요 0 코멘트 0</div>
             </div>
-        </c:forEach>
-    </div>
+        </div>
+    </c:forEach>
     <a href="createCollection.do"><div class="collection-add-card">
             <h4>컬렉션 추가하기</h4>
     </div></a>

@@ -29,7 +29,7 @@
             width: 60%; /* 또는 원하는 너비 */
             margin: 0 auto;
             border-radius: 15px;
-            background: #999999;
+            background: #A1BDB1;;
         }
     </style>
 </head>
@@ -38,7 +38,7 @@
 <main>
     <div id="center">
         <section class="profile">
-            <h1><%=request.getAttribute("collectionName")%></h1>
+            <h1 style="padding:15px">${collection.collectionName}</h1>
             <img src="./img/dj.jpg" alt="유현진 프로필" width="50" height="50">
             <p>이동진</p>
             <p>좋아요 0 · 팔로워 0 · 1일 전 업데이트</p>
