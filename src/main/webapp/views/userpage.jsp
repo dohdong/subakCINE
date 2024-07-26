@@ -14,6 +14,7 @@
     <title>수박씨네</title>
     <link rel="stylesheet" href="./css/userPage.css">
     <link rel="stylesheet" href="./css/header.css">
+    <jsp:include page="header.html"/>
     <script>
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
