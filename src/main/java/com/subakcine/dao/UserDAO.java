@@ -10,62 +10,64 @@ import java.sql.ResultSet;
 public class UserDAO {
     //회원가입
     //성공하면 1, 실패는 0,-1
-    public int insert(UserVO vo){
-        int re=-1;
+    public int insert(UserVO vo) {
+        int re = -1;
         String sql = "INSERT INTO USERS (USERS_EMAIL, USERS_PASSWORD) VALUES (?,?)";
-        try{
+        try {
             Connection conn = ConnectionProvider.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, vo.getEmail());
             pstmt.setString(2, vo.getPassword());
             re = pstmt.executeUpdate();
             ConnectionProvider.close(pstmt, conn);
-        }catch (Exception e){
-            System.out.println("dao insert exception ==> "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("dao insert exception ==> " + e.getMessage());
         }
         return re;
     }
+
     //이메일로 user정보 가져오기
-    public UserVO getUserByEmail(String email){
-        UserVO vo=new UserVO();
+    public UserVO getUserByEmail(String email) {
+        UserVO vo = new UserVO();
         String sql = "SELECT * FROM USERS WHERE USERS_EMAIL=?";
-        try{
+        try {
             Connection conn = ConnectionProvider.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,email);
+            pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 vo.setUserId(rs.getString("USERS_ID"));
                 vo.setEmail(rs.getString("USERS_EMAIL"));
                 vo.setPassword(rs.getString("USERS_PASSWORD"));
                 vo.setCreateDate(rs.getDate("CREATED_DATE"));
             }
-        }catch (Exception e){
-            System.out.println("dao getUserByEmail exception ==> "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("dao getUserByEmail exception ==> " + e.getMessage());
         }
         return vo;
     }
+
     //로그인시 아이디와 암호를 매개변수로 전달받아 회원의 정보가 올바른지 판별하는 메소드
     //아이디도 맞고 암호도 맞으면 1, 아이디는 있는데 암호가 틀리면 0, 아이디도 없으면 -1
-    public int isUserExist(String email, String password){
-        int re=-1;
+    public int isUserExist(String email, String password) {
+        int re = -1;
         String sql = "SELECT * FROM USERS WHERE USERS_EMAIL=?";
         Connection conn = ConnectionProvider.getConnection();
         PreparedStatement pstmt = null;
-        try{
+        try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,email);
+            pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
-                if(rs.getString("USERS_PASSWORD").equals(password)){
-                    re=1;
-                }else {
-                    re=0;
+            if (rs.next()) {
+                if (rs.getString("USERS_PASSWORD").equals(password)) {
+                    re = 1;
+                } else {
+                    re = 0;
                 }
             }
             ConnectionProvider.close(pstmt, conn);
-        }catch (Exception e){
-            System.out.println("dao isUserExist exception ==> "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("dao isUserExist exception ==> " + e.getMessage());
         }
         return re;
     }
@@ -78,14 +80,14 @@ public class UserDAO {
             String sql = "SELECT * FROM USERS WHERE USERS_EMAIL=?";
             Connection conn = ConnectionProvider.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,email);
+            pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
-                re=0;
+            if (rs.next()) {
+                re = 0;
             }
             ConnectionProvider.close(pstmt, conn);
-        }catch (Exception e){
-            System.out.println("dao emailExist exception ==> "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("dao emailExist exception ==> " + e.getMessage());
         }
         return re;
     }

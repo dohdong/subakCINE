@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Popular People</title>
+    <title>인기 인물</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,7 +80,7 @@
     <div class="nav">
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">
@@ -90,9 +90,9 @@
     </div>
 </div>
 <div class="container">
-    <h1>Popular People</h1>
+    <h1>인기 인물</h1>
     <div class="person-container">
-        <c:forEach var="person" items="${popularPeople}">
+        <c:forEach var="person" items="${popularPerson}">
             <div class="person">
                 <a href="personDetailPage.do?id=${person.id}">
                     <img src="https://image.tmdb.org/t/p/w500${person.profile_path}" alt="${person.name}">

@@ -11,25 +11,13 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="./css/header.css">
     <style>
+        header{
+            width: 100%;
+        }
         body {
             font-family: Arial, sans-serif;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        nav {
-            flex: 1;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
         }
         .profile {
             text-align: center;
@@ -102,6 +90,7 @@
         }
         .collection-add-card {
             background-color: grey;
+            text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             overflow: hidden;
@@ -111,41 +100,28 @@
             height: 100px;
         }
     </style>
-    <script>
-        $(function(){
-            <%--var collectionList=<%= new Gson().toJson(request.getAttribute("collectionList"))%>;--%>
-            <%--var imageList=<%= new Gson().toJson(request.getAttribute("imageList"))%>;--%>
-            // console.log(collectionList);
-            // console.log(imageList);
-        });
-    </script>
 </head>
 <body>
-<header>
-    <div>
-        <img src="./img/logo.png" width="120px">
-    </div>
-    <nav>
-        <a href="mainPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
-        <a href="#">컬렉션</a>
-    </nav>
-    <div>
-        <input type="text" placeholder="검색">
-        <img src="./img/user-icon.png" alt="사용자 아이콘" width="30px">
-        <img src="./img/settings-icon.png" alt="설정 아이콘" width="30px">
-    </div>
-</header>
+<jsp:include page="header.html"/>
 <h3>나의 컬렉션</h3>
-<hr>
 <div class="container">
     <div class="collection-card">
-        <c:forEach var="i" begin="1" end="${count }" varStatus="count">
+        <c:forEach var="collection" items="${collectionList }" varStatus="collections">
             <table>
                 <tr>
-                    <c:forEach var="image" items="${imageList[count.index-1]}">
-                        <td><img src="https://image.tmdb.org/t/p/w500${image}" width="30px"></td>
+                    <c:forEach var="item" items="${collection.items}" varStatus="itemCnt">
+                        <c:choose>
+                            <c:when test="${item.movieImgUrl!=null}">
+                                <c:if test="${itemCnt.index<6}">
+                                    <td><img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" width="30px"></td>
+                                </c:if>
+<%--                                <c:otherwise>--%>
+<%--                                    <c:forEach begin="${5-itemCnt}" end="5">--%>
+<%--                                        <td><div style="background: grey; width: 30px">blank</div></td>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </c:otherwise>--%>
+                            </c:when>
+                        </c:choose>
                     </c:forEach>
                 </tr>
             </table>
@@ -156,7 +132,7 @@
                     <span>이동진</span>
                 </div>
 
-                <a href="collectionDetail.do?collectionId=${collectionList[count.index-1].collectionId}"><div class="title">${collectionList[count.index-1].collectionName}</div></a>
+                <a href="collectionDetail.do?collectionId=${collection.collectionId}"><div class="title">${collection.collectionName}</div></a>
                 <div class="description">설명</div>
                 <div class="interaction">좋아요 0 댓글 0</div>
             </div>

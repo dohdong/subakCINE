@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class PeopleAction implements SubakcineAction {
+public class PersonAction implements SubakcineAction {
 
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PersonDAO personDao = new PersonDAO();
-        List<Map<String, Object>> popularPeople = personDao.getPopularPeople();
-        request.setAttribute("popularPeople", popularPeople);
-        return "/views/people.jsp";
+        List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
+        request.setAttribute("popularPerson", popularPerson);
+        return "/views/person.jsp";
     }
 }

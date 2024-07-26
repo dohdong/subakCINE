@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SignUpOKAction implements SubakcineAction{
+public class SignUpOKAction implements SubakcineAction {
 
     public UserDAO dao = new UserDAO();
+
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");

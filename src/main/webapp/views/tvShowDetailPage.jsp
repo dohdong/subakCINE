@@ -52,12 +52,16 @@
         }
         .tvshow-details {
             max-width: 800px;
-            margin: auto;
+            margin: 100px auto 20px;
             padding: 20px;
             background: white;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
         }
+
+
         .tvshow-details img {
             width: 300px;
             height: 450px;
@@ -72,6 +76,18 @@
         .tvshow-info p {
             margin: 5px 0;
         }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons form {
+            display: inline-block;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -80,7 +96,7 @@
     <div class="nav">
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
+        <a href="personPage.do">인물</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">
@@ -98,13 +114,31 @@
         <p><strong>Genres:</strong>
             <c:forEach var="genre" items="${tvShow.genres}">
                 ${genre.name}
-                <c:if test="${!genre.last}">, </c:if>
+                <c:if test="${!genre.last}"> </c:if>
             </c:forEach>
         </p>
         <p><strong>Rating:</strong> ${tvShow.vote_average}</p>
         <p><strong>Overview:</strong> ${tvShow.overview}</p>
         <p><strong>Popularity:</strong> ${tvShow.popularity}</p>
     </div>
+
+    <div class="buttons">
+        <form action="tvShowDetailPage.do" method="post">
+            <input type="hidden" name="id" value="${tvShow.id}">
+            <input type="hidden" name="action" value="addToCollection">
+            <button type="submit">Add to Collection</button>
+        </form>
+        <form action="tvShowDetailPage.do" method="post">
+            <input type="hidden" name="id" value="${tvShow.id}">
+            <input type="hidden" name="action" value="likeTVShow">
+            <button type="submit">Like</button>
+        </form>
+    </div>
+
+    <c:if test="${not empty message}">
+        <p>${message}</p>
+    </c:if>
+
 </div>
 </body>
 </html>
