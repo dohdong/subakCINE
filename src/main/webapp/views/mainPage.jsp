@@ -45,6 +45,7 @@
         </c:forEach>
     </div>
 </div>
-<%--<%@ include file="footer.jsp" %>--%>
+<%--<%@include file="footer.jsp" %>--%>
+<h2>${email}</h2>
 </body>
 </html>
