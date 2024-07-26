@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.google.gson.Gson" %><%--
   Created by IntelliJ IDEA.
   User: WD
   Date: 2024-07-23
@@ -53,47 +53,73 @@
             padding: 20px;
             border-top: 1px solid #ccc;
         }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        th, td {
+            background-color: lightgray;
+        }
     </style>
     <script>
         $(function(){
+            var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
+            var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>;
+            var personData=<%= new Gson().toJson(request.getAttribute("popularPeople"))%>;
 
-            $("#myMovie").click(function (){
-                <%--$("#contents").empty()--%>
-                <%--<c:forEach var="movie" items="${popularMovies}">--%>
-                <%--    let tr=$("<tr></tr>")--%>
-                <%--    let td = $('<td><img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}"/></td>')--%>
-                <%--    tr.append(td)--%>
-                <%--    $("#contents").append(tr)--%>
-                <%--</c:forEach>--%>
+            $("#myMovie").click(function () {
+                $("#contents").empty();
+                var tr;
+                $.each(movieData,function (i,data){
+                    console.log(data);
+                    if (i%4==0){
+                        tr=$("<tr></tr>");
+                        $("#contents").append(tr);
+                    }
+                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.poster_path);
+                    let td=$("<td></td>");
+                    td.append(img);
+                    tr.append(td);
+                })
             })
             $("#myTV").click(function () {
                 $("#contents").empty()
-                let tr = $("<tr></tr>")
-                let td1 = $("<td></td>").html("tv1")
-                let td2 = $("<td></td>").html("tv2")
-                let td3 = $("<td></td>").html("tv3")
-                $(tr).append(td1, td2, td3);
-                $("#contents").append(tr);
+                var tr;
+                $.each(tvData,function (i,data){
+                    if (i%4==0){
+                        tr=$("<tr></tr>");
+                        $("#contents").append(tr);
+                    }
+                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.poster_path);
+                    let td=$("<td></td>");
+                    td.append(img);
+                    tr.append(td);
+                })
             })
             $("#myPerson").click(function () {
                 $("#contents").empty()
-                let tr = $("<tr></tr>")
-                let td1 = $("<td></td>").html("per1")
-                let td2 = $("<td></td>").html("per2")
-                let td3 = $("<td></td>").html("per3")
-                $(tr).append(td1, td2, td3);
-                $("#contents").append(tr);
+                var tr;
+                $.each(personData,function (i,data){
+                    if (i%4==0){
+                        tr=$("<tr></tr>");
+                        $("#contents").append(tr);
+                    }
+                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.profile_path);
+                    let td=$("<td></td>");
+                    td.append(img);
+                    tr.append(td);
+                })
             })
-            $("#myCollection").click(function () {
-                $("#contents").empty()
-                let tr = $("<tr></tr>")
-                let td1 = $("<td></td>").html("col1")
-                let td2 = $("<td></td>").html("col2")
-                let td3 = $("<td></td>").html("col3")
-                let add = $("<a href='createCollection.do'><div>추가</div></a>")
-                $(tr).append(td1, td2, td3);
-                $("#contents").append(tr, add);
-            })
+            // $("#myCollection").click(function () {
+            //     $("#contents").empty()
+            //     let tr = $("<tr></tr>")
+            //     let td1 = $("<td></td>").html("col1")
+            //     let td2 = $("<td></td>").html("col2")
+            //     let td3 = $("<td></td>").html("col3")
+            //     let add = $("<div>추가</div></a>")
+            //     $(tr).append(td1, td2, td3);
+            //     $("#contents").append(tr, add);
+            // })
         })
     </script>
 </head>
@@ -105,8 +131,8 @@
     </div>
     <nav>
         <a href="mainPage.do">영화</a>
-        <a href="#">TV 프로그램</a>
-        <a href="#">인물</a>
+        <a href="tvShowsPage.do">TV 프로그램</a>
+        <a href="peoplePage.do">인물</a>
         <a href="#">컬렉션</a>
     </nav>
     <div>
@@ -151,12 +177,13 @@
         <p>인물</p>
     </div>
     <div>
-        <img src="./img/collection-icon.png" id="myCollection" width="50">
+        <a href='userCollection.do'><img src="./img/collection-icon.png" id="myCollection" width="50"></a>
         <p>컬렉션</p>
     </div>
 </div>
+<hr>
 <div>
-    <table id="contents" border="1" width="100%" style="text-align: center;">
+    <table id="contents" width='100%' style="text-align: center;">
     </table>
 </div>
 <footer>

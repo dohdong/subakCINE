@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/eclipse,intellij+iml,macos,windows,java,dbeaver
-# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,intellij+iml,macos,windows,java,dbeaver
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,dbeaver,java,intellij+iml,eclipse,maven
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,dbeaver,java,intellij+iml,eclipse,maven
 
 ### DBeaver ###
 # ide config file
@@ -217,6 +217,25 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -243,4 +262,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij+iml,macos,windows,java,dbeaver
+# Additional Maven-specific ignores
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,dbeaver,java,intellij+iml,eclipse,maven
