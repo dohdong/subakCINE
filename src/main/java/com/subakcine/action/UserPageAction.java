@@ -3,6 +3,8 @@ package com.subakcine.action;
 import com.subakcine.dao.MovieDAO;
 import com.subakcine.dao.PersonDAO;
 import com.subakcine.dao.TVShowDAO;
+import com.subakcine.dao.UserDAO;
+import com.subakcine.vo.UserVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +25,14 @@ public class UserPageAction implements SubakcineAction{
         PersonDAO personDao = new PersonDAO();
         List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
 
+        String email = (String)request.getSession().getAttribute("email");
+        UserDAO userDao = new UserDAO();
+        UserVO user = userDao.getUserByEmail(email);
+
         request.setAttribute("popularMovies", popularMovies);
         request.setAttribute("popularTVShows", popularTVShows);
         request.setAttribute("popularPerson", popularPerson);
+        request.setAttribute("user", user);
 
         return "/views/userpage.jsp";
     }

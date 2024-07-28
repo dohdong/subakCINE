@@ -18,7 +18,7 @@
 
         <c:set var="settingIconUri" value="${sessionScope.email!=null?'/userUpdate.do':'signIn.do'}"/>
         <c:set var="userIconUri" value="${sessionScope.email!=null?'/userPage.do':'signIn.do'}"/>
-        <a href="${userIconUri}"><img src="./img/user-icon.png" width="20px"></a>
+        <a href="${userIconUri}?userEmail=${email}"><img src="./img/user-icon.png" width="20px"></a>
         <a href=${settingIconUri}><img src="./img/settings-icon.png" width="20px"></a>
     </div>
 </div>
