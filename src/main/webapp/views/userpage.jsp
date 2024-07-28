@@ -67,6 +67,7 @@
         <img src="./img/dj.jpg" alt="프로필 사진" width="100">
         <h2>이동진</h2>
         <p>lifeisntcool@naver.com</p>
+        <p>${email}</p>
     </div>
 
     <div class="stats">
