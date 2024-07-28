@@ -15,7 +15,10 @@
             <input type="text" name="query" placeholder="Search...">
             <button type="submit">Search</button>
         </form>
-        <a href="/userPage.do"><img src="./img/user-icon.png" width="20px"></a>
-        <a href="/userUpdate.do"><img src="./img/settings-icon.png" width="20px"></a>
+
+        <c:set var="settingIconUri" value="${sessionScope.email!=null?'/userUpdate.do':'signIn.do'}"/>
+        <c:set var="userIconUri" value="${sessionScope.email!=null?'/userPage.do':'signIn.do'}"/>
+        <a href="${userIconUri}"><img src="./img/user-icon.png" width="20px"></a>
+        <a href=${settingIconUri}><img src="./img/settings-icon.png" width="20px"></a>
     </div>
 </div>
