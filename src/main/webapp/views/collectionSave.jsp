@@ -1,30 +1,37 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.subakcine.vo.CollectionVO"%><%@ page import="com.subakcine.dao.CollectionDAO"%>
+<%@ page import="com.subakcine.vo.CollectionVO"%>
+<%@ page import="com.subakcine.dao.CollectionDAO"%>
+<%@ page import="java.io.BufferedReader"%><%@ page import="com.subakcine.vo.CollectionItemVO"%><%@ page import="com.subakcine.vo.CollectionSelectVO"%>
 
 <%
-//// JSON 데이터를 받을 BufferedReader 생성
-//    BufferedReader reader = request.getReader();
-//    StringBuilder jsonBuilder = new StringBuilder();
-//    String line;
-//    while ((line = reader.readLine()) != null) {
-//        jsonBuilder.append(line);
-//    }
-//
-//    // Gson을 사용하여 JSON 데이터를 CollectionVO 객체 리스트로 변환
-//    Gson gson = new Gson();
-//    List<CollectionVO> selectedMovies = gson.fromJson(jsonBuilder.toString(), new com.google.gson.reflect.TypeToken<List<CollectionVO>>(){}.getType());
-//
-//    // 이제 selectedMovies 리스트를 사용하여 필요한 작업을 수행
-//    // 예: DB에 저장
-//    for (CollectionVO movie : selectedMovies) {
-//        // movie.getId(), movie.getMediaType(), movie.getPosterPath() 등을 사용
-//    }
-//
+// JSON 데이터를 받을 BufferedReader 생성
+    BufferedReader reader = request.getReader();
+    StringBuilder jsonBuilder = new StringBuilder();
+    String line;
+    while ((line = reader.readLine()) != null) {
+        jsonBuilder.append(line);
+    }
+    System.out.println(jsonBuilder.toString());
+    // Gson을 사용하여 JSON 데이터를 CollectionVO 객체 리스트로 변환
+    Gson gson = new Gson();
+    List<CollectionSelectVO> selectedMovies = gson.fromJson(jsonBuilder.toString(), new com.google.gson.reflect.TypeToken<List<CollectionSelectVO>>(){}.getType());
+    System.out.println(selectedMovies.size());
+    System.out.println(selectedMovies);
+    System.out.println("=====================================================");
+    // 이제 selectedMovies 리스트를 사용하여 필요한 작업을 수행
+    // 예: DB에 저장
+    for (CollectionSelectVO movie : selectedMovies) {
+//        System.out.println(movie.toString());
+
+        // movie.getId(), movie.getMediaType(), movie.getPosterPath() 등을 사용
+    }
+
 //    // 응답을 클라이언트에 전송
 //    response.getWriter().write("Success");
 //
+//=============================================================================================
 //    // JSON 데이터를 받을 객체
 //    Gson gson = new Gson();
 //    StringBuilder jsonBuilder = new StringBuilder();
