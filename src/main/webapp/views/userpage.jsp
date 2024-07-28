@@ -123,9 +123,5 @@
     <table id="contents" width='100%' style="text-align: center;">
     </table>
 </div>
-<footer>
-    <p>FOOTER(화면 하단 부분)</p>
-</footer>
-
 </body>
 </html>
