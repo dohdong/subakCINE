@@ -91,7 +91,6 @@ public class CollectionDAO {
                 vo.setOrder(rs.getInt("COLLECTION_ITEM_ORDER"));
                 vo.setId(rs.getString("ITEM_ID"));
                 vo.setType(rs.getString("ITEM_TYPE"));
-                System.out.println("vo : "+vo);
                 list.add(vo);
             }
             ConnectionProvider.close(rs, ps, conn);
