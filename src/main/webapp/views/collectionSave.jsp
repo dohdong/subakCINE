@@ -5,7 +5,11 @@
 <%@ page import="com.subakcine.dao.CollectionDAO"%>
 <%@ page import="java.io.BufferedReader"%><%@ page import="com.subakcine.vo.CollectionItemVO"%>
 <%@ page import="com.subakcine.vo.CollectionSelectVO"%>
-<%@ page import="java.io.*, javax.servlet.*, javax.servlet.http.*, org.json.*, java.util.*" %><%@ page import="com.subakcine.dao.UserDAO"%><%@ page import="com.subakcine.vo.UserVO"%><%@ page import="com.google.gson.JsonObject"%><%@ page import="com.subakcine.dao.CollectionItemDAO"%>
+<%@ page import="java.io.*, javax.servlet.*, javax.servlet.http.*, org.json.*, java.util.*" %>
+<%@ page import="com.subakcine.dao.UserDAO"%>
+<%@ page import="com.subakcine.vo.UserVO"%>
+<%@ page import="com.google.gson.JsonObject"%>
+<%@ page import="com.subakcine.dao.CollectionItemDAO"%>
 <%
     // 요청과 응답의 인코딩 설정
     request.setCharacterEncoding("UTF-8");
@@ -25,9 +29,9 @@
     // title을 String으로 추출
     String title = jsonObject.getString("title");
     String userEmail = jsonObject.getString("userEmail");
-    System.out.println(title);
-    System.out.println(userEmail);
-    System.out.println("===========================================");
+//    System.out.println(title);
+//    System.out.println(userEmail);
+//    System.out.println("===========================================");
     UserDAO userDao = new UserDAO();
     UserVO userVo = new UserVO();
     userVo = userDao.getUserByEmail(userEmail);
@@ -45,10 +49,10 @@
 
     // selectedMovies를 배열로 저장
     JSONArray moviesArray = jsonObject.getJSONArray("movies");
-    System.out.println(moviesArray.toString());
-    System.out.println("몇개? -> "+moviesArray.length());
-    System.out.println("CollectionId => "+collectionId);
-    System.out.println("=====================2======================");
+//    System.out.println(moviesArray.toString());
+//    System.out.println("몇개? -> "+moviesArray.length());
+//    System.out.println("CollectionId => "+collectionId);
+//    System.out.println("=====================2======================");
     for (int i = 0; i < moviesArray.length(); i++) {
         System.out.println(moviesArray.get(i));
         JSONObject movieJson = moviesArray.getJSONObject(i);
@@ -60,13 +64,14 @@
         int re = collectionItemDao.addCollectionItem(itemOrder,collectionId,itemId,mediaType);
         if(re>0){
             System.out.println("success");
+
         }else {
             System.out.println("fail");
         }
     }
-
     // 응답을 클라이언트에 전송
     response.getWriter().write("Success");
+
 
 //    // 성공적인 응답
 //    response.setStatus(200);
