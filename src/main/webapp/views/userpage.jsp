@@ -65,7 +65,7 @@
 <div class="container">
     <div class="profile">
         <img src="./img/dj.jpg" alt="프로필 사진" width="100">
-        <h2>이동진</h2>
+        <h2>${sessionScope.displayName}</h2>
         <p>lifeisntcool@naver.com</p>
         <p>${email}</p>
     </div>
