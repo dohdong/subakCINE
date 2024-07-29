@@ -26,6 +26,25 @@ public class UserDAO {
         return re;
     }
 
+    // 사용자 USERS_ID를 이메일로 가져오는 메소드
+    public String getUsersID(String email) {
+        String usersID = null;
+        String sql = "SELECT USERS_ID FROM USERS WHERE USERS_EMAIL=?";
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                usersID = rs.getString("USERS_ID");
+            }
+            ConnectionProvider.close(rs, pstmt, conn);
+        } catch (Exception e) {
+            System.out.println("dao getUserID exception ==> " + e.getMessage());
+        }
+        return usersID;
+    }
+
     //이메일로 user정보 가져오기
     public UserVO getUserByEmail(String email) {
         UserVO vo = new UserVO();

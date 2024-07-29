@@ -1,20 +1,14 @@
-<%@ page import="com.google.gson.Gson" %><%--
-  Created by IntelliJ IDEA.
-  User: WD
-  Date: 2024-07-23
-  Time: AM 10:15
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.google.gson.Gson" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>수박씨네</title>
     <link rel="stylesheet" href="./css/userPage.css">
     <link rel="stylesheet" href="./css/header.css">
-    <jsp:include page="header.html"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
             var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
@@ -64,36 +58,11 @@
                     tr.append(td);
                 })
             })
-            // $("#myCollection").click(function () {
-            //     $("#contents").empty()
-            //     let tr = $("<tr></tr>")
-            //     let td1 = $("<td></td>").html("col1")
-            //     let td2 = $("<td></td>").html("col2")
-            //     let td3 = $("<td></td>").html("col3")
-            //     let add = $("<div>추가</div></a>")
-            //     $(tr).append(td1, td2, td3);
-            //     $("#contents").append(tr, add);
-            // })
         })
     </script>
 </head>
 <body>
-<header>
-    <div>
-        <img src="./img/logo.png" width="120px">
-    </div>
-    <nav>
-        <a href="mainPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="personPage.do">인물</a>
-        <a href="#">컬렉션</a>
-    </nav>
-    <div>
-        <input type="text" placeholder="검색">
-        <img src="./img/user-icon.png" alt="사용자 아이콘" width="30px">
-        <img src="./img/settings-icon.png" alt="설정 아이콘" width="30px">
-    </div>
-</header>
+<jsp:include page="header.jsp" />
 
 <div class="profile">
     <img src="./img/dj.jpg" alt="프로필 사진" width="100">
@@ -139,9 +108,6 @@
     <table id="contents" width='100%' style="text-align: center;">
     </table>
 </div>
-<footer>
-    <p>FOOTER(화면 하단 부분)</p>
-</footer>
 
 </body>
 </html>

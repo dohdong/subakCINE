@@ -1,6 +1,7 @@
 package com.subakcine.action;
 
 import com.subakcine.dao.SearchDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

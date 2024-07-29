@@ -34,15 +34,21 @@ public class MovieDetailPageAction implements SubakcineAction {
 
         // 요청에 액션이 포함된 경우 추가 작업을 수행합니다.
         if (action != null) {
-            String userId = (String) request.getSession().getAttribute("userId"); // 세션에서 사용자 ID를 가져옵니다.
+            String usersID = (String) request.getSession().getAttribute("usersID"); // 세션에서 사용자 ID를 가져옵니다.
             String itemType = "movie"; // 아이템 타입을 "movie"로 설정합니다.
+
+            // 세션에서 usersID를 가져오지 못했을 경우 로그인 페이지로 리디렉션
+            if (usersID == null) {
+                request.setAttribute("message", "로그인이 필요합니다.");
+                return "views/signIn.jsp";
+            }
 
             // 액션에 따라 적절한 메서드를 호출합니다.
             if (action.equals("addToCollection")) {
                 boolean success = movieDao.addToCollection(request.getParameter("collectionId"), movieId, itemType);
                 request.setAttribute("message", success ? "Added to collection successfully!" : "Failed to add to collection.");
             } else if (action.equals("likeMovie")) {
-                boolean success = movieDao.likeMovie(movieId, userId, itemType);
+                boolean success = movieDao.likeMovie(movieId, usersID, itemType);
                 request.setAttribute("message", success ? "Liked the movie successfully!" : "Failed to like the movie.");
             }
         }

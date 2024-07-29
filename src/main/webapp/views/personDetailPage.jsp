@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
             background-color: white;
             color:black;
             position: fixed;
-            width: 80%;
+            width: 100%;
             top: 0;
             z-index: 1000;
             height: 70px;
@@ -49,6 +50,10 @@
         .nav a:hover {
             text-decoration: underline;
         }
+        .container {
+            padding: 20px;
+            margin-top: 100px; /* 헤더 아래로 여백 추가 */
+        }
         .buttons {
             margin-top: 20px;
         }
@@ -61,31 +66,19 @@
             margin-right: 10px;
             cursor: pointer;
         }
-
-
     </style>
 </head>
 <body>
-<div class="header">
-    <img src="img/logo.png" alt="Logo" onclick="window.location.href='mainPage.do'">
-    <div class="nav">
-        <a href="moviesPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="personPage.do">인물</a>
-    </div>
-    <div class="search-container">
-        <form action="searchPage.do" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+<jsp:include page="header.jsp" />
+
+<div class="container">
+    <h1>${personDetails.name}</h1>
+    <img src="https://image.tmdb.org/t/p/w500${personDetails.profile_path}" alt="${personDetails.name}">
+    <p><strong>Known For:</strong> ${personDetails.known_for_department}</p>
+    <p><strong>Biography:</strong> ${personDetails.biography}</p>
+    <p><strong>Birthday:</strong> ${personDetails.birthday}</p>
+    <p><strong>Place of Birth:</strong> ${personDetails.place_of_birth}</p>
+    <p><strong>Popularity:</strong> ${personDetails.popularity}</p>
 </div>
-<h1>${personDetails.name}</h1>
-<img src="https://image.tmdb.org/t/p/w500${personDetails.profile_path}" alt="${personDetails.name}">
-<p><strong>Known For:</strong> ${personDetails.known_for_department}</p>
-<p><strong>Biography:</strong> ${personDetails.biography}</p>
-<p><strong>Birthday:</strong> ${personDetails.birthday}</p>
-<p><strong>Place of Birth:</strong> ${personDetails.place_of_birth}</p>
-<p><strong>Popularity:</strong> ${personDetails.popularity}</p>
 </body>
 </html>
