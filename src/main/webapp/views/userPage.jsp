@@ -61,7 +61,7 @@
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <div class="container">
     <div class="profile">
         <img src="./img/dj.jpg" alt="프로필 사진" width="100">
@@ -100,6 +100,10 @@
         <div>
             <a href='userCollection.do'><img src="./img/collection-icon.png" id="myCollection" width="50"></a>
             <p>컬렉션</p>
+        </div>
+        <div>
+            <a href='userLikePage.do'><img src="./img/like-icon.png" id="myLike" width="50"></a>
+            <p>좋아요한 목록</p>
         </div>
     </div>
     <hr>
