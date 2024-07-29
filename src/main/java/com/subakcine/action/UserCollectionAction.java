@@ -17,7 +17,7 @@ public class UserCollectionAction implements SubakcineAction {
 
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userid="1E4F791305DA49B4BEBD94776A7284B4";
+        String userid=(String)request.getSession().getAttribute("usersID");
         CollectionItemVO collectionItemVO;
         MovieDAO movieDAO;
         TVShowDAO tvShowDAO;
