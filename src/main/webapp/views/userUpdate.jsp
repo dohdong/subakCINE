@@ -5,7 +5,7 @@
   Time: PM 9:05
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -14,12 +14,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         window.onload = function(){
-            $("#update").onclick = function(){
-                $("form").submit();
+            let insertFunc=function(){
+                let email=$("#email").val();
+                let password=$("#password").val();
+                let data={
+                    email:email,
+                    password:password
+                }
+                $.ajax({
+                    url:"/views/updateUser.jsp",
+                    data:data,
+                    success:function (response){
+                        if(response.re=="1"){
+                            $("#result").empty();
+                            let res="성공했습니다."
+                            $("#result").append(res);
+                        }
+                    }
+                })
             }
-            $("#delete").onclick = function(){
-
-            }
+            $("#update").on("click", insertFunc);
+            // $("#delete").onclick = deleteFunc();
         }
     </script>
 </head>
@@ -30,21 +45,20 @@
     <form action="">
         <table>
             <tr>
-                <td>USER ID :</td>
-                <td><input type="text" name="userID" value="${user.userID}"></td>
-            </tr>
-            <tr>
                 <td>USER EMAIL :</td>
-                <td><input type="text" name="email" value=${user.email}></td>
+                <td><p>${user.email}</p></td>
             </tr>
             <tr>
                 <td>USER PASSWORD :</td>
-                <td><input type="text" name="password" values="${user.password}"></td>
+                <td><input type="text" id="password" name="password" value="${user.password}"></td>
             </tr>
         </table>
+        <input type="hidden" name="userID" value="${user.userId}">
+        <input type="hidden" name="email" id="email" value=${user.email}>
     </form>
     <input type="button" value="수정하기" id="update">
     <input type="button" value="탈퇴하기" id="delete">
+    <div id="result"></div>
 </div>
 </body>
 </html>
