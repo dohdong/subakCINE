@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </header>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <h1>나의 컬렉션</h1>
 <div class="container">
     <c:forEach var="collection" items="${collectionList }" varStatus="collections">

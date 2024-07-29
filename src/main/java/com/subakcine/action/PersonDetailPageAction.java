@@ -48,8 +48,9 @@ public class PersonDetailPageAction implements SubakcineAction {
 
             // 액션에 따라 적절한 메서드를 호출합니다.
             if (action.equals("likePerson")) {
-                boolean success = personDao.likePerson(personId, usersID, itemType);
+                boolean success = personDao.toggleLikePerson(personId, usersID, itemType);
                 if (success) {
+                    // 좋아요 수 다시 가져오기
                     likeCount = likeCountDAO.getLikeCount(personId, "person");
                     request.setAttribute("likeCount", likeCount);
                 } else {

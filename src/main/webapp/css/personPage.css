@@ -63,7 +63,6 @@ body {
     gap: 10px;
     flex-grow: 1;
     justify-content: flex-end;
-    align-items: center;
 }
 .search-container input {
     padding: 5px;
@@ -76,59 +75,34 @@ body {
     font-size: 16px;
     box-sizing: border-box;
 }
-.auth-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-.auth-container span {
-    font-size: 16px;
-    margin-right: 10px;
-}
-.auth-container a {
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border: 1px solid #ddd;
-}
-.auth-container a img {
-    vertical-align: middle;
-    margin-left: 5px;
-}
-.auth-container a:hover {
-    background-color: #f0f0f0;
-}
 
 /* =======================
    메인 콘텐츠 스타일
    ======================= */
-.movie-container, .tvshow-container, .person-container {
+.person-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-.movie, .tvshow, .person {
+.person {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform 0.3s;
-    flex: 0 0 150px;
-    height: 300px;
+    flex: 1 0 21%; /* Adjust the width of the items */
+    box-sizing: border-box;
 }
-.movie:hover, .tvshow:hover, .person:hover {
+.person:hover {
     transform: translateY(-10px);
 }
-.movie img, .tvshow img, .person img {
+.person img {
     width: 100%;
     height: auto;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
 }
-.movie-title, .tvshow-title, .person-name {
+.person-name {
     text-align: center;
     font-size: 14px;
     padding: 10px;
@@ -137,7 +111,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.movie-date, .tvshow-date, .person-date {
+.person-date {
     text-align: center;
     font-size: 12px;
     color: #555;

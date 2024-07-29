@@ -15,11 +15,7 @@
     UserDAO userDAO=new UserDAO();
     int re=userDAO.update(uservo);
 
-    // Json 응답
-    Map<String, Object> result=new HashMap();
-    result.put("re", re);
-
     Gson gson=new Gson();
-    String jsonRes=gson.toJson(result);
+    String result=gson.toJson(re);
 %>
-<%=jsonRes%>
+<%=result%>

@@ -26,7 +26,7 @@
                     url:"/views/updateUser.jsp",
                     data:data,
                     success:function (response){
-                        if(response.re=="1"){
+                        if(response=="1"){
                             $("#result").empty();
                             let res="성공했습니다."
                             $("#result").append(res);
@@ -44,11 +44,12 @@
                     url:"/views/deleteUser.jsp",
                     data:data,
                     success:function (response){
+                        console.log(response)
                         if(response.re=="1"){
-                            $("#result").empty();
-                            let res="성공했습니다."
-                            $("#result").append(res);
-
+                            console.log(response);
+                            // sessionStorage.removeItem("email");
+                            // sessionStorage.removeItem("displayName");
+                            window.location.href="mainPage.do";
                         }
                     }
                 })
@@ -60,13 +61,12 @@
                     return false;
                 }
                 deleteFunc();
-
             });
         }
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <div class="container">
     <h1> 내 정보 수정</h1>
     <form action="">

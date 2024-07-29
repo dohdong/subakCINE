@@ -13,47 +13,47 @@
         body {
             font-family: Arial, sans-serif;
         }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: white;
-            color:black;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            height: 70px;
-        }
-        .header img {
-            width: 50px;
-            cursor: pointer;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-        .nav a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .search-container {
-            display: flex;
-            gap: 10px;
-        }
-        .search-container input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        .search-container button {
-            padding: 5px 10px;
-            font-size: 16px;
-        }
+        /*.header {*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    justify-content: space-between;*/
+        /*    padding: 10px 20px;*/
+        /*    background-color: white;*/
+        /*    color:black;*/
+        /*    position: fixed;*/
+        /*    width: 100%;*/
+        /*    top: 0;*/
+        /*    z-index: 1000;*/
+        /*    height: 70px;*/
+        /*}*/
+        /*.header img {*/
+        /*    width: 50px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.nav {*/
+        /*    display: flex;*/
+        /*    gap: 20px;*/
+        /*}*/
+        /*.nav a {*/
+        /*    color: black;*/
+        /*    text-decoration: none;*/
+        /*    font-size: 18px;*/
+        /*}*/
+        /*.nav a:hover {*/
+        /*    text-decoration: underline;*/
+        /*}*/
+        /*.search-container {*/
+        /*    display: flex;*/
+        /*    gap: 10px;*/
+        /*}*/
+        /*.search-container input {*/
+        /*    padding: 5px;*/
+        /*    font-size: 16px;*/
+        /*}*/
+        /*.search-container button {*/
+        /*    padding: 5px 10px;*/
+        /*    font-size: 16px;*/
+        /*}*/
         .tvshow-details {
             max-width: 800px;
             margin: 100px auto 20px;
@@ -113,11 +113,6 @@
     </div>
 
     <div class="buttons">
-<%--        <form action="tvShowDetailPage.do" method="post">--%>
-<%--            <input type="hidden" name="id" value="${tvShow.id}">--%>
-<%--            <input type="hidden" name="action" value="addToCollection">--%>
-<%--            <button type="submit">Add to Collection</button>--%>
-<%--        </form>--%>
         <form action="tvShowDetailPage.do" method="post">
             <input type="hidden" name="id" value="${tvShow.id}">
             <input type="hidden" name="action" value="likeTVShow">

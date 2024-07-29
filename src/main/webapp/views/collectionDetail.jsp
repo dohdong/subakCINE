@@ -57,7 +57,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<main>
+<main>s
     <div id="center">
         <section class="profile">
             <h1 style="padding:15px">${collection.collectionName}</h1>
@@ -72,10 +72,21 @@
         <section class="works">
             <h2>작품들</h2>
             <c:forEach items="${collection.items}" var="item">
-                <a href="movieDetailPage.do?id=${item.id}"><div class="movie" width="100%">
-                    <img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" alt="movieImage">
-                    <p>${item.title}</p>
-                    <p>평점</p>
+                <c:choose >
+                    <c:when test="${item.type=='tv'}">
+                        <a href="tvShowDetailPage.do?id=${item.id}"><div class="movie" width="100%">
+                        <img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" alt="movieImage">
+                        <p>${item.title}</p>
+                        <p>평점</p>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="movieDetailPage.do?id=${item.id}"><div class="movie" width="100%">
+                        <img src="https://image.tmdb.org/t/p/w500${item.movieImgUrl}" alt="movieImage">
+                        <p>${item.title}</p>
+                        <p>평점</p>
+                    </c:otherwise>
+                </c:choose>
+
                 </div></a>
             </c:forEach>
         </section>
