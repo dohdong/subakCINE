@@ -24,7 +24,7 @@
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="personPage.do">인물</a>
-        <a href="#">컬렉션</a>
+        <a href="allCollection.do">컬렉션</a>
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">

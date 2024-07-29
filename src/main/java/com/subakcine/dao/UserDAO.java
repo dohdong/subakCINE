@@ -8,6 +8,31 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDAO {
+    //userid로 userName 가져오기
+    public String getUserEmailById(String userId) {
+        String sql = "select USERS_EMAIL from users where users_id=?";
+        String userEmail = null;
+        String userName = null;
+        try{
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                userEmail = rs.getString("USERS_EMAIL");
+                int atIndex = userEmail.indexOf('@');
+                if (atIndex != -1) { // '@'가 문자열에 존재하는지 확인
+                    userName = userEmail.substring(0, atIndex);
+                } else {
+                    userName = null; // '@'가 없는 경우 빈 문자열 반환
+                }
+            }
+        }catch (Exception e){
+            System.out.println("UserDao getUserEmailById 예외--> "+e.getMessage());
+        }
+        return userName;
+    }
+
     //회원가입
     //성공하면 1, 실패는 0,-1
     public int insert(UserVO vo) {

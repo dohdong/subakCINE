@@ -18,10 +18,10 @@
                     password: password
                 }
                 $.ajax({
-                    url: "/views/updateUser.jsp",
-                    data: data,
-                    success: function (response){
-                        if(response.re == "1"){
+                    url:"/views/updateUser.jsp",
+                    data:data,
+                    success:function (response){
+                        if(response=="1"){
                             $("#result").empty();
                             let res = "성공했습니다.";
                             $("#result").append(res);
@@ -36,13 +36,15 @@
                     email: email
                 }
                 $.ajax({
-                    url: "/views/deleteUser.jsp",
-                    data: data,
-                    success: function (response){
-                        if(response.re == "1"){
-                            $("#result").empty();
-                            let res = "성공했습니다.";
-                            $("#result").append(res);
+                    url:"/views/deleteUser.jsp",
+                    data:data,
+                    success:function (response){
+                        console.log(response)
+                        if(response.re=="1"){
+                            console.log(response);
+                            // sessionStorage.removeItem("email");
+                            // sessionStorage.removeItem("displayName");
+                            window.location.href="mainPage.do";
                         }
                     }
                 })

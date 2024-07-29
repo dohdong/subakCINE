@@ -1,10 +1,10 @@
 package com.subakcine.dao;
 
 import com.subakcine.db.ConnectionProvider;
+import com.subakcine.vo.CollectionItemVO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class CollectionItemDAO {
     /**
@@ -48,4 +48,23 @@ public class CollectionItemDAO {
         }
         return re;
     }
+
+    //collectionId로 아이템리스트 반환
+//    public ArrayList<CollectionItemVO> getCollectionItems(String collectionId) {
+//        String sql = "SELECT COLLECTION_ITEM_ID,COLLECTION_ITEM_ORDER,COLLECTION_ITEM_CREATE_DATE,COLLECTION_ITEM_UPDATE_DATE,COLLECTION_ID,ITEM_ID,ITEM_TYPE FROM COLLECTION_ITEM WHERE COLLECTION_ID=?";
+//        ArrayList<CollectionItemVO> items = new ArrayList<>();
+//        try{
+//            Connection conn = ConnectionProvider.getConnection();
+//            PreparedStatement pstmt = conn.prepareStatement(sql);
+//            pstmt.setString(1, collectionId);
+//            ResultSet rs = pstmt.executeQuery();
+//            while (rs.next()) {
+//                CollectionItemVO itemVo = new CollectionItemVO();
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println("CollectionitemDAO getCollectionItems 예왜 ==> "+e.getMessage());
+//        }
+//        return items;
+//    }
 }
