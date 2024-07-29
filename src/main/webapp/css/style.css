@@ -52,29 +52,46 @@ body {
     font-size: 18px;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 .nav a:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     background-color: #f0f0f0;
 }
 .search-container {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
 }
 .search-container input {
-    padding: 5px;
+    padding: 5px 5px 5px 15px;
     font-size: 16px;
     width: 200px;
     box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none; /* 기본 아웃라인 제거 */
+    transition: border-color 0.3s, box-shadow 0.3s; /* 부드러운 전환 효과 */
+}
+.search-container input:focus {
+    border-color: #e04356; /* 포커스 시 테두리 색상 변경 */
+    box-shadow: 0 0 0 2px rgba(224, 67, 86, 0.2); /* 부드러운 그림자 효과 추가 */
 }
 .search-container button {
     padding: 5px 10px;
     font-size: 16px;
     box-sizing: border-box;
+    border-radius: 20px; /* 모서리 둥글게 */
+    border: none;
+    background-color: #e04356; /* 배경색 설정 */
+    color: white; /* 텍스트 색상 설정 */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.search-container button:hover {
+    background-color: #e02d43; /* 호버 시 배경색 설정 */
 }
 .auth-container {
     display: flex;
@@ -90,16 +107,20 @@ body {
     text-decoration: none;
     font-size: 16px;
     padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border: 1px solid #ddd;
+    border-radius: 20px; /* 모서리 둥글게 */
+    transition: background-color 0.3s, color 0.3s;
+    border: none; /* 테두리 제거 */
 }
 .auth-container a img {
+    margin: 0;
     vertical-align: middle;
-    margin-left: 5px;
+    width: 30px; /* 아이콘 크기 조정 */
+    height: auto;
+    cursor: pointer;
 }
 .auth-container a:hover {
-    background-color: #f0f0f0;
+    background-color: transparent; /* 배경색 제거 */
+    color: #e04356; /* 호버 시 텍스트 색상 설정 */
 }
 
 /* =======================

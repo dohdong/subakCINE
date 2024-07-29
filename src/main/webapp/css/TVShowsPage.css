@@ -19,64 +19,6 @@ body {
 }
 
 /* =======================
-   헤더 스타일
-   ======================= */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: white;
-    color: black;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 70px;
-    box-sizing: border-box;
-}
-.header img {
-    width: 50px;
-    height: auto;
-    cursor: pointer;
-    margin-right: 20px;
-}
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.nav a {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-.nav a:hover {
-    text-decoration: underline;
-    background-color: #f0f0f0;
-}
-.search-container {
-    display: flex;
-    gap: 10px;
-    flex-grow: 1;
-    justify-content: flex-end;
-}
-.search-container input {
-    padding: 5px;
-    font-size: 16px;
-    width: 200px;
-    box-sizing: border-box;
-}
-.search-container button {
-    padding: 5px 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* =======================
    메인 콘텐츠 스타일
    ======================= */
 .movie-container, .tvshow-container, .person-container {

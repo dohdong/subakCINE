@@ -18,102 +18,65 @@ body {
     margin-bottom: 50px; /* 푸터와의 분리 여백 */
 }
 
-/* =======================
-   헤더 스타일
-   ======================= */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: white;
-    color: black;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 70px;
-    box-sizing: border-box;
-}
-.header img {
-    width: 50px;
-    height: auto;
-    cursor: pointer;
-    margin-right: 20px;
-}
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.nav a {
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-.nav a:hover {
-    text-decoration: underline;
-    background-color: #f0f0f0;
-}
-.search-container {
-    display: flex;
-    gap: 10px;
-    flex-grow: 1;
-    justify-content: flex-end;
-}
-.search-container input {
-    padding: 5px;
-    font-size: 16px;
-    width: 200px;
-    box-sizing: border-box;
-}
-.search-container button {
-    padding: 5px 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
+/*!* =======================*/
+/*   메인 콘텐츠 스타일*/
+/*   ======================= *!*/
+/*.person-container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 20px;*/
+/*    justify-content: center; !* 중앙 정렬을 위해 추가 *!*/
+/*}*/
+/*.person {*/
+/*    background: white;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 6px rgba(0,0,0,0.1);*/
+/*    overflow: hidden;*/
+/*    transition: transform 0.3s;*/
+/*    width: 207px; !* 정확한 너비 설정 *!*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*.person:hover {*/
+/*    transform: translateY(-10px);*/
+/*}*/
+/*.person img {*/
+/*    width: 100%;*/
+/*    height: 312px; !* 정확한 높이 설정 *!*/
+/*    object-fit: cover; !* 이미지 비율 유지 *!*/
+/*    cursor: pointer;*/
+/*    border-bottom: 1px solid #ddd;*/
+/*}*/
+/*.person-name {*/
+/*    text-align: center;*/
+/*    font-size: 14px;*/
+/*    padding: 10px;*/
+/*    font-weight: bold;*/
+/*    white-space: nowrap;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*}*/
+/*.person-date {*/
+/*    text-align: center;*/
+/*    font-size: 12px;*/
+/*    color: #555;*/
+/*    padding-bottom: 10px;*/
+/*}*/
 
-/* =======================
-   메인 콘텐츠 스타일
-   ======================= */
-.person-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.person {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s;
-    flex: 1 0 21%; /* Adjust the width of the items */
-    box-sizing: border-box;
-}
-.person:hover {
-    transform: translateY(-10px);
-}
-.person img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-}
-.person-name {
-    text-align: center;
-    font-size: 14px;
-    padding: 10px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.person-date {
-    text-align: center;
-    font-size: 12px;
-    color: #555;
-    padding-bottom: 10px;
-}
+/*!* 반응형 디자인을 위한 미디어 쿼리 *!*/
+/*@media (max-width: 900px) {*/
+/*    .person-container {*/
+/*        justify-content: space-around;*/
+/*    }*/
+/*    .person {*/
+/*        flex: 0 0 calc(50% - 20px); !* 2열 레이아웃 *!*/
+/*        max-width: 207px; !* 최대 너비 유지 *!*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*    .person {*/
+/*        flex: 0 0 100%; !* 1열 레이아웃 *!*/
+/*        max-width: 207px; !* 최대 너비 유지 *!*/
+/*    }*/
+/*}*/
+

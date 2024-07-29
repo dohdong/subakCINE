@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./css/userPage.css">
+    <link rel="stylesheet" type="text/css" href="css/userPage.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -18,7 +18,6 @@
                 $("#contents").empty();
                 var tr;
                 $.each(movieData,function (i,data){
-                    console.log(data);
                     if (i%4==0){
                         tr=$("<tr></tr>");
                         $("#contents").append(tr);
@@ -67,6 +66,7 @@
         <img src="./img/dj.jpg" alt="프로필 사진" width="100">
         <h2>${sessionScope.displayName}</h2>
         <p>${email}</p>
+        <a href="signOut.do" class="logout-button">로그아웃</a> <!-- 로그아웃 버튼 -->
     </div>
 
     <div class="stats">
@@ -103,7 +103,7 @@
         </div>
         <div>
             <a href='userLikePage.do'><img src="./img/like-icon.png" id="myLike" width="50"></a>
-            <p>좋아요한 목록</p>
+            <p style="margin-top: 7px">좋아요한 목록</p>
         </div>
     </div>
     <hr>
