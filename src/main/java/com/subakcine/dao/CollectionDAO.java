@@ -10,6 +10,22 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CollectionDAO {
+
+    //컬렉션 삭제
+    public int delete(String collectionId) {
+        String sql = "DELETE COLLECTION WHERE COLLECTION_ID=?";
+        int re=-1;
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"COLLECTION_ID"});
+            pstmt.setString(1, collectionId);
+            re=pstmt.executeUpdate();
+            ConnectionProvider.close(pstmt, conn);
+        } catch (Exception e) {
+            System.out.println("CollectionDao delete 예외==> " + e.getMessage());
+        }
+        return re;
+    }
     //컬렉션 추가
     public String addCollection(String collectionName, String userId) {
         String sql = "INSERT INTO COLLECTION(COLLECTION_NAME, USERS_ID) VALUES(?, ?)";

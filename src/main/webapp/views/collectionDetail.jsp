@@ -6,6 +6,7 @@
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/collectionDetail.css">
     <style>
@@ -25,6 +26,34 @@
             background: #A1BDB1;;
         }
     </style>
+    <script>
+        window.onload = function(){
+            let deleteFunc=function(){
+                let collectionId="${collection.collectionId}";
+                console.log(collectionId)
+                let data={
+                    collectionId:collectionId
+                }
+                $.ajax({
+                    url: "/views/deleteCollection.jsp",
+                    data:data,
+                    success:function(response){
+                        if (response=="1"){
+                            console.log(response.re);
+                            window.location.href="userCollection.do";
+                        }
+                    }
+                })
+            }
+            $("#deleteBtn").on("click", function(e){
+                if (confirm("삭제하시겠습니까?")==false){
+                    e.preventDefault();
+                    return false;
+                }
+                deleteFunc();
+            });
+        }
+    </script>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -52,8 +81,8 @@
         </section>
     </div>
     <section class="buttons">
-        <a href="/collectionDelete.do"><input type="button" value="컬렉션 삭제하기"></a>
-        <a href="/updateCollection.do"><input type="button" value="컬렉션 수정하기"></a>
+        <input type="button" value="컬렉션 삭제하기" id="deleteBtn">
+        <a href="/updateCollection.do?collectionId=${collection.collectionId}"><input type="button" value="컬렉션 수정하기" id="updateBtn"></a>
     </section>
 </main>
 </body>

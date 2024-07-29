@@ -48,6 +48,7 @@
                             $("#result").empty();
                             let res="성공했습니다."
                             $("#result").append(res);
+
                         }
                     }
                 })
@@ -59,6 +60,7 @@
                     return false;
                 }
                 deleteFunc();
+
             });
         }
     </script>
