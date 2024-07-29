@@ -270,3 +270,4 @@ target/
 !**/src/test/**/target/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,dbeaver,java,intellij+iml,eclipse,maven
+/.idea/
