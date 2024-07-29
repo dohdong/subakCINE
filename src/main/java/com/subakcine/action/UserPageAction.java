@@ -25,8 +25,9 @@ public class UserPageAction implements SubakcineAction{
         PersonDAO personDao = new PersonDAO();
         List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
 
+        String email=request.getSession().getAttribute("email").toString();
         UserDAO userDao = new UserDAO();
-        UserVO user = userDao.getUserByEmail((String)request.getSession().getAttribute("email"));
+        UserVO user = userDao.getUserByEmail(email);
 
         request.setAttribute("popularMovies", popularMovies);
         request.setAttribute("popularTVShows", popularTVShows);

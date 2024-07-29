@@ -91,4 +91,34 @@ public class UserDAO {
         }
         return re;
     }
+
+    public int update(UserVO vo) {
+        int re = -1;
+        String sql = "UPDATE USERS SET USERS_PASSWORD=? WHERE USERS_EMAIL=?";
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, vo.getPassword());
+            pstmt.setString(2, vo.getEmail());
+            re = pstmt.executeUpdate();
+            ConnectionProvider.close(pstmt, conn);
+        } catch (Exception e) {
+            System.out.println("dao insert exception ==> " + e.getMessage());
+        }
+        return re;
+    }
+    public int delete(String email) {
+        int re = -1;
+        String sql = "DELETE USERS WHERE USERS_EMAIL=?";
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            re = pstmt.executeUpdate();
+            ConnectionProvider.close(pstmt, conn);
+        } catch (Exception e) {
+            System.out.println("dao insert exception ==> " + e.getMessage());
+        }
+        return re;
+    }
 }
