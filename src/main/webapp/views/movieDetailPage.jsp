@@ -164,13 +164,15 @@
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
         <div class="buttons">
-
-            <img src="<c:out value='${isLiked ? "img/like-icon.png" : "img/like-icon-empty.png"}' />"
-                 class="like-button"
-                 data-id="${movie.id}"
-                 alt="Like" />
-
+            <form action="movieDetailPage.do" method="post">
+                <input type="hidden" name="id" value="${movie.id}">
+                <input type="hidden" name="action" value="likeMovie">
+                <button type="submit">
+                    <img src="<c:out value='${isLiked ? "img/like-icon.png" : "img/like-icon-empty.png"}' />" alt="Like">
+                </button>
+            </form>
         </div>
+
 
         <c:if test="${not empty message}">
             <p>${message}</p>
