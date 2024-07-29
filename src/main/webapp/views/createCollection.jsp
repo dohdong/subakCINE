@@ -178,13 +178,21 @@
             // '만들기' 버튼 클릭 이벤트
             $('#createBtn').click(function(e) {
                 e.preventDefault(); // 기본 링크 동작 방지
-                if (selectedMovies.length > 0) {
-                    // 선택된 영화 정보를 서버에 전송
+                let title = $('#collectionTitle').val(); // 제목 데이터를 가져옴
+                let userEmail = $('#userEmail').val(); //유저 이메일 가져옴
+                console.log(title);
+                if (selectedMovies.length > 0 && title) {
+                    // 선택된 영화 정보와 컬렉션 제목을 서버에 전송
+                    let dataToSend = {
+                        title: title,
+                        userEmail : userEmail,
+                        movies: selectedMovies
+                    };
                     $.ajax({
                         url: 'views/collectionSave.jsp', // 데이터를 저장할 서버 URL
                         type: 'POST',
                         contentType: 'application/json',
-                        data: JSON.stringify(selectedMovies), // 배열을 JSON 문자열로 변환
+                        data: JSON.stringify(dataToSend), // 객체를 JSON 문자열로 변환
                         success: function(response) {
                             alert("컬렉션이 저장되었습니다!");
                             // 필요한 후처리 추가
@@ -194,7 +202,7 @@
                         }
                     });
                 } else {
-                    alert("선택된 영화가 없습니다.");
+                    alert("선택된 영화가 없거나 컬렉션 제목이 없습니다.");
                 }
             });
         });
@@ -214,7 +222,10 @@
     <div class="header">
         <h1>컬렉션 만들기</h1>
     </div>
-
+    <div class="title">
+        <input type="text" id="collectionTitle" placeholder="컬렉션 이름 입력"/>
+        <input type="hidden" id="userEmail" value="${email}"/>
+    </div>
     <div class="collection">
         <div class="add-movie" onclick="openPopup()">영화 추가하기</div>
     </div>
@@ -249,6 +260,5 @@
         <div id="tvResults"></div>
     </div>
 </div>
-
 </body>
 </html>

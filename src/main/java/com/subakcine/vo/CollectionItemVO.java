@@ -55,4 +55,15 @@ public class CollectionItemVO {
         this.type = type;
     }
     public CollectionItemVO() {}
+
+    @Override
+    public String toString() {
+        return "CollectionItemVO{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", movieImgUrl='" + movieImgUrl + '\'' +
+                ", order=" + order +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
