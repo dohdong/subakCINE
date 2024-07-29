@@ -39,10 +39,10 @@ public class UserDAO {
                 vo.setUserId(rs.getString("USERS_ID"));
                 vo.setEmail(rs.getString("USERS_EMAIL"));
                 vo.setPassword(rs.getString("USERS_PASSWORD"));
-                vo.setCreateDate(rs.getDate("CREATED_DATE"));
+                vo.setCreateDate(rs.getDate("CREATE_DATE"));
             }
         } catch (Exception e) {
-            System.out.println("dao getUserByEmail exception ==> " + e.getMessage());
+            System.out.println("UserDAO getUserByEmail exception ==> " + e.getMessage());
         }
         return vo;
     }
