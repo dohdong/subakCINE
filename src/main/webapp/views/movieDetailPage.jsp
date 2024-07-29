@@ -132,6 +132,9 @@
             <p>${message}</p>
         </c:if>
 
+        <!-- 좋아요 수 표시 -->
+        <p>좋아요: ${likeCount}</p>
+
     </div>
 </div>
 </body>

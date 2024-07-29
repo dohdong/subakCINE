@@ -1,5 +1,6 @@
 package com.subakcine.action;
 
+import com.subakcine.dao.LikeCountDAO;
 import com.subakcine.dao.MovieDAO;
 
 import javax.servlet.ServletException;
@@ -31,6 +32,11 @@ public class MovieDetailPageAction implements SubakcineAction {
 
         // 영화 세부 정보를 요청 객체에 설정합니다.
         request.setAttribute("movie", movieDetails);
+
+        // 좋아요 수 가져오기
+        LikeCountDAO likeCountDAO = new LikeCountDAO();
+        int likeCount = likeCountDAO.getLikeCount(movieId, "movie");
+        request.setAttribute("likeCount", likeCount);
 
         // 요청에 액션이 포함된 경우 추가 작업을 수행합니다.
         if (action != null) {
