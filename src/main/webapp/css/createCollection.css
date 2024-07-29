@@ -11,6 +11,9 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.title {
+    margin: 20px;
+}
 .search-bar {
     position: relative;
 }

@@ -6,21 +6,22 @@ public class CollectionItemVO {
     private String movieImgUrl;
     private int order;
     private String type;
+    private String collectionId;
+    private String userId;
+    private String userName;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
+    public CollectionItemVO(String id, String title, String movieImgUrl, int order, String type, String collectionId, String userId, String userName) {
+        this.id = id;
+        this.title = title;
+        this.movieImgUrl = movieImgUrl;
         this.order = order;
+        this.type = type;
+        this.collectionId = collectionId;
+        this.userId = userId;
+        this.userName = userName;
+    }
+
+    public CollectionItemVO() {
     }
 
     public String getId() {
@@ -47,14 +48,45 @@ public class CollectionItemVO {
         this.movieImgUrl = movieImgUrl;
     }
 
-    public CollectionItemVO(String id, String title, String movieImgUrl, int order, String type) {
-        this.id = id;
-        this.title = title;
-        this.movieImgUrl = movieImgUrl;
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
         this.order = order;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
     }
-    public CollectionItemVO() {}
+
+    public String getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(String collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     @Override
     public String toString() {
@@ -64,6 +96,9 @@ public class CollectionItemVO {
                 ", movieImgUrl='" + movieImgUrl + '\'' +
                 ", order=" + order +
                 ", type='" + type + '\'' +
+                ", collectionId='" + collectionId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 }
