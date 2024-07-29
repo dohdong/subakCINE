@@ -6,14 +6,10 @@
 <%@ page contentType="application/json;charset=UTF-8" language="java" %>
 <%
     request.setCharacterEncoding("UTF-8");
-    String email=request.getParameter("email");
-    String password=request.getParameter("password");
-    String userId=request.getParameter("userId");
+    String email=(String)session.getAttribute("email");
 
-    UserVO uservo=new UserVO(email,password);
-    uservo.setEmail(email);
     UserDAO userDAO=new UserDAO();
-    int re=userDAO.update(uservo);
+    int re=userDAO.delete(email);
 
     // Json 응답
     Map<String, Object> result=new HashMap();

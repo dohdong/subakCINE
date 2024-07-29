@@ -33,8 +33,32 @@
                     }
                 })
             }
+
+            let deleteFunc=function (){
+                let email=$("#email").val();
+                let data={
+                    email:email
+                }
+                $.ajax({
+                    url:"/views/deleteUser.jsp",
+                    data:data,
+                    success:function (response){
+                        if(response.re=="1"){
+                            $("#result").empty();
+                            let res="성공했습니다."
+                            $("#result").append(res);
+                        }
+                    }
+                })
+            }
             $("#update").on("click", insertFunc);
-            // $("#delete").onclick = deleteFunc();
+            $("#delete").on("click", function(e){
+                if(confirm("정말로 삭제하시겠습니까?")==false){
+                    e.preventDefault();
+                    return false;
+                }
+                deleteFunc();
+            });
         }
     </script>
 </head>
