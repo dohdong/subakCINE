@@ -1,7 +1,7 @@
 package com.subakcine.action;
 
-import com.subakcine.dao.TVShowDAO;
 import com.subakcine.dao.LikeCountDAO;
+import com.subakcine.dao.TVShowDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ public class TVShowDetailPageAction implements SubakcineAction {
 
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 요청 파라미터에서 TV 쇼 ID와 액션을 가져옴
+        // 요청 파라미터에서 TV 쇼 ID와 액션을 가져옵니다.
         String tvShowId = request.getParameter("id");
         String action = request.getParameter("action");
 
@@ -51,8 +51,12 @@ public class TVShowDetailPageAction implements SubakcineAction {
 
             // 액션에 따라 적절한 메서드를 호출합니다.
             if (action.equals("likeTVShow")) {
-                boolean success = tvShowDao.likeTVShow(tvShowId, usersID, itemType);
+                boolean success = tvShowDao.toggleLikeTVShow(tvShowId, usersID, itemType);
                 request.setAttribute("message", success ? "Liked the TV show successfully!" : "Failed to like the TV show.");
+
+                // 좋아요 수 다시 가져오기
+                likeCount = likeCountDAO.getLikeCount(tvShowId, "tv");
+                request.setAttribute("likeCount", likeCount);
             }
         }
 

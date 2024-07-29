@@ -1,9 +1,14 @@
 package com.subakcine.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.subakcine.db.ConnectionProvider;
 import com.subakcine.db.TmdbApiClient;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -135,5 +140,50 @@ public class TVShowDAO {
      */
     public boolean likeTVShow(String itemId, String userId, String itemType) {
         return likeItemDAO.likeItem(itemId, userId, itemType);
+    }
+
+    /**
+     * TV 쇼의 좋아요 상태를 토글합니다.
+     *
+     * @param tvShowId TV 쇼 ID
+     * @param usersID 사용자 ID
+     * @param itemType 아이템 타입
+     * @return 좋아요 토글 성공 여부
+     */
+    public boolean toggleLikeTVShow(String tvShowId, String usersID, String itemType) {
+        if (usersID == null) {
+            return false; // 사용자 ID가 null인 경우 처리하지 않음
+        }
+
+        String checkSql = "SELECT COUNT(*) FROM LIKES WHERE ITEM_ID = ? AND USERS_ID = ?";
+        String insertSql = "INSERT INTO LIKES (ITEM_ID, USERS_ID, ITEM_TYPE) VALUES (?, ?, ?)";
+        String deleteSql = "DELETE FROM LIKES WHERE ITEM_ID = ? AND USERS_ID = ?";
+
+        try (Connection conn = ConnectionProvider.getConnection();
+             PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+             PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+             PreparedStatement deleteStmt = conn.prepareStatement(deleteSql)) {
+
+            // 현재 좋아요 상태 확인
+            checkStmt.setString(1, tvShowId);
+            checkStmt.setString(2, usersID);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                // 이미 좋아요를 눌렀으면 좋아요 취소
+                deleteStmt.setString(1, tvShowId);
+                deleteStmt.setString(2, usersID);
+                deleteStmt.executeUpdate();
+            } else {
+                // 좋아요 추가
+                insertStmt.setString(1, tvShowId);
+                insertStmt.setString(2, usersID);
+                insertStmt.setString(3, itemType);
+                insertStmt.executeUpdate();
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

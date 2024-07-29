@@ -9,35 +9,35 @@
         body {
             font-family: Arial, sans-serif;
         }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: white;
-            color:black;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            height: 70px;
-        }
-        .header img {
-            width: 50px;
-            cursor: pointer;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-        .nav a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
+        /*.header {*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    justify-content: space-between;*/
+        /*    padding: 10px 20px;*/
+        /*    background-color: white;*/
+        /*    color:black;*/
+        /*    position: fixed;*/
+        /*    width: 100%;*/
+        /*    top: 0;*/
+        /*    z-index: 1000;*/
+        /*    height: 70px;*/
+        /*}*/
+        /*.header img {*/
+        /*    width: 50px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.nav {*/
+        /*    display: flex;*/
+        /*    gap: 20px;*/
+        /*}*/
+        /*.nav a {*/
+        /*    color: black;*/
+        /*    text-decoration: none;*/
+        /*    font-size: 18px;*/
+        /*}*/
+        /*.nav a:hover {*/
+        /*    text-decoration: underline;*/
+        /*}*/
         .container {
             padding: 20px;
             margin-top: 100px; /* 헤더 아래로 여백 추가 */
