@@ -22,6 +22,7 @@
         <a href="moviesPage.do">영화</a>
         <a href="tvShowsPage.do">TV 프로그램</a>
         <a href="personPage.do">인물</a>
+        <a href="#">컬렉션</a>
     </div>
     <div>
         <% if (displayName != null) { %>
