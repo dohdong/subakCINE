@@ -9,8 +9,8 @@
 </header>
 <body>
 <%@ include file="header.jsp" %>
-<h1>나의 컬렉션</h1>
 <div class="container">
+    <h1>모두의 컬렉션</h1>
     <c:forEach var="collection" items="${collectionList }" varStatus="collections">
         <div class="collection-card">
             <table>
@@ -42,7 +42,7 @@
             <div class="collection-details">
                 <div class="user-info">
                     <img src="./img/dj.jpg" alt="User Avatar">
-                    <span>${sessionScope.displayName}</span>
+                    <span>${collection.userID}</span>
                 </div>
 
                 <a href="collectionDetail.do?collectionId=${collection.collectionId}">

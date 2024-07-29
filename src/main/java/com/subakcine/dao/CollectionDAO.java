@@ -10,9 +10,27 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CollectionDAO {
+    //컬렉션id로 userId 반환
+    public String getUserIdByCollectionId(String collectionId) {
+        String sql = "select users_id from collection where collection_id=?";
+        String userId = null;
+        try{
+            Connection conn = ConnectionProvider.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, collectionId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                userId = rs.getString("users_id");
+            }
+        }catch (Exception e){
+            System.out.println("CollectionDAO getUserIdByCollectionId 예외==> "+e.getMessage());
+        }
+        return userId;
+    }
+
     //모든 컬렉션 반환
     public ArrayList<CollectionVO> allCollections(){
-        String sql = "select COLLECTION_ID,COLLECTION_NAME,COLLECTION_CREATE_DATE,COLLECTION_UPDATE_DATE,USERS_ID from collection";
+        String sql = "select COLLECTION_ID,COLLECTION_NAME,COLLECTION_CREATE_DATE,COLLECTION_UPDATE_DATE,USERS_ID from collection ORDER BY COLLECTION_CREATE_DATE DESC";
         ArrayList<CollectionVO> list = new ArrayList<>();
         try{
             Connection conn = ConnectionProvider.getConnection();
@@ -113,6 +131,7 @@ public class CollectionDAO {
                 vo.setOrder(rs.getInt("COLLECTION_ITEM_ORDER"));
                 vo.setId(rs.getString("ITEM_ID"));
                 vo.setType(rs.getString("ITEM_TYPE"));
+                vo.setCollectionId(rs.getString("COLLECTION_ID"));
                 System.out.println("vo : "+vo);
                 list.add(vo);
             }

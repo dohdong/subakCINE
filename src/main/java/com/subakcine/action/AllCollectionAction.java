@@ -1,8 +1,6 @@
 package com.subakcine.action;
 
-import com.subakcine.dao.CollectionDAO;
-import com.subakcine.dao.MovieDAO;
-import com.subakcine.dao.TVShowDAO;
+import com.subakcine.dao.*;
 import com.subakcine.vo.CollectionItemVO;
 import com.subakcine.vo.CollectionVO;
 
@@ -27,15 +25,25 @@ public class AllCollectionAction implements SubakcineAction {
 
         for(CollectionVO collection:collectionList){
             // 컬렉션 별 item 리스트 생성
-            CollectionDAO collectionItemListDao=new CollectionDAO();
-            ArrayList<CollectionItemVO> collectionItemList=collectionItemListDao.listCollectionItems(collection.getCollectionId());
+//            CollectionDAO collectionItemListDao=new CollectionDAO();
+            ArrayList<CollectionItemVO> collectionItemList=collectionDao.listCollectionItems(collection.getCollectionId());
+            System.out.println("collectionItemList.toString ==> "+collectionItemList.toString());
             for(CollectionItemVO collectionItem:collectionItemList){
+//                System.out.println("collectionItem.getCollectionId() ==> "+collectionItem.getCollectionId());
+                //collectionId로 userId 가져와서 vo에 저장
+                String userId = collectionDao.getUserIdByCollectionId(collection.getCollectionId());
+                collectionItem.setUserId(userId);
+                //userId로 userName 가져와서 vo에 저장
+                UserDAO userDao = new UserDAO();
+                String userName = userDao.getUserEmailById(userId);
+                collectionItem.setUserName(userName);
                 if (collectionItem.getType().equals("movie")) { //type이 movie일때
                     movieDAO=new MovieDAO();
                     Map<String, Object> movie= movieDAO.getMovieDetails(collectionItem.getId());
-                    System.out.println("movie = " + movie);
+//                    System.out.println("movie = " + movie);
                     collectionItem.setMovieImgUrl(movie.get("poster_path").toString());
                     collectionItem.setTitle(movie.get("title").toString());
+                    System.out.println("collectionItem ==> "+collectionItem);
                 }else { //type이 tv일때
                     tvShowDAO=new TVShowDAO();
                     Map<String, Object> tvShow = tvShowDAO.getTVShowDetails(collectionItem.getId());
@@ -44,10 +52,11 @@ public class AllCollectionAction implements SubakcineAction {
                 }
             }
             collection.setItems(collectionItemList);
+            System.out.println("collectionVO 유저아이디 => "+collection.getUserID());
         }
-
+//        System.out.println(collectionList);
         request.setAttribute("collectionList", collectionList);
 
-        return "/views/userCollection.jsp";
+        return "/views/allCollection.jsp";
     }
 }
