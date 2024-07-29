@@ -13,7 +13,7 @@
     <title>Title</title>
     <meta charset="UTF-8">
     <title>WatchaPedia Collection Detail</title>
-    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="./css/collectionDetail.css">
     <style>
             /* 간단한 스타일링 */
@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="header.html"/>
+<%@ include file="header.jsp" %>
 <main>
     <div id="center">
         <section class="profile">
