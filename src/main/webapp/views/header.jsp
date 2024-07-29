@@ -13,6 +13,7 @@
         if (atIndex != -1) {
             displayName = email.substring(0, atIndex);
         }
+        session.setAttribute("displayName", displayName);
     }
 %>
 
