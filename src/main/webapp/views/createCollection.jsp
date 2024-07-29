@@ -3,113 +3,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.gson.Gson" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>컬렉션 만들기</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .search-bar {
-            position: relative;
-        }
-        .search-bar input {
-            padding: 5px 10px;
-            width: 200px;
-        }
-        .watermark-remove {
-            cursor: pointer;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
-        .collection {
-            display: flex;
-            align-items: center;
-            overflow-x: auto;
-        }
-        .collection img {
-            margin: 10px;
-            width: 100px;
-            height: 150px;
-        }
-        .add-movie {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px;
-            height: 150px;
-            background-color: #f0f0f0;
-            cursor: pointer;
-        }
-        .keywords {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        .keyword {
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            cursor: pointer;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 80%;
-            max-width: 600px;
-            z-index: 1000;
-        }
-        .popup .close {
-            cursor: pointer;
-            color: red;
-            float: right;
-        }
-        .popup .search-bar {
-            margin-bottom: 20px;
-        }
-        .popup #movieResults,#tvResults{
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: scroll;
-        }
-
-
-        #createBtn{
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            padding: 10px 30px;
-            display: inline-block;
-            position: relative;
-            border: 1px solid rgba(0,0,0,0.21);
-            border-bottom: 4px solid rgba(0,0,0,0.21);
-            border-radius: 4px;
-            text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-            background: rgba(27,188,194,1);
-            background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-            background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-            background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-            background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/createCollection.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         let selectedMovies = []; // 선택된 이미지 정보를 저장할 배열
@@ -121,20 +22,26 @@
                     url: 'views/collectionSearch.jsp',
                     type: 'GET',
                     data: data,
-                    // data: { query: query },
-                    // dataType: 'json',
                     success: function(data) {
                         console.log(data.movieSearch);
                         $("#movieResults").empty(); // 결과를 새로 고침하기 위해 비움
                         $("#tvResults").empty(); // TV 결과도 비움
+                        //movie부문
                         $.each(data.movieSearch, function (i,movie) {
                             let span = $("<span></span>");
                             let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+movie.poster_path);
                             span.append(img);
                             // 클릭 이벤트 추가
                             span.click(function() {
+                                let span = $("<span></span>");
                                 let newImg = $("<img>").attr("src", "https://image.tmdb.org/t/p/w500"+movie.poster_path).css({"margin": "10px", "width": "100px", "height": "150px"});
-                                $(".collection").append(newImg); // collection에 이미지 추가
+                                let deleteBtn = $("<img src='img/remove.png' alt='삭제' style='width: 20px; height: 20px;'>").click(function() {
+                                    span.remove(); //img 요소 삭제
+                                    selectedMovies = selectedMovies.filter(m => m.id !== movie.id || m.media_type !== 'movie');
+                                });
+                                span.append(newImg).append(deleteBtn);
+                                $(".collection").append(span); // collection에 이미지 추가
+
                                 // 선택된 영화 정보를 JSON 형식으로 저장
                                 selectedMovies.push({
                                     id: movie.id,
@@ -148,6 +55,7 @@
 
                             $("#movieResults").append(span);
                         });
+                        //tv부문
                         $.each(data.tvSearch, function (i,tvShow){
                             let span=$("<span></span>");
                             let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+tvShow.poster_path);
@@ -155,8 +63,14 @@
 
                             // 클릭 이벤트 추가
                             span.click(function() {
+                                let span = $("<span></span>");
                                 let newImg = $("<img>").attr("src", "https://image.tmdb.org/t/p/w500"+tvShow.poster_path).css({"margin": "10px", "width": "100px", "height": "150px"});
-                                $(".collection").append(newImg);
+                                let deleteBtn = $("<img src='img/remove.png' alt='삭제' style='width: 20px; height: 20px;'>").click(function() {
+                                    span.remove();
+                                    selectedMovies = selectedMovies.filter(m => m.id !== tvShow.id || m.media_type !== 'tv');
+                                });
+                                span.append(newImg).append(deleteBtn);
+                                $(".collection").append(span); // collection에 이미지 추가
                                 // 선택된 TV 프로그램 정보를 JSON 형식으로 저장
                                 selectedMovies.push({
                                     id: tvShow.id,
@@ -194,8 +108,12 @@
                         contentType: 'application/json',
                         data: JSON.stringify(dataToSend), // 객체를 JSON 문자열로 변환
                         success: function(response) {
-                            alert("컬렉션이 저장되었습니다!");
-                            // 필요한 후처리 추가
+                            if (response.trim() === "Success") {
+                                alert("컬렉션이 저장되었습니다!");
+                                window.location.href = "userCollection.do"; // 리다이렉트
+                            } else {
+                                console.error('Unexpected response: ' + response);
+                            }
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             console.error('Error: ' + textStatus, errorThrown);
@@ -218,16 +136,19 @@
     </script>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div class="container">
-    <div class="header">
+    <div class="header2">
         <h1>컬렉션 만들기</h1>
     </div>
     <div class="title">
+        <label>컬렉션 이름 : </label>
         <input type="text" id="collectionTitle" placeholder="컬렉션 이름 입력"/>
         <input type="hidden" id="userEmail" value="${email}"/>
     </div>
     <div class="collection">
-        <div class="add-movie" onclick="openPopup()">영화 추가하기</div>
+        <div class="add-movie" onclick="openPopup()"><img id="addBtn" src="img/plus.png"/>
+            <span>영화 추가</span></div>
     </div>
 
     <div class="keywords">

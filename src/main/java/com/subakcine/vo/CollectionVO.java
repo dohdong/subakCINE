@@ -10,6 +10,15 @@ public class CollectionVO {
     private Date collectionUpdateDate;
     private String userID;
     private ArrayList<CollectionItemVO> items;
+    private ArrayList<KeywordVO> keywords;
+
+    public ArrayList<KeywordVO> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(ArrayList<KeywordVO> keywords) {
+        this.keywords = keywords;
+    }
 
     public ArrayList<CollectionItemVO> getItems() {
         return items;
