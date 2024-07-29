@@ -24,7 +24,7 @@ public class SignInOKAction implements SubakcineAction {
 
             // 사용자 USERS_ID 가져와서 세션에 저장
             String usersID = dao.getUsersID(email);
-            session.setAttribute("userId", usersID);
+            session.setAttribute("usersID", usersID);
 
             return "mainPage.do";
         } else if (re == 0) { // 이메일 맞고 비번 틀림
