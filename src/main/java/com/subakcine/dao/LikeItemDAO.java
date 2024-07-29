@@ -42,6 +42,42 @@ public class LikeItemDAO {
         }
     }
 
+    public boolean unlikeItem(String itemId, String userId, String itemType) {
+        String sql = "DELETE FROM LIKES WHERE ITEM_ID = ? AND USERS_ID = ? AND ITEM_TYPE = ?";
+        try (Connection conn = ConnectionProvider.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, itemId);
+            pstmt.setString(2, userId);
+            pstmt.setString(3, itemType);
+            int result = pstmt.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isLiked(String itemId, String userId, String itemType) {
+        String sql = "SELECT COUNT(*) FROM LIKES WHERE ITEM_ID = ? AND USERS_ID = ? AND ITEM_TYPE = ?";
+        try (Connection conn = ConnectionProvider.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, itemId);
+            pstmt.setString(2, userId);
+            pstmt.setString(3, itemType);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+
     /**
      * 특정 사용자와 아이템 타입에 대한 좋아요한 아이템들을 가져옵니다.
      *

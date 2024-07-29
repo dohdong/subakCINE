@@ -1,65 +1,89 @@
 package com.subakcine.action;
 
 import com.subakcine.dao.LikeCountDAO;
+import com.subakcine.dao.LikeItemDAO;
 import com.subakcine.dao.MovieDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 /**
- * MovieDetailPageAction 클래스는 영화 상세 페이지를 처리합니다.
- * 영화 세부 정보를 가져오고, 컬렉션 추가 및 좋아요 기능을 제공합니다.
+ * MovieDetailPageAction handles the movie detail page,
+ * including movie details, collection addition, and like functionality.
  */
 public class MovieDetailPageAction implements SubakcineAction {
 
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 요청 파라미터에서 영화 ID와 액션을 가져옵니다.
         String movieId = request.getParameter("id");
         String action = request.getParameter("action");
+        boolean isAjax = "true".equals(request.getParameter("ajax"));
+        boolean isLiked = false;
 
-        // MovieDAO 인스턴스를 생성합니다.
-        MovieDAO movieDao = new MovieDAO();
+        try {
+            MovieDAO movieDao = new MovieDAO();
+            Map<String, Object> movieDetails = movieDao.getMovieDetails(movieId);
+            request.setAttribute("movie", movieDetails);
 
-        // 영화 세부 정보를 가져옵니다.
-        Map<String, Object> movieDetails = movieDao.getMovieDetails(movieId);
+            LikeCountDAO likeCountDAO = new LikeCountDAO();
+            int likeCount = likeCountDAO.getLikeCount(movieId, "movie");
+            request.setAttribute("likeCount", likeCount);
 
-//        // 디버깅을 위해 영화 세부 정보를 출력합니다.
-//        System.out.println("movieDetails: " + movieDetails);
+            String usersID = (String) request.getSession().getAttribute("usersID");
 
-        // 영화 세부 정보를 요청 객체에 설정합니다.
-        request.setAttribute("movie", movieDetails);
+            if (usersID != null) {
+                LikeItemDAO likeItemDAO = new LikeItemDAO();
+                isLiked = likeItemDAO.isLiked(movieId, usersID, "movie");
 
-        // 좋아요 수 가져오기
-        LikeCountDAO likeCountDAO = new LikeCountDAO();
-        int likeCount = likeCountDAO.getLikeCount(movieId, "movie");
-        request.setAttribute("likeCount", likeCount);
+                if (action != null) {
+                    boolean success;
+                    if (action.equals("addToCollection")) {
+                        success = movieDao.addToCollection(request.getParameter("collectionId"), movieId, "movie");
+                        request.setAttribute("message", success ? "Added to collection successfully!" : "Failed to add to collection.");
+                    } else if (action.equals("likeMovie")) {
+                        if (isLiked) {
+                            success = likeItemDAO.unlikeItem(movieId, usersID, "movie");
+                            isLiked = !success;
+                            request.setAttribute("message", success ? "Removed like from the movie." : "Failed to remove like.");
+                        } else {
+                            success = likeItemDAO.likeItem(movieId, usersID, "movie");
+                            isLiked = success;
+                            request.setAttribute("message", success ? "Liked the movie successfully!" : "Failed to like the movie.");
+                        }
 
-        // 요청에 액션이 포함된 경우 추가 작업을 수행합니다.
-        if (action != null) {
-            String usersID = (String) request.getSession().getAttribute("usersID"); // 세션에서 사용자 ID를 가져옵니다.
-            String itemType = "movie"; // 아이템 타입을 "movie"로 설정합니다.
-
-            // 세션에서 usersID를 가져오지 못했을 경우 로그인 페이지로 리디렉션
-            if (usersID == null) {
-                request.setAttribute("message", "로그인이 필요합니다.");
-                return "views/signIn.jsp";
+                        if (isAjax) {
+                            response.setContentType("application/json");
+                            response.setCharacterEncoding("UTF-8");
+                            PrintWriter out = response.getWriter();
+                            out.print("{\"success\":" + success + ", \"isLiked\":" + isLiked + "}");
+                            out.flush();
+                            return null; // Prevent further processing
+                        }
+                    }
+                }
+            } else {
+                if (action != null && action.equals("likeMovie")) {
+                    request.setAttribute("message", "Login required.");
+                    return "views/signIn.jsp";
+                }
             }
-
-            // 액션에 따라 적절한 메서드를 호출합니다.
-            if (action.equals("addToCollection")) {
-                boolean success = movieDao.addToCollection(request.getParameter("collectionId"), movieId, itemType);
-                request.setAttribute("message", success ? "Added to collection successfully!" : "Failed to add to collection.");
-            } else if (action.equals("likeMovie")) {
-                boolean success = movieDao.likeMovie(movieId, usersID, itemType);
-                request.setAttribute("message", success ? "Liked the movie successfully!" : "Failed to like the movie.");
+        } catch (Exception e) {
+            e.printStackTrace(); // Log exception details
+            if (isAjax) {
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                PrintWriter out = response.getWriter();
+                out.print("{\"success\":false, \"message\":\"Error occurred: " + e.getMessage() + "\"}");
+                out.flush();
+                return null;
             }
+            throw e; // Rethrow for non-AJAX requests
         }
 
-        // 영화 상세 페이지로 이동합니다.
         return "/views/movieDetailPage.jsp";
     }
 }
