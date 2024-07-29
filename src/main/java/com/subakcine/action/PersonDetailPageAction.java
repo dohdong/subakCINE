@@ -1,5 +1,6 @@
 package com.subakcine.action;
 
+import com.subakcine.dao.LikeCountDAO;
 import com.subakcine.dao.PersonDAO;
 
 import javax.servlet.ServletException;
@@ -29,18 +30,31 @@ public class PersonDetailPageAction implements SubakcineAction {
         // 인물 세부 정보를 요청 객체에 설정합니다.
         request.setAttribute("personDetails", personDetails);
 
+        // 좋아요 수 가져오기
+        LikeCountDAO likeCountDAO = new LikeCountDAO();
+        int likeCount = likeCountDAO.getLikeCount(personId, "person");
+        request.setAttribute("likeCount", likeCount);
+
         // 요청에 액션이 포함된 경우 추가 작업을 수행합니다.
         if (action != null) {
-            String userId = (String) request.getSession().getAttribute("userId"); // 세션에서 사용자 ID를 가져옵니다.
+            String usersID = (String) request.getSession().getAttribute("usersID"); // 세션에서 사용자 ID를 가져옵니다.
             String itemType = "person"; // 아이템 타입을 "person"으로 설정합니다.
 
+            // 세션에서 usersID를 가져오지 못했을 경우 로그인 페이지로 리디렉션
+            if (usersID == null) {
+                request.setAttribute("message", "로그인이 필요합니다.");
+                return "views/signIn.jsp";
+            }
+
             // 액션에 따라 적절한 메서드를 호출합니다.
-            if (action.equals("addToCollection")) {
-                boolean success = personDao.addToCollection(request.getParameter("collectionId"), personId, itemType);
-                request.setAttribute("message", success ? "Added to collection successfully!" : "Failed to add to collection.");
-            } else if (action.equals("likePerson")) {
-                boolean success = personDao.likePerson(personId, userId, itemType);
-                request.setAttribute("message", success ? "Liked the person successfully!" : "Failed to like the person.");
+            if (action.equals("likePerson")) {
+                boolean success = personDao.likePerson(personId, usersID, itemType);
+                if (success) {
+                    likeCount = likeCountDAO.getLikeCount(personId, "person");
+                    request.setAttribute("likeCount", likeCount);
+                } else {
+                    request.setAttribute("message", "Failed to like the person.");
+                }
             }
         }
 

@@ -4,7 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Movie Details</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>Movie Details</title>--%>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,7 +97,6 @@
             cursor: pointer;
         }
     </style>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -138,8 +141,10 @@
 
 
 </head>
+
 <body>
 <jsp:include page="header.jsp" />
+<%--<jsp:include page="header.jsp" />--%>
 
 <div class="movie-details">
     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
@@ -159,16 +164,12 @@
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
         <div class="buttons">
-            <form action="movieDetailPage.do" method="post">
-                <input type="hidden" name="id" value="${movie.id}">
-                <input type="hidden" name="action" value="addToCollection">
-                <button type="submit">Add to Collection</button>
-            </form>
 
             <img src="<c:out value='${isLiked ? "img/like-icon.png" : "img/like-icon-empty.png"}' />"
                  class="like-button"
                  data-id="${movie.id}"
                  alt="Like" />
+
         </div>
 
         <c:if test="${not empty message}">

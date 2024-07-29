@@ -1,5 +1,6 @@
 package com.subakcine.action;
 
+import com.subakcine.dao.CollectionDAO;
 import com.subakcine.dao.LikeCountDAO;
 import com.subakcine.dao.LikeItemDAO;
 import com.subakcine.dao.MovieDAO;

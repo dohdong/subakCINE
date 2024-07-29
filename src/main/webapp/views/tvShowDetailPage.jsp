@@ -4,7 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TV Show Details</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>TV Show Details</title>--%>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,7 +91,7 @@
             cursor: pointer;
         }
     </style>
-</head>
+<%--</head>--%>
 <body>
 <jsp:include page="header.jsp" />
 
@@ -109,11 +113,11 @@
     </div>
 
     <div class="buttons">
-        <form action="tvShowDetailPage.do" method="post">
-            <input type="hidden" name="id" value="${tvShow.id}">
-            <input type="hidden" name="action" value="addToCollection">
-            <button type="submit">Add to Collection</button>
-        </form>
+<%--        <form action="tvShowDetailPage.do" method="post">--%>
+<%--            <input type="hidden" name="id" value="${tvShow.id}">--%>
+<%--            <input type="hidden" name="action" value="addToCollection">--%>
+<%--            <button type="submit">Add to Collection</button>--%>
+<%--        </form>--%>
         <form action="tvShowDetailPage.do" method="post">
             <input type="hidden" name="id" value="${tvShow.id}">
             <input type="hidden" name="action" value="likeTVShow">
@@ -124,6 +128,9 @@
     <c:if test="${not empty message}">
         <p>${message}</p>
     </c:if>
+
+    <!-- 좋아요 수 표시 -->
+    <p>좋아요: ${likeCount}</p>
 
 </div>
 </body>
