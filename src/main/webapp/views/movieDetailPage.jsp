@@ -83,6 +83,10 @@
         .buttons {
             margin-top: 20px;
         }
+        .buttons img {
+            width: 50px;
+            height: 50px;
+        }
         .buttons form {
             display: inline-block;
         }
@@ -93,7 +97,51 @@
             cursor: pointer;
         }
     </style>
-<%--</head>--%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.like-button').click(function(event) {
+                event.preventDefault();
+
+                var $this = $(this);
+                var movieId = $this.data('id');
+                var isLiked = $this.hasClass('liked');
+                var action = isLiked ? 'unlikeMovie' : 'likeMovie';
+
+                $.ajax({
+                    url: 'movieDetailPage.do',
+                    type: 'POST',
+                    data: {
+                        id: movieId,
+                        action: action,
+                        ajax: true
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            if (response.isLiked) {
+                                $this.attr('src', 'img/like-icon.png').addClass('liked');
+                            } else {
+                                $this.attr('src', 'img/like-icon-empty.png').removeClass('liked');
+                            }
+                        } else {
+                            console.error('Server response error:', response.message);
+                            alert('Failed to update like status: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: ", status, error);
+                        console.error("Response Text: ", xhr.responseText);
+                        alert('Error while processing the request. Check console for details.');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</head>
+
 <body>
 <jsp:include page="header.jsp" />
 <%--<jsp:include page="header.jsp" />--%>
@@ -116,16 +164,12 @@
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
         <div class="buttons">
-<%--            <form action="createCollection.do" method="post">--%>
-<%--                <input type="hidden" name="id" value="${movie.id}">--%>
-<%--                <input type="hidden" name="itemType" value="movie">--%>
-<%--                <button type="submit">AddCollection</button>--%>
-<%--            </form>--%>
-            <form action="movieDetailPage.do" method="post">
-                <input type="hidden" name="id" value="${movie.id}">
-                <input type="hidden" name="action" value="likeMovie">
-                <button type="submit">Like</button>
-            </form>
+
+            <img src="<c:out value='${isLiked ? "img/like-icon.png" : "img/like-icon-empty.png"}' />"
+                 class="like-button"
+                 data-id="${movie.id}"
+                 alt="Like" />
+
         </div>
 
         <c:if test="${not empty message}">
