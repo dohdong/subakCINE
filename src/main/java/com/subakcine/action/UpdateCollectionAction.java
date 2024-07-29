@@ -17,20 +17,20 @@ public class UpdateCollectionAction implements SubakcineAction{
 
     @Override
     public String pro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String collectionId=request.getAttribute("collectionId").toString();
-
-        CollectionDAO collectionDAO=new CollectionDAO();
-        CollectionVO collection = collectionDAO.collectionDetail(collectionId);
+        String collectionId=request.getParameter("collectionId");
+        System.out.println("collectionId = " + collectionId);
 
         //컬렉션의 item list를 반환하고 collection 객체에 담아준다
         ArrayList<CollectionItemVO> itemList=new CollectionDAO().listCollectionItems(collectionId);
+        System.out.println("itemList = " + itemList);
+
         for(CollectionItemVO item:itemList){
             if (item.getType().equals("movie")) { //type이 movie일때
                 MovieDAO movieDAO=new MovieDAO();
                 Map<String, Object> movie= movieDAO.getMovieDetails(item.getId());
-                System.out.println("movie = " + movie);
-                item.setMovieImgUrl(movie.get("poster_path").toString());
-                item.setTitle(movie.get("title").toString());
+                item.setMovieImgUrl((String)movie.get("poster_path"));
+                item.setTitle((String)movie.get("title"));
+                System.out.println("item = " + item);
             }else { //type이 tv일때
                 TVShowDAO tvShowDAO=new TVShowDAO();
                 Map<String, Object> tvShow = tvShowDAO.getTVShowDetails(item.getId());
@@ -38,10 +38,10 @@ public class UpdateCollectionAction implements SubakcineAction{
                 item.setTitle(tvShow.get("original_name").toString());
             }
         }
-        collection.setItems(itemList);
 
         // 형태유지 시켜서 보내준다
-        request.setAttribute("collection", collection);
+        request.setAttribute("itemList", itemList);
+
         return "/views/updateCollection.jsp";
     }
 }
