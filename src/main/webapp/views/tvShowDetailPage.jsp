@@ -113,11 +113,6 @@
     </div>
 
     <div class="buttons">
-<%--        <form action="tvShowDetailPage.do" method="post">--%>
-<%--            <input type="hidden" name="id" value="${tvShow.id}">--%>
-<%--            <input type="hidden" name="action" value="addToCollection">--%>
-<%--            <button type="submit">Add to Collection</button>--%>
-<%--        </form>--%>
         <form action="tvShowDetailPage.do" method="post">
             <input type="hidden" name="id" value="${tvShow.id}">
             <input type="hidden" name="action" value="likeTVShow">
