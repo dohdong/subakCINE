@@ -4,11 +4,37 @@ import com.subakcine.db.ConnectionProvider;
 import com.subakcine.vo.CollectionVO;
 import com.subakcine.vo.CollectionItemVO;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class CollectionDAO {
+    //컬렉션 추가
+    public String addCollection(String collectionName, String userId) {
+        String sql = "INSERT INTO COLLECTION(COLLECTION_NAME, USERS_ID) VALUES(?, ?)";
+        String collectionId = "";
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            // Prepare statement with RETURN_GENERATED_KEYS
+            PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"COLLECTION_ID"});
+            pstmt.setString(1, collectionName);
+            pstmt.setString(2, userId);
+            pstmt.executeUpdate();
+
+            // Get generated keys
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                collectionId = rs.getString(1);  // Get the first generated key (collection_id)
+            }
+
+            ConnectionProvider.close(rs, pstmt, conn);
+        } catch (Exception e) {
+            System.out.println("CollectionDao addCollection 예외==> " + e.getMessage());
+        }
+
+        return collectionId;
+    }
 
     // collection id를 통해 해당 collection을 찾아서 반환
     public CollectionVO collectionDetail(String collectionId){
