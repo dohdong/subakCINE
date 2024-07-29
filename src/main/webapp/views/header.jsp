@@ -26,7 +26,7 @@
     </div>
     <div>
         <% if (displayName != null) { %>
-        <span>Welcome, <%= displayName %>!</span>
+        <span>환영합니다, <%= displayName %>님</span>
         <a href="signOut.do">로그아웃</a>
         <% } else { %>
         <a href="signIn.do">로그인</a>

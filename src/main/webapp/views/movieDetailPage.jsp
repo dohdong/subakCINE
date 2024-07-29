@@ -95,7 +95,7 @@
     </style>
 <%--</head>--%>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <%--<jsp:include page="header.jsp" />--%>
 
 <div class="movie-details">
@@ -116,11 +116,11 @@
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
         <div class="buttons">
-            <form action="createCollection.do" method="post">
-                <input type="hidden" name="id" value="${movie.id}">
-                <input type="hidden" name="itemType" value="movie">
-                <button type="submit">AddCollection</button>
-            </form>
+<%--            <form action="createCollection.do" method="post">--%>
+<%--                <input type="hidden" name="id" value="${movie.id}">--%>
+<%--                <input type="hidden" name="itemType" value="movie">--%>
+<%--                <button type="submit">AddCollection</button>--%>
+<%--            </form>--%>
             <form action="movieDetailPage.do" method="post">
                 <input type="hidden" name="id" value="${movie.id}">
                 <input type="hidden" name="action" value="likeMovie">
