@@ -4,7 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Movie Details</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>Movie Details</title>--%>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,9 +93,10 @@
             cursor: pointer;
         }
     </style>
-</head>
+<%--</head>--%>
 <body>
 <jsp:include page="header.jsp" />
+<%--<jsp:include page="header.jsp" />--%>
 
 <div class="movie-details">
     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
@@ -111,11 +116,11 @@
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
         <div class="buttons">
-            <form action="movieDetailPage.do" method="post">
-                <input type="hidden" name="id" value="${movie.id}">
-                <input type="hidden" name="action" value="addToCollection">
-                <button type="submit">Add to Collection</button>
-            </form>
+<%--            <form action="createCollection.do" method="post">--%>
+<%--                <input type="hidden" name="id" value="${movie.id}">--%>
+<%--                <input type="hidden" name="itemType" value="movie">--%>
+<%--                <button type="submit">AddCollection</button>--%>
+<%--            </form>--%>
             <form action="movieDetailPage.do" method="post">
                 <input type="hidden" name="id" value="${movie.id}">
                 <input type="hidden" name="action" value="likeMovie">

@@ -101,6 +101,10 @@
             <a href='userCollection.do'><img src="./img/collection-icon.png" id="myCollection" width="50"></a>
             <p>컬렉션</p>
         </div>
+        <div>
+            <a href='userLikePage.do'><img src="./img/like-icon.png" id="myLike" width="50"></a>
+            <p>좋아요한 목록</p>
+        </div>
     </div>
     <hr>
     <div>
