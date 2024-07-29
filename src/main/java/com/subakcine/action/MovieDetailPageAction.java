@@ -65,6 +65,7 @@ public class MovieDetailPageAction implements SubakcineAction {
                         }
                     }
                 }
+
             } else {
                 if (action != null && action.equals("likeMovie")) {
                     request.setAttribute("message", "Login required.");
