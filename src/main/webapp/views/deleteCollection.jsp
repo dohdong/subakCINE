@@ -5,6 +5,7 @@
 <%@ page import="java.util.HashMap"%><%@ page import="com.subakcine.dao.CollectionDAO"%>
 <%@ page contentType="application/json;charset=UTF-8" language="java" %>
 <%
+    request.setCharacterEncoding("UTF-8");
     String collectionId=(String)request.getParameter("collectionId");
     CollectionDAO collectionDAO=new CollectionDAO();
     int re=collectionDAO.delete(collectionId);
