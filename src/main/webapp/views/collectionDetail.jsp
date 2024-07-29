@@ -1,20 +1,13 @@
 <%@ page import="com.subakcine.vo.CollectionItemVO" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: WD
-  Date: 2024-07-25
-  Time: PM 12:12
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
-    <title>WatchaPedia Collection Detail</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="./css/collectionDetail.css">
+    <link rel="stylesheet" href="css/collectionDetail.css">
     <style>
             /* 간단한 스타일링 */
         body { font-family: Arial, sans-serif; text-align: center}
@@ -39,8 +32,8 @@
     <div id="center">
         <section class="profile">
             <h1 style="padding:15px">${collection.collectionName}</h1>
-            <img src="./img/dj.jpg" alt="유현진 프로필" width="50" height="50">
-            <p>이동진</p>
+            <img src="./img/dj.jpg" alt="프로필" width="50" height="50">
+            <p>${displayName}</p>
             <p>좋아요 0 · 팔로워 0 · 1일 전 업데이트</p>
             <button>좋아요</button>
             <button>댓글</button>
@@ -58,6 +51,10 @@
             </c:forEach>
         </section>
     </div>
+    <section class="buttons">
+        <a href="/collectionDelete.do"><input type="button" value="컬렉션 삭제하기"></a>
+        <a href="/updateCollection.do"><input type="button" value="컬렉션 수정하기"></a>
+    </section>
 </main>
 </body>
 </html>
