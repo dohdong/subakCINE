@@ -10,7 +10,29 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CollectionDAO {
+    //모든 컬렉션 반환
+    public ArrayList<CollectionVO> allCollections(){
+        String sql = "select COLLECTION_ID,COLLECTION_NAME,COLLECTION_CREATE_DATE,COLLECTION_UPDATE_DATE,USERS_ID from collection";
+        ArrayList<CollectionVO> list = new ArrayList<>();
+        try{
+            Connection conn = ConnectionProvider.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                CollectionVO collectionVo = new CollectionVO();
+                collectionVo.setCollectionId(rs.getString("COLLECTION_ID"));
+                collectionVo.setCollectionName(rs.getString("COLLECTION_NAME"));
+                collectionVo.setCollectionCreateDate(rs.getDate("COLLECTION_CREATE_DATE"));
+                collectionVo.setCollectionUpdateDate(rs.getDate("COLLECTION_UPDATE_DATE"));
+                collectionVo.setUserID(rs.getString("USERS_ID"));
+                list.add(collectionVo);
+            }
+        }catch (Exception e){
+            System.out.println("CollectionDAO allCollections 예외 ==> "+e.getMessage());
 
+        }
+        return list;
+    }
     //컬렉션 삭제
     public int delete(String collectionId) {
         String sql = "DELETE COLLECTION WHERE COLLECTION_ID=?";
