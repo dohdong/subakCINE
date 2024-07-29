@@ -35,6 +35,6 @@ public class UserPageAction implements SubakcineAction{
         request.setAttribute("popularPerson", popularPerson);
         request.setAttribute("user", user);
 
-        return "/views/userpage.jsp";
+        return "/views/userPage.jsp";
     }
 }
