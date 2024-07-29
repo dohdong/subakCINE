@@ -46,6 +46,9 @@
     </div>
 </div>
 <%--<%@include file="footer.jsp" %>--%>
-<h2>${email}</h2>
+<div>
+    <h2>Email: ${email}</h2>
+    <h2>USERS_ID: ${usersID}</h2>
+</div>
 </body>
 </html>

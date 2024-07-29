@@ -17,7 +17,7 @@
             background-color: white;
             color:black;
             position: fixed;
-            width: 80%;
+            width: 100%;
             top: 0;
             z-index: 1000;
             height: 70px;
@@ -60,8 +60,6 @@
             display: flex;
             gap: 20px;
         }
-
-
         .tvshow-details img {
             width: 300px;
             height: 450px;
@@ -91,20 +89,8 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <img src="img/logo.png" alt="Logo" onclick="window.location.href='mainPage.do'">
-    <div class="nav">
-        <a href="moviesPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="personPage.do">인물</a>
-    </div>
-    <div class="search-container">
-        <form action="searchPage.do" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
+<jsp:include page="header.jsp" />
+
 <div class="tvshow-details">
     <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
     <div class="tvshow-info">
