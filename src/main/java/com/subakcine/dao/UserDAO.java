@@ -39,8 +39,9 @@ public class UserDAO {
                 vo.setUserId(rs.getString("USERS_ID"));
                 vo.setEmail(rs.getString("USERS_EMAIL"));
                 vo.setPassword(rs.getString("USERS_PASSWORD"));
-                vo.setCreateDate(rs.getDate("CREATED_DATE"));
+                vo.setCreateDate(rs.getDate("CREATE_DATE"));
             }
+            ConnectionProvider.close(rs, pstmt, conn);
         } catch (Exception e) {
             System.out.println("dao getUserByEmail exception ==> " + e.getMessage());
         }
@@ -103,7 +104,7 @@ public class UserDAO {
             re = pstmt.executeUpdate();
             ConnectionProvider.close(pstmt, conn);
         } catch (Exception e) {
-            System.out.println("dao insert exception ==> " + e.getMessage());
+            System.out.println("dao update exception ==> " + e.getMessage());
         }
         return re;
     }
@@ -117,7 +118,7 @@ public class UserDAO {
             re = pstmt.executeUpdate();
             ConnectionProvider.close(pstmt, conn);
         } catch (Exception e) {
-            System.out.println("dao insert exception ==> " + e.getMessage());
+            System.out.println("dao delete exception ==> " + e.getMessage());
         }
         return re;
     }
