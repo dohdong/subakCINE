@@ -24,6 +24,7 @@ public class MainPageAction implements SubakcineAction {
 
         PersonDAO personDao = new PersonDAO();
         List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
+
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 

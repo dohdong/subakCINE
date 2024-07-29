@@ -81,6 +81,11 @@
             <artifactId>tomcat-catalina</artifactId>
             <version>9.0.90</version> <!-- 사용 중인 Tomcat 버전으로 변경 -->
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version> <!-- 최신 버전으로 변경 가능 -->
+        </dependency>
 
 
     </dependencies>
