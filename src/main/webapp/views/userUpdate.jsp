@@ -66,7 +66,7 @@
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <div class="container">
     <h1> 내 정보 수정</h1>
     <form action="">

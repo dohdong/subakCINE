@@ -61,7 +61,7 @@
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <div class="container">
     <div class="profile">
         <img src="./img/dj.jpg" alt="프로필 사진" width="100">
