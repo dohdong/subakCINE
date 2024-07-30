@@ -1,0 +1,63 @@
+.movie-details {
+    max-width: 800px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 20px;
+}
+.movie-details img {
+    width: 300px;
+    height: 450px;
+}
+.movie-info {
+    margin-top: 20px;
+}
+.movie-info h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.movie-info p {
+    margin: 5px 0;
+}
+.like-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.buttons {
+    margin-right: 10px;
+}
+.buttons form {
+    display: inline-block;
+}
+.buttons button {
+    font-size: 16px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    width: 52px; /* 버튼 크기 설정 */
+    height: 44px; /* 버튼 크기 설정 */
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    background-color: white;
+}
+.buttons button:hover {
+    background-color: lightgray;
+}
+
+.like-button {
+    background-image: url('../img/like-icon-empty.png');
+}
+.like-button.liked {
+    background-image: url('../img/like-icon.png');
+}
+.like-count {
+    font-size: 18px;
+    color: #333;
+}

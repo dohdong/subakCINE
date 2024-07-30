@@ -4,88 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TV Show Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: white;
-            color: black;
-            position: fixed;
-            width: 80%;
-        }
-        .header img {
-            width: 50px;
-            cursor: pointer;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-        .nav a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .search-container {
-            display: flex;
-            gap: 10px;
-        }
-        .search-container input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        .search-container button {
-            padding: 5px 10px;
-            font-size: 16px;
-        }
-        .tvshow-details {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .tvshow-details img {
-            width: 300px;
-            height: 450px;
-        }
-        .tvshow-info {
-            margin-top: 20px;
-        }
-        .tvshow-info h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .tvshow-info p {
-            margin: 5px 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tvShowDetail.css">
 </head>
 <body>
-<div class="header">
-    <img src="img/logo.png" alt="Logo" onclick="window.location.href='mainPage.do'">
-    <div class="nav">
-        <a href="moviesPage.do">영화</a>
-        <a href="tvShowsPage.do">TV 프로그램</a>
-        <a href="peoplePage.do">인물</a>
-    </div>
-    <div class="search-container">
-        <form action="searchPage.do" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
+<jsp:include page="header.jsp" />
+
 <div class="tvshow-details">
     <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
     <div class="tvshow-info">
@@ -95,12 +19,24 @@
         <p><strong>Genres:</strong>
             <c:forEach var="genre" items="${tvShow.genres}">
                 ${genre.name}
-                <c:if test="${!genre.last}">, </c:if>
+                <c:if test="${!genre.last}"> </c:if>
             </c:forEach>
         </p>
         <p><strong>Rating:</strong> ${tvShow.vote_average}</p>
         <p><strong>Overview:</strong> ${tvShow.overview}</p>
         <p><strong>Popularity:</strong> ${tvShow.popularity}</p>
+
+        <div class="like-section">
+            <div class="buttons">
+                <form action="tvShowDetailPage.do" method="post">
+                    <input type="hidden" name="id" value="${tvShow.id}">
+                    <input type="hidden" name="action" value="likeTVShow">
+                    <button type="submit" class="like-button ${isLiked ? 'liked' : ''}"></button>
+                </form>
+            </div>
+            <!-- 좋아요 수 표시 -->
+            <p class="like-count">좋아요: ${likeCount}</p>
+        </div>
     </div>
 </div>
 </body>

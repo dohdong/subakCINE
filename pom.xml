@@ -64,6 +64,30 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.5</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/jquery -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.7.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>9.0.90</version> <!-- 사용 중인 Tomcat 버전으로 변경 -->
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version> <!-- 최신 버전으로 변경 가능 -->
+        </dependency>
+
+
     </dependencies>
     <build>
         <plugins>

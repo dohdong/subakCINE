@@ -7,6 +7,7 @@ import com.subakcine.dao.TVShowDAO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -22,11 +23,15 @@ public class MainPageAction implements SubakcineAction {
         List<Map<String, Object>> popularTVShows = tvShowDao.getPopularTVShows();
 
         PersonDAO personDao = new PersonDAO();
-        List<Map<String, Object>> popularPeople = personDao.getPopularPeople();
+        List<Map<String, Object>> popularPerson = personDao.getPopularPerson();
+
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
 
         request.setAttribute("popularMovies", popularMovies);
         request.setAttribute("popularTVShows", popularTVShows);
-        request.setAttribute("popularPeople", popularPeople);
+        request.setAttribute("popularPerson", popularPerson);
+        request.setAttribute("email", email);
 
         return "/views/mainPage.jsp";
     }

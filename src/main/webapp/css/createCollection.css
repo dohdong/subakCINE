@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 80%;
+    margin: 70px auto 0;
+    padding: 20px;
+}
+.header2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title {
+    margin: 20px;
+}
+.search-bar {
+    position: relative;
+}
+.search-bar input {
+    padding: 5px 10px;
+    width: 200px;
+}
+.watermark-remove {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.collection {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+}
+.collection img {
+    margin: 10px;
+    width: 100px;
+    height: 150px;
+}
+.add-movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100px;
+    height: 150px;
+    background-color: #CCCCCC;
+    border-radius: 30px;
+    cursor: pointer;
+    flex-direction: column
+}
+.add-movie #addBtn {
+    width: 20px;
+    height: 20px;
+    align-content: center;
+    padding: 10px;
+}
+.keywords {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.keyword {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 600px;
+    z-index: 1000;
+}
+.popup .close {
+    cursor: pointer;
+    color: red;
+    float: right;
+}
+.popup .search-bar {
+    margin-bottom: 20px;
+}
+.popup #movieResults,#tvResults{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+#createBtn {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    display: inline-block;
+    position: fixed; /* 고정 위치 설정 */
+    bottom: 300px; /* 화면 아래에서 300px 떨어진 위치 */
+    right: 120px; /* 화면 오른쪽에서 120px 떨어진 위치 */
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    background: rgba(27,188,194,1);
+    background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+}
