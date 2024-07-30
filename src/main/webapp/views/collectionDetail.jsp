@@ -17,14 +17,26 @@
         .search { float: right; }
         .profile { margin-top: 20px; }
         .works { margin-top: 20px; }
-        .movie { display: inline-block; margin-right: 10px; text-align: center; }
+        .movie { display: inline-block; margin-right: 10px; text-align: center;}
         .movie img { width: 120px; height: 180px; }
         #container{margin-top: 80px}
         #center{
             width: 60%; /* 또는 원하는 너비 */
             margin: 0 auto;
             border-radius: 15px;
-            background: #A1BDB1;;
+            /*background: #A1BDB1;;*/
+            border-style:solid; border-width:5px; border-color:#ff4d67;
+        }
+        button{
+            background-color: #ff4d67;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
     </style>
     <script>
