@@ -59,6 +59,7 @@
 }
 .like-button.liked {
     background-image: url('../img/like-icon.png');
+}
 .like-count {
     font-size: 18px;
     color: #333;
