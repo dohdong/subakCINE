@@ -137,4 +137,28 @@ public class PersonDAO {
             return false;
         }
     }
+
+    /**
+     * 특정 사용자가 특정 인물을 좋아요 했는지 확인합니다.
+     *
+     * @param personId 인물 ID
+     * @param usersID 사용자 ID
+     * @return 좋아요 상태 (true: 좋아요 함, false: 좋아요 하지 않음)
+     */
+    public boolean isLiked(String personId, String usersID) {
+        String checkSql = "SELECT COUNT(*) FROM LIKES WHERE ITEM_ID = ? AND USERS_ID = ?";
+
+        try (Connection conn = ConnectionProvider.getConnection();
+             PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+
+            // 좋아요 상태 확인
+            checkStmt.setString(1, personId);
+            checkStmt.setString(2, usersID);
+            ResultSet rs = checkStmt.executeQuery();
+            return rs.next() && rs.getInt(1) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -3,76 +3,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        /*.header {*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*    justify-content: space-between;*/
-        /*    padding: 10px 20px;*/
-        /*    background-color: white;*/
-        /*    color:black;*/
-        /*    position: fixed;*/
-        /*    width: 100%;*/
-        /*    top: 0;*/
-        /*    z-index: 1000;*/
-        /*    height: 70px;*/
-        /*}*/
-        /*.header img {*/
-        /*    width: 50px;*/
-        /*    cursor: pointer;*/
-        /*}*/
-        /*.nav {*/
-        /*    display: flex;*/
-        /*    gap: 20px;*/
-        /*}*/
-        /*.nav a {*/
-        /*    color: black;*/
-        /*    text-decoration: none;*/
-        /*    font-size: 18px;*/
-        /*}*/
-        /*.nav a:hover {*/
-        /*    text-decoration: underline;*/
-        /*}*/
-        .container {
-            padding: 20px;
-            margin-top: 100px; /* 헤더 아래로 여백 추가 */
-        }
-        .search-results {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .search-container {
-            display: flex;
-            gap: 10px;
-        }
-        .search-container input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        .search-container button {
-            padding: 5px 10px;
-            font-size: 16px;
-        }
-        .result-item {
-            margin: 10px;
-            width: 150px;
-            text-align: center;
-        }
-        .result-item img {
-            width: 150px;
-            height: 225px;
-            cursor: pointer;
-        }
-        .result-title {
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
 </head>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>Search Results</title>--%>
+<%--    <style>--%>
+<%--        body {--%>
+<%--            font-family: Arial, sans-serif;--%>
+<%--        }--%>
+<%--        /*.header {*/--%>
+<%--        /*    display: flex;*/--%>
+<%--        /*    align-items: center;*/--%>
+<%--        /*    justify-content: space-between;*/--%>
+<%--        /*    padding: 10px 20px;*/--%>
+<%--        /*    background-color: white;*/--%>
+<%--        /*    color:black;*/--%>
+<%--        /*    position: fixed;*/--%>
+<%--        /*    width: 100%;*/--%>
+<%--        /*    top: 0;*/--%>
+<%--        /*    z-index: 1000;*/--%>
+<%--        /*    height: 70px;*/--%>
+<%--        /*}*/--%>
+<%--        /*.header img {*/--%>
+<%--        /*    width: 50px;*/--%>
+<%--        /*    cursor: pointer;*/--%>
+<%--        /*}*/--%>
+<%--        /*.nav {*/--%>
+<%--        /*    display: flex;*/--%>
+<%--        /*    gap: 20px;*/--%>
+<%--        /*}*/--%>
+<%--        /*.nav a {*/--%>
+<%--        /*    color: black;*/--%>
+<%--        /*    text-decoration: none;*/--%>
+<%--        /*    font-size: 18px;*/--%>
+<%--        /*}*/--%>
+<%--        /*.nav a:hover {*/--%>
+<%--        /*    text-decoration: underline;*/--%>
+<%--        /*}*/--%>
+<%--        .container {--%>
+<%--            padding: 20px;--%>
+<%--            margin-top: 100px; /* 헤더 아래로 여백 추가 */--%>
+<%--        }--%>
+<%--        .search-results {--%>
+<%--            display: flex;--%>
+<%--            flex-wrap: wrap;--%>
+<%--        }--%>
+<%--        .search-container {--%>
+<%--            display: flex;--%>
+<%--            gap: 10px;--%>
+<%--        }--%>
+<%--        .search-container input {--%>
+<%--            padding: 5px;--%>
+<%--            font-size: 16px;--%>
+<%--        }--%>
+<%--        .search-container button {--%>
+<%--            padding: 5px 10px;--%>
+<%--            font-size: 16px;--%>
+<%--        }--%>
+<%--        .result-item {--%>
+<%--            margin: 10px;--%>
+<%--            width: 150px;--%>
+<%--            text-align: center;--%>
+<%--        }--%>
+<%--        .result-item img {--%>
+<%--            width: 150px;--%>
+<%--            height: 225px;--%>
+<%--            cursor: pointer;--%>
+<%--        }--%>
+<%--        .result-title {--%>
+<%--            font-size: 14px;--%>
+<%--        }--%>
+<%--    </style>--%>
+<%--</head>--%>
 <body>
 <jsp:include page="header.jsp" />
 

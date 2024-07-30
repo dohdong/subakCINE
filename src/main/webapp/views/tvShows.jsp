@@ -12,31 +12,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h1>Airing Today</h1>
-    <div class="tvshow-container">
-        <c:forEach var="tvShow" items="${airingTodayTVShows}">
-            <div class="tvshow">
-                <a href="tvShowDetailPage.do?id=${tvShow.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
-                </a>
-                <div class="tvshow-title">${tvShow.name}</div>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h1>Top Rated TVShows</h1>
-    <div class="tvshow-container">
-        <c:forEach var="tvShow" items="${topRatedTVShows}">
-            <div class="tvshow">
-                <a href="tvShowDetailPage.do?id=${tvShow.id}">
-                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
-                </a>
-                <div class="tvshow-title">${tvShow.name}</div>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h1>Popular TV Shows</h1>
+    <h2>인기 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${popularTVShows}">
             <div class="tvshow">
@@ -48,7 +24,31 @@
         </c:forEach>
     </div>
 
-    <h1>On The Air TVShows</h1>
+    <h2>평점이 높은 TV 프로그램</h2>
+    <div class="tvshow-container">
+        <c:forEach var="tvShow" items="${topRatedTVShows}">
+            <div class="tvshow">
+                <a href="tvShowDetailPage.do?id=${tvShow.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
+                </a>
+                <div class="tvshow-title">${tvShow.name}</div>
+            </div>
+        </c:forEach>
+    </div>
+
+    <h2>오늘 방영하는 TV 프로그램</h2>
+    <div class="tvshow-container">
+        <c:forEach var="tvShow" items="${airingTodayTVShows}">
+            <div class="tvshow">
+                <a href="tvShowDetailPage.do?id=${tvShow.id}">
+                    <img src="https://image.tmdb.org/t/p/w500${tvShow.poster_path}" alt="${tvShow.name}">
+                </a>
+                <div class="tvshow-title">${tvShow.name}</div>
+            </div>
+        </c:forEach>
+    </div>
+
+    <h2>현재 방영 중인 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${onTheAirTVShows}">
             <div class="tvshow">

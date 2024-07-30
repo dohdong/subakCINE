@@ -251,7 +251,7 @@ public class TmdbApiClient {
      */
     public String getPopularPersonDetails(String personId) throws IOException {
         Request request = new Request.Builder()
-                .url(API_BASE_URL + "/person/" + personId + "?api_key=" + API_KEY + "&language=ko-KR")
+                .url(API_BASE_URL + "/person/" + personId + "?api_key=" + API_KEY + "&language=en-US")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
