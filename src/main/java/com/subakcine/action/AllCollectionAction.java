@@ -33,10 +33,6 @@ public class AllCollectionAction implements SubakcineAction {
                 //collectionId로 userId 가져와서 vo에 저장
                 String userId = collectionDao.getUserIdByCollectionId(collection.getCollectionId());
                 collectionItem.setUserId(userId);
-                //userId로 userName 가져와서 vo에 저장
-                UserDAO userDao = new UserDAO();
-                String userName = userDao.getUserEmailById(userId);
-                collectionItem.setUserName(userName);
                 if (collectionItem.getType().equals("movie")) { //type이 movie일때
                     movieDAO=new MovieDAO();
                     Map<String, Object> movie= movieDAO.getMovieDetails(collectionItem.getId());
@@ -52,7 +48,11 @@ public class AllCollectionAction implements SubakcineAction {
                 }
             }
             collection.setItems(collectionItemList);
-            System.out.println("collectionVO 유저아이디 => "+collection.getUserID());
+            //userId로 userName 가져와서 vo에 저장
+            UserDAO userDao = new UserDAO();
+            String userName = userDao.getUserEmailById(collection.getUserID());
+            collection.setUserName(userName);
+            System.out.println("collection 상세정보 ==> "+collection.toString());
         }
 //        System.out.println(collectionList);
         request.setAttribute("collectionList", collectionList);
