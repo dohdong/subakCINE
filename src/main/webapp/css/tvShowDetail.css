@@ -1,4 +1,4 @@
-.movie-details {
+.tvshow-details {
     max-width: 800px;
     margin: 100px auto 20px;
     padding: 20px;
@@ -8,18 +8,18 @@
     display: flex;
     gap: 20px;
 }
-.movie-details img {
+.tvshow-details img {
     width: 300px;
     height: 450px;
 }
-.movie-info {
+.tvshow-info {
     margin-top: 20px;
 }
-.movie-info h2 {
+.tvshow-info h2 {
     margin: 0;
     font-size: 24px;
 }
-.movie-info p {
+.tvshow-info p {
     margin: 5px 0;
 }
 .like-section {
