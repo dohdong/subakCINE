@@ -33,5 +33,16 @@
     padding: 10px 20px;
     font-size: 16px;
     margin-right: 10px;
+    border: none;
     cursor: pointer;
+    width: 52px; /* 버튼 크기 설정 */
+    height: 44px; /* 버튼 크기 설정 */
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+}
+.like-button {
+    background-image: url('../img/like-icon-empty.png');
+}
+.like-button.liked {
+    background-image: url('../img/like-icon.png');
 }

@@ -31,7 +31,7 @@
             <form action="movieDetailPage.do" method="post">
                 <input type="hidden" name="id" value="${movie.id}">
                 <input type="hidden" name="action" value="likeMovie">
-                <button type="submit">Like</button>
+                <button type="submit" class="like-button ${isLiked ? 'liked' : ''}"></button>
             </form>
         </div>
 
