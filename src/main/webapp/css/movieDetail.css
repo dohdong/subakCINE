@@ -37,16 +37,28 @@
     padding: 10px 20px;
     font-size: 16px;
     margin-right: 10px;
-    cursor: pointer;
-    background-color: #e04356;
-    color: white;
     border: none;
+    cursor: pointer;
+    width: 52px; /* 버튼 크기 설정 */
+    height: 44px; /* 버튼 크기 설정 */
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    color: white;
     border-radius: 20px;
     transition: background-color 0.3s;
 }
+
+
 .buttons button:hover {
     background-color: #c03945;
 }
+
+
+.like-button {
+    background-image: url('../img/like-icon-empty.png');
+}
+.like-button.liked {
+    background-image: url('../img/like-icon.png');
 .like-count {
     font-size: 18px;
     color: #333;
