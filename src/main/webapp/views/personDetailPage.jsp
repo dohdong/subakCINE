@@ -18,7 +18,7 @@
                 <form action="personDetailPage.do" method="post">
                     <input type="hidden" name="id" value="${personDetails.id}">
                     <input type="hidden" name="action" value="likePerson">
-                    <button type="submit">Like</button>
+                    <button type="submit" class="like-button ${isLiked ? 'liked' : ''}"></button>
                 </form>
             </div>
             <!-- 좋아요 수 표시 -->
