@@ -1,0 +1,83 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 인물 상세 페이지 스타일 */
+.person-details {
+    max-width: 800px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.person-details img {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+.person-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.person-info h2 {
+    margin: 0;
+    font-size: 32px;
+    color: #333;
+}
+
+.person-info p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.person-info p strong {
+    color: #333;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons form {
+    display: inline-block;
+}
+
+.buttons button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #e04356;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #c03945;
+    transform: translateY(-2px);
+}
+
+.like-button img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}

@@ -10,53 +10,98 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
-            var movieData=<%= new Gson().toJson(request.getAttribute("popularMovies"))%>;
-            var tvData=<%= new Gson().toJson(request.getAttribute("popularTVShows"))%>;
-            var personData=<%= new Gson().toJson(request.getAttribute("popularPerson"))%>;
+            var movieData = <%= new Gson().toJson(request.getAttribute("popularMovies")) %>;
+            var tvData = <%= new Gson().toJson(request.getAttribute("popularTVShows")) %>;
+            var personData = <%= new Gson().toJson(request.getAttribute("popularPerson")) %>;
 
             $("#myMovie").click(function () {
                 $("#contents").empty();
                 var tr;
-                $.each(movieData,function (i,data){
-                    if (i%4==0){
-                        tr=$("<tr></tr>");
+                $.each(movieData, function (i, data) {
+                    if (i % 4 == 0) {
+                        tr = $("<tr></tr>");
                         $("#contents").append(tr);
                     }
-                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.poster_path);
-                    let td=$("<td></td>");
+                    let img = $("<img width='100px'>").attr("src", "https://image.tmdb.org/t/p/w500" + data.poster_path);
+                    let td = $("<td></td>");
                     td.append(img);
                     tr.append(td);
-                })
-            })
+                });
+            });
+
             $("#myTV").click(function () {
-                $("#contents").empty()
+                $("#contents").empty();
                 var tr;
-                $.each(tvData,function (i,data){
-                    if (i%4==0){
-                        tr=$("<tr></tr>");
+                $.each(tvData, function (i, data) {
+                    if (i % 4 == 0) {
+                        tr = $("<tr></tr>");
                         $("#contents").append(tr);
                     }
-                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.poster_path);
-                    let td=$("<td></td>");
+                    let img = $("<img width='100px'>").attr("src", "https://image.tmdb.org/t/p/w500" + data.poster_path);
+                    let td = $("<td></td>");
                     td.append(img);
                     tr.append(td);
-                })
-            })
+                });
+            });
+
             $("#myPerson").click(function () {
-                $("#contents").empty()
+                $("#contents").empty();
                 var tr;
-                $.each(personData,function (i,data){
-                    if (i%4==0){
-                        tr=$("<tr></tr>");
+                $.each(personData, function (i, data) {
+                    if (i % 4 == 0) {
+                        tr = $("<tr></tr>");
                         $("#contents").append(tr);
                     }
-                    let img=$("<img width='100px'>").attr("src","https://image.tmdb.org/t/p/w500"+data.profile_path);
-                    let td=$("<td></td>");
+                    let img = $("<img width='100px'>").attr("src", "https://image.tmdb.org/t/p/w500" + data.profile_path);
+                    let td = $("<td></td>");
                     td.append(img);
                     tr.append(td);
-                })
-            })
-        })
+                });
+            });
+
+            $("#update").on("click", function () {
+                let email = $("#email").val();
+                let password = $("#password").val();
+                let data = {
+                    email: email,
+                    password: password
+                };
+                $.ajax({
+                    url: "/views/updateUser.jsp",
+                    data: data,
+                    success: function (response) {
+                        if (response === "1") {
+                            $("#result").empty();
+                            $("#result").append("성공했습니다.");
+                        }
+                    }
+                });
+            });
+
+            $("#delete").on("click", function (e) {
+                if (confirm("정말로 삭제하시겠습니까?") == false) {
+                    e.preventDefault();
+                    return false;
+                }
+                let email = $("#email").val();
+                let data = {
+                    email: email
+                };
+                $.ajax({
+                    url: "/views/deleteUser.jsp",
+                    data: data,
+                    success: function (response) {
+                        let jsonResponse = JSON.parse(response);
+                        if (jsonResponse.re == "1") {
+                            window.location.href = "mainPage.do"; // 성공 시 리디렉션
+                        } else {
+                            $("#result").empty();
+                            $("#result").append("삭제 실패했습니다.");
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>

@@ -5,93 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tvShowDetail.css">
 </head>
-<%--<head>--%>
-<%--    <meta charset="UTF-8">--%>
-<%--    <title>TV Show Details</title>--%>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        /*.header {*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*    justify-content: space-between;*/
-        /*    padding: 10px 20px;*/
-        /*    background-color: white;*/
-        /*    color:black;*/
-        /*    position: fixed;*/
-        /*    width: 100%;*/
-        /*    top: 0;*/
-        /*    z-index: 1000;*/
-        /*    height: 70px;*/
-        /*}*/
-        /*.header img {*/
-        /*    width: 50px;*/
-        /*    cursor: pointer;*/
-        /*}*/
-        /*.nav {*/
-        /*    display: flex;*/
-        /*    gap: 20px;*/
-        /*}*/
-        /*.nav a {*/
-        /*    color: black;*/
-        /*    text-decoration: none;*/
-        /*    font-size: 18px;*/
-        /*}*/
-        /*.nav a:hover {*/
-        /*    text-decoration: underline;*/
-        /*}*/
-        /*.search-container {*/
-        /*    display: flex;*/
-        /*    gap: 10px;*/
-        /*}*/
-        /*.search-container input {*/
-        /*    padding: 5px;*/
-        /*    font-size: 16px;*/
-        /*}*/
-        /*.search-container button {*/
-        /*    padding: 5px 10px;*/
-        /*    font-size: 16px;*/
-        /*}*/
-        .tvshow-details {
-            max-width: 800px;
-            margin: 100px auto 20px;
-            padding: 20px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 20px;
-        }
-        .tvshow-details img {
-            width: 300px;
-            height: 450px;
-        }
-        .tvshow-info {
-            margin-top: 20px;
-        }
-        .tvshow-info h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .tvshow-info p {
-            margin: 5px 0;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        .buttons form {
-            display: inline-block;
-        }
-        .buttons button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-    </style>
-<%--</head>--%>
 <body>
 <jsp:include page="header.jsp" />
 
@@ -110,23 +25,22 @@
         <p><strong>Rating:</strong> ${tvShow.vote_average}</p>
         <p><strong>Overview:</strong> ${tvShow.overview}</p>
         <p><strong>Popularity:</strong> ${tvShow.popularity}</p>
+
+        <div class="buttons">
+            <form action="tvShowDetailPage.do" method="post">
+                <input type="hidden" name="id" value="${tvShow.id}">
+                <input type="hidden" name="action" value="likeTVShow">
+                <button type="submit">Like</button>
+            </form>
+        </div>
+
+        <c:if test="${not empty message}">
+            <p>${message}</p>
+        </c:if>
+
+        <!-- 좋아요 수 표시 -->
+        <p>좋아요: ${likeCount}</p>
     </div>
-
-    <div class="buttons">
-        <form action="tvShowDetailPage.do" method="post">
-            <input type="hidden" name="id" value="${tvShow.id}">
-            <input type="hidden" name="action" value="likeTVShow">
-            <button type="submit">Like</button>
-        </form>
-    </div>
-
-    <c:if test="${not empty message}">
-        <p>${message}</p>
-    </c:if>
-
-    <!-- 좋아요 수 표시 -->
-    <p>좋아요: ${likeCount}</p>
-
 </div>
 </body>
 </html>
