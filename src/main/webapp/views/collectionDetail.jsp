@@ -76,6 +76,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div id="container">
+    <h1>나의 컬렉션</h1>
     <div id="center">
         <section class="profile">
             <h1 style="padding:15px">${collection.collectionName}</h1>
