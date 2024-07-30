@@ -31,16 +31,12 @@
                 <form action="tvShowDetailPage.do" method="post">
                     <input type="hidden" name="id" value="${tvShow.id}">
                     <input type="hidden" name="action" value="likeTVShow">
-                    <button type="submit">Like</button>
+                    <button type="submit" class="like-button ${isLiked ? 'liked' : ''}"></button>
                 </form>
             </div>
             <!-- 좋아요 수 표시 -->
             <p class="like-count">좋아요: ${likeCount}</p>
         </div>
-
-<%--        <c:if test="${not empty message}">--%>
-<%--            <p>${message}</p>--%>
-<%--        </c:if>--%>
     </div>
 </div>
 </body>
