@@ -108,7 +108,7 @@
 <jsp:include page="header.jsp" />
 <div class="container">
     <div class="profile">
-        <img src="./img/dj.jpg" alt="프로필 사진" width="100">
+        <img src="./img/user-icon.png" alt="프로필 사진" width="100">
         <h2>${sessionScope.displayName}</h2>
         <p>${email}</p>
         <a href="signOut.do" class="logout-button">로그아웃</a> <!-- 로그아웃 버튼 -->
