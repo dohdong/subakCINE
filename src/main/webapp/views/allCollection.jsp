@@ -41,8 +41,8 @@
 
             <div class="collection-details">
                 <div class="user-info">
-                    <img src="./img/dj.jpg" alt="User Avatar">
-                    <span>${collection.userID}</span>
+                    <img src="./img/user-icon.png" alt="User Avatar">
+                    <span>${collection.userName}</span>
                 </div>
 
                 <a href="collectionDetail.do?collectionId=${collection.collectionId}">
