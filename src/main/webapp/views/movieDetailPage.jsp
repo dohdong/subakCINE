@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -27,20 +27,24 @@
         <p><strong>Summary:</strong> ${movie.overview}</p>
         <p><strong>Viewers:</strong> ${movie.popularity}</p>
 
-        <div class="buttons">
-            <form action="movieDetailPage.do" method="post">
-                <input type="hidden" name="id" value="${movie.id}">
-                <input type="hidden" name="action" value="likeMovie">
-                <button type="submit">Like</button>
-            </form>
+
+        <div class="like-section">
+            <div class="buttons">
+                <form action="movieDetailPage.do" method="post">
+                    <input type="hidden" name="id" value="${movie.id}">
+                    <input type="hidden" name="action" value="likeMovie">
+                    <button type="submit" class="like-button ${isLiked ? 'liked' : ''}"></button>
+                </form>
+            </div>
+            <!-- 좋아요 수 표시 -->
+            <p class="like-count">좋아요: ${likeCount}</p>
         </div>
+      
+      
 
-        <c:if test="${not empty message}">
-            <p>${message}</p>
-        </c:if>
-
-        <!-- 좋아요 수 표시 -->
-        <p>좋아요: ${likeCount}</p>
+<%--        <c:if test="${not empty message}">--%>
+<%--            <p>${message}</p>--%>
+<%--        </c:if>--%>
     </div>
 </div>
 </body>

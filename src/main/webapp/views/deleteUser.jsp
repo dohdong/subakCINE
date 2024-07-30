@@ -6,16 +6,21 @@
 <%@ page contentType="application/json;charset=UTF-8" language="java" %>
 <%
     request.setCharacterEncoding("UTF-8");
-    String email=(String)session.getAttribute("email");
+    String email = (String) session.getAttribute("email");
 
-    UserDAO userDAO=new UserDAO();
-    int re=userDAO.delete(email);
+    UserDAO userDAO = new UserDAO();
+    int re = userDAO.delete(email);
+
+    // 세션 종료 처리
+    if (re == 1) {
+        session.invalidate();
+    }
 
     // Json 응답
-    Map<String, Object> result=new HashMap();
+    Map<String, Object> result = new HashMap<>();
     result.put("re", re);
 
-    Gson gson=new Gson();
-    String jsonRes=gson.toJson(result);
+    Gson gson = new Gson();
+    String jsonRes = gson.toJson(result);
 %>
-<%=jsonRes%>
+<%= jsonRes %>

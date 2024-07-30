@@ -1,28 +1,25 @@
-body {
-    font-family: Arial, sans-serif;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ccc;
-}
-nav {
-    flex: 1;
-    text-align: center;
-}
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: black;
-}
 .profile {
     text-align: center;
     margin: 20px 0;
 }
 .profile img {
     border-radius: 50%;
+}
+.profile .logout-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #e04356;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px; /* 폰트 크기 설정 */
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); !* 그림자 추가 *!*/
+}
+.profile .logout-button:hover {
+    background-color: #e04356;
+    /*transform: translateY(-2px); !* 버튼이 살짝 올라가도록 설정 *!*/
 }
 .stats, .library {
     display: flex;
@@ -33,15 +30,13 @@ nav a {
     margin: 0 20px;
     text-align: center;
 }
-footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #ccc;
+.stats div h3, .library div p {
+    margin: 0;
 }
-table, th, td {
-    border: 1px solid white;
-    border-collapse: collapse;
+.library img {
+    cursor: pointer;
+    transition: transform 0.3s;
 }
-th, td {
-    background-color: lightgray;
+.library img:hover {
+    transform: scale(1.1);
 }

@@ -9,7 +9,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="container">
-    <h2>Popular Movies</h2>
+    <h2>인기 영화</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${popularMovies}">
             <div class="movie">
@@ -21,7 +21,7 @@
         </c:forEach>
     </div>
 
-    <h2>Popular TV Shows</h2>
+    <h2>인기 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${popularTVShows}">
             <div class="tvshow">
@@ -45,6 +45,5 @@
         </c:forEach>
     </div>
 </div>
-<%--<%@include file="footer.jsp" %>--%>
 </body>
 </html>
