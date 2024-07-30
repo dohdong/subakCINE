@@ -151,17 +151,6 @@
             <span>영화 추가</span></div>
     </div>
 
-    <div class="keywords">
-        <div class="keyword">스릴러</div>
-        <div class="keyword">감동</div>
-        <div class="keyword">행복</div>
-        <div class="keyword">네</div>
-        <div class="keyword">로맨스</div>
-        <div class="keyword">우울</div>
-        <div class="keyword">최고</div>
-        <div class="keyword">더위</div>
-    </div>
-
     <div>
         <a href="#" id="createBtn">만들기</a>
     </div>
