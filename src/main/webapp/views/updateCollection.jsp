@@ -164,7 +164,7 @@
 <%@ include file="header.jsp" %>
 <div class="container">
     <div class="header2">
-        <h1>컬렉션 만들기</h1>
+        <h1>컬렉션 수정하기</h1>
     </div>
     <div class="title">
         <label>컬렉션 이름 : </label>
