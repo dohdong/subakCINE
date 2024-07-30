@@ -1,4 +1,3 @@
-/* css/movieDetail.css */
 .movie-details {
     max-width: 800px;
     margin: 100px auto 20px;
@@ -23,8 +22,13 @@
 .movie-info p {
     margin: 5px 0;
 }
-.buttons {
+.like-section {
+    display: flex;
+    align-items: center;
     margin-top: 20px;
+}
+.buttons {
+    margin-right: 10px;
 }
 .buttons form {
     display: inline-block;
@@ -41,11 +45,9 @@
     transition: background-color 0.3s;
 }
 .buttons button:hover {
-    background-color: #e02d43;
+    background-color: #c03945;
 }
-.like-button img {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    margin-right: 10px;
+.like-count {
+    font-size: 18px;
+    color: #333;
 }

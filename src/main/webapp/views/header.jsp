@@ -28,8 +28,8 @@
     </div>
     <div class="search-container">
         <form action="searchPage.do" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
+            <input type="text" name="query" placeholder="영화, tv, 인물 검색">
+            <button type="submit">검색</button>
         </form>
         <div class="auth-container">
             <% if (displayName != null) { %>

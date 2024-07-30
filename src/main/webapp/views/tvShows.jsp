@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h1>인기 TV 프로그램</h1>
+    <h2>인기 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${popularTVShows}">
             <div class="tvshow">
@@ -24,7 +24,7 @@
         </c:forEach>
     </div>
 
-    <h1>평점이 높은 TV 프로그램</h1>
+    <h2>평점이 높은 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${topRatedTVShows}">
             <div class="tvshow">
@@ -36,7 +36,7 @@
         </c:forEach>
     </div>
 
-    <h1>오늘 방영하는 TV 프로그램</h1>
+    <h2>오늘 방영하는 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${airingTodayTVShows}">
             <div class="tvshow">
@@ -48,7 +48,7 @@
         </c:forEach>
     </div>
 
-    <h1>현재 방영 중인 TV 프로그램</h1>
+    <h2>현재 방영 중인 TV 프로그램</h2>
     <div class="tvshow-container">
         <c:forEach var="tvShow" items="${onTheAirTVShows}">
             <div class="tvshow">

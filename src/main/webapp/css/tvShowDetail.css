@@ -22,8 +22,13 @@
 .tvshow-info p {
     margin: 5px 0;
 }
-.buttons {
+.like-section {
+    display: flex;
+    align-items: center;
     margin-top: 20px;
+}
+.buttons {
+    margin-right: 10px;
 }
 .buttons form {
     display: inline-block;
@@ -40,10 +45,9 @@
     transition: background-color 0.3s;
 }
 .buttons button:hover {
-    background-color: #e02d43;
+    background-color: #c03945;
 }
-.like-icon {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+.like-count {
+    font-size: 18px;
+    color: #333;
 }

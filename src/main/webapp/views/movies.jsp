@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h1>인기 영화</h1>
+    <h2>인기 영화</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${popularMovies}">
             <div class="movie">
@@ -24,7 +24,7 @@
         </c:forEach>
     </div>
 
-    <h1>평점이 높은 영화</h1>
+    <h2>평점이 높은 영화</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${topRatedMovies}">
             <div class="movie">
@@ -36,7 +36,7 @@
         </c:forEach>
     </div>
 
-    <h1>현재 상영 영화</h1>
+    <h2>현재 상영 영화</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${nowPlayingMovies}">
             <div class="movie">
@@ -48,7 +48,7 @@
         </c:forEach>
     </div>
 
-    <h1>개봉 예정 영화</h1>
+    <h2>개봉 예정 영화</h2>
     <div class="movie-container">
         <c:forEach var="movie" items="${upcomingMovies}">
             <div class="movie">

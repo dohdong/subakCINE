@@ -12,7 +12,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h1>인기 인물</h1>
+    <h2>인기 인물</h2>
     <div class="person-container">
         <c:forEach var="person" items="${popularPerson}">
             <div class="person">
