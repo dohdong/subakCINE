@@ -19,6 +19,7 @@
         .works { margin-top: 20px; }
         .movie { display: inline-block; margin-right: 10px; text-align: center; }
         .movie img { width: 120px; height: 180px; }
+        #container{margin-top: 80px}
         #center{
             width: 60%; /* 또는 원하는 너비 */
             margin: 0 auto;
@@ -57,7 +58,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<main>s
+<div id="container">
     <div id="center">
         <section class="profile">
             <h1 style="padding:15px">${collection.collectionName}</h1>
@@ -95,6 +96,6 @@
         <input type="button" value="컬렉션 삭제하기" id="deleteBtn">
         <a href="/updateCollection.do?collectionId=${collection.collectionId}"><input type="button" value="컬렉션 수정하기" id="updateBtn"></a>
     </section>
-</main>
+</div>
 </body>
 </html>
