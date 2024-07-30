@@ -25,7 +25,7 @@
         <p><strong>Rating:</strong> ${movie.vote_average}</p>
         <p><strong>Runtime:</strong> ${movie.runtime} minutes</p>
         <p><strong>Summary:</strong> ${movie.overview}</p>
-        <p><strong>Viewers:</strong> ${movie.popularity}</p>
+        <p><strong>Popularity:</strong> ${movie.popularity}</p>
 
 
         <div class="like-section">
@@ -40,11 +40,6 @@
             <p class="like-count">좋아요: ${likeCount}</p>
         </div>
       
-      
-
-<%--        <c:if test="${not empty message}">--%>
-<%--            <p>${message}</p>--%>
-<%--        </c:if>--%>
     </div>
 </div>
 </body>

@@ -11,22 +11,7 @@ public class CollectionVO {
     private String userID;
     private ArrayList<CollectionItemVO> items;
     private ArrayList<KeywordVO> keywords;
-
-    public ArrayList<KeywordVO> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(ArrayList<KeywordVO> keywords) {
-        this.keywords = keywords;
-    }
-
-    public ArrayList<CollectionItemVO> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<CollectionItemVO> items) {
-        this.items = items;
-    }
+    private String userName;
 
     public String getCollectionId() {
         return collectionId;
@@ -68,14 +53,55 @@ public class CollectionVO {
         this.userID = userID;
     }
 
+    public ArrayList<CollectionItemVO> getItems() {
+        return items;
+    }
 
-    public CollectionVO(String collectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID ,ArrayList<CollectionItemVO> items) {
+    public void setItems(ArrayList<CollectionItemVO> items) {
+        this.items = items;
+    }
+
+    public ArrayList<KeywordVO> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(ArrayList<KeywordVO> keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public CollectionVO() {
+    }
+
+    public CollectionVO(String collectionId, String collectionName, Date collectionCreateDate, Date collectionUpdateDate, String userID, ArrayList<CollectionItemVO> items, ArrayList<KeywordVO> keywords, String userName) {
         this.collectionId = collectionId;
         this.collectionName = collectionName;
         this.collectionCreateDate = collectionCreateDate;
         this.collectionUpdateDate = collectionUpdateDate;
         this.userID = userID;
         this.items = items;
+        this.keywords = keywords;
+        this.userName = userName;
     }
-    public CollectionVO() {}
+
+    @Override
+    public String toString() {
+        return "CollectionVO{" +
+                "collectionId='" + collectionId + '\'' +
+                ", collectionName='" + collectionName + '\'' +
+                ", collectionCreateDate=" + collectionCreateDate +
+                ", collectionUpdateDate=" + collectionUpdateDate +
+                ", userID='" + userID + '\'' +
+                ", items=" + items +
+                ", keywords=" + keywords +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 }

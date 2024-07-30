@@ -34,7 +34,6 @@
     display: inline-block;
 }
 .buttons button {
-    padding: 10px 20px;
     font-size: 16px;
     margin-right: 10px;
     border: none;
@@ -44,15 +43,13 @@
     background-size: cover; /* 배경 이미지 크기 조절 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: background-color 0.3s;
+    background-color: white;
 }
-
-
 .buttons button:hover {
-    background-color: #c03945;
+    background-color: lightgray;
 }
-
 
 .like-button {
     background-image: url('../img/like-icon-empty.png');
